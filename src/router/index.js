@@ -15,6 +15,11 @@ const router = createRouter({
       component: () => import('../views/completed.vue')
     },
     {
+      path: '/scheduled',
+      name: 'scheduled',
+      component: () => import('../views/scheduled.vue')
+    },
+    {
       path: '/settings',
       name: 'settings',
       component: () => import('../views/settings.vue')
