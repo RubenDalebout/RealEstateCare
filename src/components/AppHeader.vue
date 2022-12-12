@@ -20,8 +20,8 @@ import { triangle, ellipse, square, notifications, settings } from 'ionicons/ico
                 <nav>
                     <ul class="list-unstyled m-0">
                         <li>
-                            <router-link class="text-light" to="/notifications"><ion-icon class="fs-1" id="notifications-icon" :icon="notifications"></ion-icon></router-link>
-                            <router-link class="text-light" to="/settings"><ion-icon class="fs-1" id="settings-icon" :icon="settings"></ion-icon></router-link>
+                            <router-link to="/notifications"><ion-icon class="fs-1" id="notifications-icon" :icon="notifications"></ion-icon></router-link>
+                            <router-link to="/settings"><ion-icon class="fs-1" id="settings-icon" :icon="settings"></ion-icon></router-link>
                         </li>
                     </ul>
                 </nav>
