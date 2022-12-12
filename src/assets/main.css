@@ -3,3 +3,11 @@
 #iconbar-triangle {
   transform: rotate(180deg);
 }
+
+#navigation-settings-icon {
+  transform: rotate(45deg);
+}
+
+.logo {
+  filter: invert(100%);
+}
