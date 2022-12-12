@@ -6,7 +6,7 @@ import { triangle, ellipse, square, notifications, settings, bookmark, checkmark
 </script>
 
 <template>
-    <header class="bg-dark text-primary container-fluid">
+    <header class="bg-dark container-fluid">
         <div class="row">
             <div class="col bg-primary p-2 d-flex justify-content-end gap-2">
                 <ion-icon id="iconbar-square" :icon="square"></ion-icon>

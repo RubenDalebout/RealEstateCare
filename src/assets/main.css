@@ -1,5 +1,13 @@
 @import './base.css';
 
+:root {
+  --bs-primary-rgb: 0, 170, 162;
+}
+
+.bg-primary {
+  color: rgb(97, 202, 197);
+}
+
 #iconbar-triangle {
   transform: rotate(180deg);
 }
