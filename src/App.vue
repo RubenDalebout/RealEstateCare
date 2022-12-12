@@ -2,7 +2,7 @@
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
 
-import { triangle, ellipse, square, notifications, settings, bookmark, checkmarkCircle, grid, build, search, alertCircle } from 'ionicons/icons';
+import { triangle, ellipse, square, notifications, settings, bookmarkOutline, checkmarkCircle, grid, build, search, alertCircle } from 'ionicons/icons';
 </script>
 
 <template>
@@ -26,23 +26,23 @@ import { triangle, ellipse, square, notifications, settings, bookmark, checkmark
         </div>
     </header>
 
-    <main class="container-fluid">
+    <main id="dashboard" class="container-fluid text-dark d-flex align-items-center">
         <div class="row">
             <div class="col-6 d-flex flex-column align-items-center justify-content-center p-3">
-                <ion-icon class="fs-1 m-auto" id="navigation-bookmark-icon" :icon="bookmark"></ion-icon>
-                <span>Scheduled</span>
+                <ion-icon class="m-auto" id="navigation-bookmarkOutline-icon" :icon="bookmarkOutline"></ion-icon>
+                <span class="fw-bold fs-5 mt-4">Scheduled</span>
             </div>
             <div class="col-6 d-flex flex-column align-items-center justify-content-center p-3">
-                <ion-icon class="fs-1 m-auto" id="navigation-checkmarkCircle-icon" :icon="checkmarkCircle"></ion-icon>
-                <span>Completed</span>
+                <ion-icon class="m-auto" id="navigation-checkmarkCircle-icon" :icon="checkmarkCircle"></ion-icon>
+                <span class="fw-bold fs-5 mt-4">Completed</span>
             </div>
             <div class="col-6 d-flex flex-column align-items-center justify-content-center p-3">
-                <ion-icon class="fs-1 m-auto" id="navigation-grid-icon" :icon="grid"></ion-icon>
-                <span>Knowledge base</span>
+                <ion-icon class="m-auto" id="navigation-grid-icon" :icon="grid"></ion-icon>
+                <span class="fw-bold fs-5 mt-4">Knowledge base</span>
             </div>
             <div class="col-6 d-flex flex-column align-items-center justify-content-center p-3">
-                <ion-icon class="fs-1 m-auto" id="navigation-settings-icon" :icon="settings"></ion-icon>
-                <span>Settings</span>
+                <ion-icon class="m-auto" id="navigation-settings-icon" :icon="settings"></ion-icon>
+                <span class="fw-bold fs-5 mt-4">Settings</span>
             </div>
         </div>
     </main>
@@ -55,11 +55,11 @@ import { triangle, ellipse, square, notifications, settings, bookmark, checkmark
             </div>
             <div class="col d-flex flex-column justify-content-center text-center">
                 <ion-icon class="fs-1 m-auto" id="footer-search-icon" :icon="search"></ion-icon>
-                <span></span>
+                <span>Search</span>
             </div>
             <div class="col d-flex flex-column justify-content-center text-center">
                 <ion-icon class="fs-1 m-auto" id="footer-alertCircle-icon" :icon="alertCircle"></ion-icon>
-                <span></span>
+                <span>Help</span>
             </div>
         </div>
     </footer>

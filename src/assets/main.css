@@ -2,6 +2,7 @@
 
 :root {
   --bs-primary-rgb: 0, 170, 162;
+  --bs-dark-rgb:  29, 41, 47;
 }
 
 .bg-primary {
@@ -18,4 +19,12 @@
 
 .logo {
   filter: invert(100%);
+}
+
+main#dashboard ion-icon {
+  font-size: 10rem;
+}
+
+main {
+  height: calc(100vh - 109px - 69px);
 }
