@@ -3,6 +3,7 @@
 :root {
   --bs-primary-rgb: 0, 170, 162;
   --bs-dark-rgb:  29, 41, 47;
+  --bs-link-hover-color: unset;
 }
 
 ion-button {
@@ -28,4 +29,24 @@ ion-button {
 
 main#dashboard ion-icon {
   font-size: 10rem;
+}
+
+a {
+  color: unset;
+  text-decoration: none;
+  transition: all .5s ease;
+}
+
+a:hover, .text-light a:hover {
+  color: whitesmoke;
+  transition: all .5s ease;
+}
+
+.text-dark a:hover {
+  color: gray;
+  transition: all .5s ease;
+}
+
+.router-link-active {
+  color: rgb(202, 202, 202);
 }
