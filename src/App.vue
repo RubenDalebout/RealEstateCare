@@ -20,13 +20,17 @@ import { triangle, ellipse, square, notifications, settings, bookmarkOutline, ch
                 <img alt="Vue logo" class="logo" src="@/assets/realestatecare/logo/logo.svg" />
             </div>
             <div class="col d-flex justify-content-end gap-2 align-items-center">
-                <ion-icon class="fs-1" id="notifications-icon" :icon="notifications"></ion-icon>
-                <ion-icon class="fs-1" id="notifications-icon" :icon="settings"></ion-icon>
+                <ion-button>
+                    <ion-icon class="fs-1" id="notifications-icon" :icon="notifications"></ion-icon>
+                </ion-button>
+                <ion-button>
+                    <ion-icon class="fs-1" id="notifications-icon" :icon="settings"></ion-icon>
+                </ion-button>
             </div>
         </div>
     </header>
 
-    <main id="dashboard" class="container-fluid text-dark d-flex align-items-center">
+    <main id="dashboard" class="container-fluid text-dark d-flex align-items-center justify-content-center">
         <div class="row">
             <div class="col-6 d-flex flex-column align-items-center justify-content-center p-3">
                 <ion-icon class="m-auto" id="navigation-bookmarkOutline-icon" :icon="bookmarkOutline"></ion-icon>

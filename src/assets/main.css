@@ -5,6 +5,17 @@
   --bs-dark-rgb:  29, 41, 47;
 }
 
+ion-button {
+  --background: transform;
+  --background-hover: transform;
+  --background-activated: transform;
+  --background-focused: transform;
+
+  --color: white;
+
+  --box-shadow: unset;
+}
+
 .bg-primary {
   color: rgb(97, 202, 197);
 }
@@ -19,6 +30,7 @@
 
 .logo {
   filter: invert(100%);
+  max-height: 75px;
 }
 
 main#dashboard ion-icon {
