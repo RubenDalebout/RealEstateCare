@@ -15,6 +15,11 @@ const router = createRouter({
       component: () => import('../views/completed.vue')
     },
     {
+      path: '/knowledge-base',
+      name: 'knowledge-base',
+      component: () => import('../views/knowledge-base.vue')
+    },
+    {
       path: '/scheduled',
       name: 'scheduled',
       component: () => import('../views/scheduled.vue')

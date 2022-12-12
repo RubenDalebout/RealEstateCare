@@ -1,0 +1,3 @@
+<template>
+    Knowledgebase page
+</template>
