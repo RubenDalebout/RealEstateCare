@@ -6,6 +6,7 @@ import { triangle, ellipse, square, notifications, settings, bookmarkOutline, ch
 </script>
 
 <template>
+    <app-header />
     <main id="dashboard" class="container-fluid text-dark p-5 d-flex align-items-center justify-content-center">
         <div class="row">
             <div class="col-6 d-flex flex-column align-items-center justify-content-center p-3">
@@ -44,3 +45,13 @@ import { triangle, ellipse, square, notifications, settings, bookmarkOutline, ch
         </div>
     </footer>
 </template>
+
+<script>
+import AppHeader from '@/components/AppHeader.vue'
+
+export default {
+  components: {
+    AppHeader
+  }
+}
+</script>

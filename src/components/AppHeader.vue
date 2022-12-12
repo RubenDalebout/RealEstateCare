@@ -1,3 +1,7 @@
+<script setup>
+import { triangle, ellipse, square, notifications, settings } from 'ionicons/icons';
+</script>
+
 <template>
     <header class="bg-dark container-fluid">
         <div class="row">
@@ -13,8 +17,14 @@
                 <img alt="Vue logo" class="logo" src="@/assets/realestatecare/logo/logo.svg" height="150" />
             </div>
             <div class="col d-flex justify-content-end gap-2 align-items-center">
-                <ion-icon class="fs-1" id="notifications-icon" :icon="notifications"></ion-icon>
-                <ion-icon class="fs-1" id="notifications-icon" :icon="settings"></ion-icon>
+                <nav>
+                    <ul class="list-unstyled">
+                        <li>
+                            <router-link to="/notifications"><ion-icon class="fs-1" id="notifications-icon" :icon="notifications"></ion-icon></router-link>
+                            <router-link to="/settings"><ion-icon class="fs-1" id="settings-icon" :icon="settings"></ion-icon></router-link>
+                        </li>
+                    </ul>
+                </nav>
             </div>
         </div>
     </header>
