@@ -1,6 +1,8 @@
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap"
 
+import "@ionic/core/css/ionic.bundle.css"
+
 import { IonicVue, IonIcon } from '@ionic/vue';
 
 import { createApp } from 'vue'
