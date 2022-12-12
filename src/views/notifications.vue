@@ -1,0 +1,3 @@
+<template>
+    Notifications page
+</template>

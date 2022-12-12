@@ -11,8 +11,9 @@ import router from './router'
 
 import './assets/main.css'
 
-const app = createApp(App)
+const app = createApp(App);
+
 
 app.use(IonicVue).use(router).use(IonIcon)
 
-app.mount('#app')
+app.mount('#app');
