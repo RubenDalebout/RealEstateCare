@@ -1,7 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap"
 
-import { IonicVue } from '@ionic/vue';
+import { IonicVue, IonIcon } from '@ionic/vue';
 
 import { createApp } from 'vue'
 import App from './App.vue'
@@ -11,6 +11,6 @@ import './assets/main.css'
 
 const app = createApp(App)
 
-app.use(IonicVue).use(router)
+app.use(IonicVue).use(router).use(IonIcon)
 
 app.mount('#app')

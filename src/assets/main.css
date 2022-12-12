@@ -1,1 +1,5 @@
 @import './base.css';
+
+#iconbar-triangle {
+  transform: rotate(180deg);
+}

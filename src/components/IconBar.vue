@@ -1,5 +1,5 @@
 <template>
     <div class="bg-primary d-flex justify-content-end p-2">
-        test
+        <ion-icon :icon="triangle"></ion-icon>
     </div>
 </template>
