@@ -15,6 +15,11 @@ const router = createRouter({
       component: () => import('../views/completed.vue')
     },
     {
+      path: '/help',
+      name: 'help',
+      component: () => import('../views/help.vue')
+    },
+    {
       path: '/knowledge-base',
       name: 'knowledge-base',
       component: () => import('../views/knowledge-base.vue')
@@ -23,6 +28,11 @@ const router = createRouter({
       path: '/scheduled',
       name: 'scheduled',
       component: () => import('../views/scheduled.vue')
+    },
+    {
+      path: '/search',
+      name: 'search',
+      component: () => import('../views/search.vue')
     },
     {
       path: '/settings',
