@@ -1,0 +1,224 @@
+{
+    "inspections": [
+        {
+        "damage": [
+            {
+            "location": "Kitchen",
+            "new_damage": true,
+            "type_of_damage": "Water damage",
+            "date": "2022-12-14",
+            "acute_action": true,
+            "description": "Water damage on the ceiling above the sink.",
+            "pictures": ["https://example.com/kitchen_water_damage_1.jpg", "https://example.com/kitchen_water_damage_2.jpg"]
+            }
+        ],
+        "overdue_maintenance": [
+            {
+            "location": "Living Room",
+            "type_of_maintenance": "Cleaning",
+            "acute_action": false,
+            "cost_indication": 50,
+            "pictures": ["https://example.com/living_room_cleaning_1.jpg", "https://example.com/living_room_cleaning_2.jpg"]
+            }
+        ],
+        "technical_installations": [
+            {
+            "location": "Basement",
+            "type_of_installation": "Electrical",
+            "reported_failures": "Outlets not working",
+            "test_procedure": "Tested all outlets with a multimeter.",
+            "approved": false,
+            "comments": "Needs to be repaired by a licensed electrician.",
+            "pictures": ["https://example.com/basement_electrical_1.jpg", "https://example.com/basement_electrical_2.jpg"]
+            }
+        ],
+        "modifications": [
+            {
+            "existing_situation": "Wall was bare.",
+            "location": "Living Room",
+            "executor": "John Doe",
+            "description": "Installed a new bookshelf.",
+            "action": "Installed",
+            "comments": "Good work.",
+            "pictures": ["https://example.com/living_room_bookshelf_1.jpg", "https://example.com/living_room_bookshelf_2.jpg"]
+            }
+        ]
+        },
+        {
+        "damage": [
+            {
+            "location": "Garage",
+            "new_damage": true,
+            "type_of_damage": "Scratches on door",
+            "date": "2022-12-14",
+            "acute_action": false,
+            "description": "Scratches on the garage door from a car backing into it.",
+            "pictures": ["https://example.com/garage_door_scratches_1.jpg", "https://example.com/garage_door_scratches_2.jpg"]
+            }
+        ],
+        "overdue_maintenance": [
+            {
+            "location": "Backyard",
+            "type_of_maintenance": "Lawn care",
+            "acute_action": false,
+            "cost_indication": 75,
+            "pictures": ["https://example.com/backyard_lawn_1.jpg", "https://example.com/backyard_lawn_2.jpg"]
+            }
+        ],
+        "technical_installations": [
+            {
+            "location": "Utility room",
+            "type_of_installation": "Heating and cooling",
+            "reported_failures": "Air conditioning not cooling",
+            "test_procedure": "Tested air flow and measured temperature difference.",
+            "approved": true,
+            "comments": "No further action needed.",
+            "pictures": ["https://example.com/utility_room_hvac_1.jpg", "https://example.com/utility_room_hvac_2.jpg"]
+            }
+        ],
+        "modifications": [
+            {
+            "existing_situation": "Wall was plain white.",
+            "location": "Dining Room",
+            "executor": "Jane Doe",
+            "description": "Painted the wall with a blue and white striped pattern.",
+            "action": "Painted",
+            "comments": "Looks great.",
+            "pictures": ["https://example.com/dining_room_wall_1.jpg", "https://example.com/dining_room_wall_2.jpg"]
+            }
+        ]
+        },
+        {
+        "damage": [
+            {
+            "location": "Living Room",
+            "new_damage": false,
+            "type_of_damage": "Stained carpet",
+            "date": "2022-12-12",
+            "acute_action": true,
+            "description": "Large stain on the carpet from a spilled drink.",
+            "pictures": ["https://example.com/living_room_carpet_stain_1.jpg", "https://example.com/living_room_carpet_stain_2.jpg"]
+            }
+        ],
+        "overdue_maintenance": [
+            {
+            "location": "Attic",
+            "type_of_maintenance": "Insulation",
+            "acute_action": false,
+            "cost_indication": 200,
+            "pictures": ["https://example.com/attic_insulation_1.jpg", "https://example.com/attic_insulation_2.jpg"]
+            }
+        ],
+        "technical_installations": [
+            {
+            "location": "Kitchen",
+            "type_of_installation": "Electrical",
+            "reported_failures": "Lights flickering",
+            "test_procedure": "Tested all connections and replaced a faulty switch.",
+            "approved": true,
+            "comments": "No further action needed.",
+            "pictures": ["https://example.com/kitchen_electrical_1.jpg", "https://example.com/kitchen_electrical_2.jpg"]
+            }
+        ],
+        "modifications": [
+            {
+            "existing_situation": "Bathroom was plain white.",
+            "location": "Bathroom",
+            "executor": "John Doe",
+            "description": "Tiled the bathroom walls with blue ceramic tiles.",
+            "action": "Tiled",
+            "comments": "Looks great.",
+            "pictures": ["https://example.com/bathroom_tiling_1.jpg", "https://example.com/bathroom_tiling_2.jpg"]
+            }
+        ]
+        },
+        {
+        "damage": [
+            {
+            "location": "Bedroom",
+            "new_damage": false,
+            "type_of_damage": "Cracked wall",
+            "date": "2022-12-11",
+            "acute_action": false,
+            "description": "Small crack in the wall near the window.",
+            "pictures": ["https://example.com/bedroom_cracked_wall_1.jpg", "https://example.com/bedroom_cracked_wall_2.jpg"]
+            }
+        ],
+        "overdue_maintenance": [
+            {
+            "location": "Garage",
+            "type_of_maintenance": "Painting",
+            "acute_action": false,
+            "cost_indication": 100,
+            "pictures": ["https://example.com/garage_painting_1.jpg", "https://example.com/garage_painting_2.jpg"]
+            }
+        ],
+        "technical_installations": [
+            {
+            "location": "Utility room",
+            "type_of_installation": "Plumbing",
+            "reported_failures": "Leaking pipe",
+            "test_procedure": "Tightened all connections and tested for leaks.",
+            "approved": false,
+            "comments": "Needs to be repaired by a licensed plumber.",
+            "pictures": ["https://example.com/utility_room_plumbing_1.jpg", "https://example.com/utility_room_plumbing_2.jpg"]
+            }
+        ],
+        "modifications": [
+            {
+            "existing_situation": "Floor was plain wood.",
+            "location": "Living Room",
+            "executor": "Jane Doe",
+            "description": "Laid new carpet in the living room.",
+            "action": "Laid carpet",
+            "comments": "Carpet looks good.",
+            "pictures": ["https://example.com/living_room_carpet_1.jpg", "https://example.com/living_room_carpet_2.jpg"]
+            }
+        ]
+        },
+        {
+        "damage": [
+            {
+            "location": "Attic",
+            "new_damage": true,
+            "type_of_damage": "Leaking roof",
+            "date": "2022-12-14",
+            "acute_action": true,
+            "description": "Water leaking from the roof into the attic.",
+            "pictures": ["https://example.com/attic_leaking_roof_1.jpg", "https://example.com/attic_leaking_roof_2.jpg"]
+            }
+        ],
+        "overdue_maintenance": [
+            {
+            "location": "Backyard",
+            "type_of_maintenance": "Fence repair",
+            "acute_action": false,
+            "cost_indication": 150,
+            "pictures": ["https://example.com/backyard_fence_repair_1.jpg", "https://example.com/backyard_fence_repair_2.jpg"]
+            }
+        ],
+        "technical_installations": [
+            {
+            "location": "Bathroom",
+            "type_of_installation": "Plumbing",
+            "reported_failures": "Sink not draining",
+            "test_procedure": "Tested drain and cleaned out any blockages.",
+            "approved": true,
+            "comments": "No further action needed.",
+            "pictures": ["https://example.com/bathroom_plumbing_1.jpg", "https://example.com/bathroom_plumbing_2.jpg"]
+            }
+        ],
+        "modifications": [
+            {
+            "existing_situation": "Kitchen was outdated.",
+            "location": "Kitchen",
+            "executor": "Jane Doe",
+            "description": "Installed new cabinets and countertops.",
+            "action": "Installed",
+            "comments": "Looks great.",
+            "pictures": ["https://example.com/kitchen_cabinets_1.jpg", "https://example.com/kitchen_cabinets_2.jpg"]
+            }
+        ]
+        }      
+    ]
+}  

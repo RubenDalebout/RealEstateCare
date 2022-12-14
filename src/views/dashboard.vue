@@ -2,7 +2,7 @@
 import { settings, bookmarkOutline, checkmarkCircle, grid, build, search, alertCircle } from 'ionicons/icons';
 </script>
 <template>
-    <main id="dashboard" class="container-fluid text-dark p-5 d-flex align-items-center justify-content-center">
+    <main id="dashboard" class="container-fluid text-dark p-3 d-flex align-items-center justify-content-center">
         <div class="row">
             <div class="col-6 d-flex flex-column align-items-center justify-content-center p-3">
                 <router-link to="/scheduled" class="d-flex flex-column align-items-center justify-content-center">
