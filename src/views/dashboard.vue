@@ -30,6 +30,13 @@ import { settings, bookmarkOutline, checkmarkCircle, grid, build, search, alertC
             </div>
         </div>
     </main>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <Inspections/>
+            </div>
+        </div>
+    </div>
 </template>
 <script>
 import Inspections from '@/components/Inspections.vue'

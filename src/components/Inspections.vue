@@ -4,20 +4,20 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      inspections: [],
+      data: [],
     };
   },
   mounted() {
     axios.get('src/data/inspections.json')
       .then((response) => {
-        this.inspections = response.data;
+        this.data = response.data;
       });
   },
 };
 </script>
 <template>
     <div>
-        <div v-for="inspection in inspections">
+        <div v-for="inspection in data.inspections">
             <h2>Inspection</h2>
             <div>
                 <h3>Damages:</h3>

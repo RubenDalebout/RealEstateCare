@@ -44,7 +44,7 @@ const router = createRouter({
       name: 'settings',
       component: () => import('../views/settings.vue')
     }
-  ]
+  ],
 })
 
 export default router
