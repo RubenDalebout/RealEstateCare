@@ -6,6 +6,11 @@
   --bs-link-hover-color: unset;
 }
 
+#app {
+  height: 100vh;
+  overflow: auto;
+}
+
 ion-button {
   height: unset!important;
 }
