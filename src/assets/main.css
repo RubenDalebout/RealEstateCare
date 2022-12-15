@@ -1,6 +1,7 @@
 @import './base.css';
 
 :root {
+  --bs-primary: #00aaa2;
   --bs-primary-rgb: 0, 170, 162;
   --bs-dark-rgb:  29, 41, 47;
   --bs-link-hover-color: unset;
@@ -61,4 +62,15 @@ a:hover, .text-light a:hover {
 
 .router-link-active {
   color: rgb(202, 202, 202);
+}
+
+.btn-primary {
+  --bs-btn-bg: var(--bs-primary);
+  --bs-btn-border-color: var(--bs-primary);
+  --bs-btn-hover-bg: #018780;
+  --bs-btn-hover-border-color: #00716c;
+  --bs-btn-active-bg: #00716c;
+  --bs-btn-active-border-color: #004b48;
+  --bs-btn-disabled-bg: var(--bs-primary);
+  --bs-btn-disabled-border-color: var(--bs-primary);
 }

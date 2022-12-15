@@ -1,11 +1,11 @@
 {
     "inspections": [
         {
-        "details": [{
+        "details": {
             "inspector": "John Doe",
             "date": "2020-01-01",
             "finished": true
-        }],
+        },
         "damages": [
             {
             "location": "Kitchen",
@@ -50,11 +50,11 @@
         ]
         },
         {
-        "details": [{
+        "details": {
             "inspector": "Jane Smith",
             "date": "2020-02-14",
             "finished": false
-        }],
+        },
         "damage": [
             {
             "location": "Garage",
@@ -99,11 +99,11 @@
         ]
         },
         {
-        "details": [{
+        "details": {
             "inspector": "Robert Johnson",
             "date": "2020-03-31",
             "finished": true
-        }],
+        },
         "damage": [
             {
             "location": "Living Room",
@@ -148,11 +148,11 @@
         ]
         },
         {
-        "details": [{
+        "details": {
             "inspector": "Samantha Williams",
             "date": "2020-04-15",
             "finished": false
-        }],
+        },
         "damage": [
             {
             "location": "Bedroom",
@@ -197,11 +197,11 @@
         ]
         },
         {
-        "details": [{
+        "details": {
             "inspector": "David Brown",
             "date": "2020-05-06",
             "finished": true
-        }],
+        },
         "damage": [
             {
             "location": "Attic",
