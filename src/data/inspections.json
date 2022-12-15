@@ -1,7 +1,7 @@
 {
     "inspections": [
         {
-        "damage": [
+        "damages": [
             {
             "location": "Kitchen",
             "new_damage": true,
