@@ -1,34 +1,40 @@
 <script>
-    import axios from 'axios'; // Import axios
-    import InspectionDetails from '@/components/InspectionDetails.vue';
+    import axios from 'axios'; // Import the axios library for making HTTP requests
+    import InspectionDetails from '@/components/InspectionDetails.vue'; // Import the "InspectionDetails" component
 
     export default {
         components: {
-            InspectionDetails,
+            InspectionDetails, // Register the "InspectionDetails" component so it can be used in the template
         },
         data() {
             return {
-            showModal: false,
-            selectedInspection: {},
-            data: [],
+            showModal: false, // A flag for controlling the visibility of the modal
+            selectedInspection: {}, // The inspection object to display in the modal
+            data: [], // The data array that will hold the inspection objects
             };
         },
         mounted() {
+            // Fetch the inspection data from the "inspections.json" file
             axios.get('src/data/inspections.json')
             .then((response) => {
-                this.data = response.data;
+                this.data = response.data; // Set the data array to the fetched data
             });
         },
         methods: {
             showInspectionDetails(inspection) {
-            this.showModal = true;
-            this.selectedInspection = inspection;
+            this.showModal = true; // Set the "showModal" flag to true to show the modal
+            this.selectedInspection = inspection; // Set the "selectedInspection" to the selected inspection object
             },
         },
     };
 </script>
 
 <template>
+    <!-- 
+    Only render the modal if the "showModal" flag is true
+    Listen for the "close" event from the modal and set the "showModal" flag to false when it is emitted
+    Pass the "selectedInspection" object to the modal as a prop
+     -->
     <inspection-details
         v-if="showModal"
         @close="showModal = false"
@@ -48,4 +54,4 @@
             </div>
         </div>
     </div>
-</template>  
+</template>
