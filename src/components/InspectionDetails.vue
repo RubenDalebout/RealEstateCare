@@ -4,13 +4,16 @@
     <div class="modal fade show d-block" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="false">
         <div class="modal-dialog modal-dialog-scrollable">
             <div class="modal-content">
+                <!-- Modal header with title and close button -->
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="exampleModalLabel">Inspectie details</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="$emit('close')"></button>
                 </div>
+                <!-- Modal body with sections for displaying information about different aspects of the inspection -->
                 <div class="modal-body">
                     <h3>Damage(s)</h3>
                     <div class="border-bottom">
+                        <!-- Loop over the "damages" property of the "inspection" object and display information about each item -->
                         <div v-for="damage in inspection.damages">
                             <p>Location: {{ damage.location }}</p>
                             <p>New damage: {{ damage.new_damage }}</p>
@@ -23,6 +26,7 @@
                     </div>
                     <h3>Overdue maintenance(s)</h3>
                     <div class="border-bottom">
+                        <!-- Loop over the "overdue_maintenance" property of the "inspection" object and display information about each item -->
                         <div v-for="overdue_maintenance in inspection.overdue_maintenance">
                             <p>Location: {{ overdue_maintenance.location }}</p>
                             <p>Type of maintenance: {{ overdue_maintenance.type_of_maintenance }}</p>
@@ -33,6 +37,7 @@
                     </div>
                     <h3>Technical installation(s)</h3>
                     <div class="border-bottom">
+                        <!-- Loop over the "technical_installations" property of the "inspection" object and display information about each item -->
                         <div v-for="technical_installation in inspection.technical_installations">
                             <p>Location: {{ technical_installation.location }}</p>
                             <p>Type of installation: {{ technical_installation.type_of_installation }}</p>
@@ -44,6 +49,7 @@
                         </div>
                     </div>
                     <h3>Modification(s)</h3>
+                    <!-- Loop over the "modifications" property of the "inspection" object and display information about each item -->
                     <div v-for="modification in inspection.modifications">
                         <p>Existing Situation: {{ modification.existing_situation }}</p>
                         <p>Executor: {{ modification.executor }}</p>
@@ -53,6 +59,7 @@
                         <p>Pictures: {{ modification.pictures }}</p>
                     </div>
                 </div>
+                <!-- Modal footer with close button -->
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @click="$emit('close')">Close</button>
                 </div>
@@ -63,6 +70,7 @@
   
 <script>
     export default {
+        // Define the "inspection" prop as an object that is required by the parent component
         props: {
             inspection: {
             type: Object,
