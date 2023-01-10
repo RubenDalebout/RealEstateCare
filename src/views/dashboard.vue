@@ -31,12 +31,3 @@ import { settings, bookmarkOutline, checkmarkCircle, grid, build, search, alertC
         </div>
     </main>
 </template>
-<script>
-import Inspections from '@/components/Inspections.vue'
-
-export default {
-  components: {
-    Inspections
-  }
-}
-</script>

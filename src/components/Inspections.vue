@@ -3,6 +3,7 @@
     import InspectionDetails from '@/components/InspectionDetails.vue'; // Import the "InspectionDetails" component
 
     export default {
+        props: ['finished'],
         components: {
             InspectionDetails, // Register the "InspectionDetails" component so it can be used in the template
         },
@@ -17,7 +18,8 @@
             // Fetch the inspection data from the "inspections.json" file
             axios.get('src/data/inspections.json')
             .then((response) => {
-                this.data = response.data; // Set the data array to the fetched data
+                this.data = response.data.inspections.filter(inspection => inspection.details.finished === this.finished); // Set the data array to the fetched data
+                console.log(this.data)
             });
         },
         methods: {
@@ -41,7 +43,7 @@
         :inspection="selectedInspection"
     />
     <div>
-        <div v-for="(inspection, index) in data.inspections" class="border-top border-bottom" :key="index">
+        <div v-for="(inspection, index) in data" class="border-top border-bottom" :key="index">
             <h2>Inspection {{ index + 1 }}</h2>
             <div>
                 <h3>Details:</h3>
