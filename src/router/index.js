@@ -53,8 +53,16 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  if (to.name !== 'login' && true) next({ name: 'login' })
-  else next()
+  if (to.name != 'login' && !localStorage.getItem('user')) {
+    next({ name: 'login' })
+  } else {
+    if (to.name === 'login' && localStorage.getItem('user')) {
+      next({name: 'home'});
+    } else {
+      next();
+    }
+    
+  }
 })
 
 export default router
