@@ -77,5 +77,6 @@
             required: true,
             },
         },
+        emits: ['close'],
     };
 </script>
