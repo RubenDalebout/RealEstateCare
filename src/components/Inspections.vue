@@ -19,7 +19,6 @@
             axios.get('src/data/inspections.json')
             .then((response) => {
                 this.data = response.data.inspections.filter(inspection => inspection.details.finished === this.finished); // Set the data array to the fetched data
-                console.log(this.data)
             });
         },
         methods: {
