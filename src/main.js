@@ -14,7 +14,6 @@ import './assets/main.css'
 
 const app = createApp(App);
 
-
 app.use(IonicVue).use(router).use(IonIcon).component('ion-icon', IonIcon, {silent: true});
 
 app.mount('#app');
