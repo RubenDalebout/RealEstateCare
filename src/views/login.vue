@@ -39,7 +39,7 @@ export default {
                 // Send GET request to GitHub REST APIs to retrieve the users.json file
                 const response = await axios.get('https://api.github.com/repos/DeEchteZeeuw/RealEstateCare/contents/src/data/users.json', {
                   headers: {
-                    'Authorization': `Bearer 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`
+                    'Authorization': `Bearer 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`
                   }
                 });
 

@@ -53,55 +53,53 @@
 </template>
 
 <script>
-import axios from 'axios'
+import axios from 'axios';
 
 export default {
-  data() {
-    return {
-      settings: {
-        darkTheme: false,
-        notifications: true,
-        sounds: true
-      },
-      githubAccessToken: "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"
-    }
-  },
-  methods: {
-    async updateSettings() {
-      try {
-        const response = await axios.get(
-          'https://raw.githubusercontent.com/DeEchteZeeuw/RealEstateCare/main/src/data/users.json',
-          {
-            headers: {
-              Authorization: `Bearer ${this.githubAccessToken}`
+    data() {
+        const usrArr = JSON.parse(localStorage.getItem('user'));
+        return {
+            settings: {
+            darkTheme: usrArr.settings.darkTheme,
+            notifications: usrArr.settings.notifications,
+            sounds: usrArr.settings.sounds
             }
-          }
-        )
-        const users = response.data
-        const userId = localStorage.getItem('userId')
-        const userIndex = users.findIndex(u => u.id === parseInt(userId))
-        if (userIndex !== -1) {
-          users[userIndex].settings.darkTheme = this.settings.darkTheme
-          users[userIndex].settings.notifications = this.settings.notifications
-          users[userIndex].settings.sounds = this.settings.sounds
-          await axios.patch(
-            'https://api.github.com/repos/DeEchteZeeuw/RealEstateCare/contents/src/data/users.json',
-            {
-              message: 'Update user settings',
-              content: btoa(JSON.stringify(users)),
-              sha: sha,
-            },
-            {
-              headers: {
-                Authorization: `Bearer ${this.githubAccessToken}`
-              }
+        };
+    },
+    methods: {
+        async updateSettings() {
+            try {
+                // Get the user ID from local storage
+                const usrArr = JSON.parse(localStorage.getItem('user'));
+                if (!usrArr) {
+                alert('No user is logged in');
+                return;
+                }
+
+                // Send GET request to GitHub REST API to retrieve the users.json file
+                const response = await axios.get('https://api.github.com/repos/DeEchteZeeuw/RealEstateCare/contents/src/data/users.json', {
+                headers: {
+                    'Authorization': `Bearer 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`
+                }
+                });
+                // parse the response content to json
+                const jsonData = JSON.parse(atob(response.data.content));
+                // Find the user by id in the jsonData
+                const userIndex = jsonData.findIndex(user => user.id === usrArr);
+
+                // if the user found in the json data
+                if (userIndex !== -1) {
+                // update the user settings
+                jsonData[userIndex].settings = this.settings;
+                // encode the json data to base64
+                const updateContent = btoa(JSON.stringify(jsonData));
+
+                // Send PATCH request to update the users.json file on GitHub
+                }
+            } catch(err) {
+                console.log(err)
             }
-          )
         }
-      } catch (error) {
-        console.error(error)
-      }
     }
-  }
 }
 </script>
