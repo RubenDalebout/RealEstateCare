@@ -45,8 +45,6 @@ export default {
 
                 // Parse the response.data.content to json 
                 const jsonData = JSON.parse(atob(response.data.content));
-                console.log(jsonData)
-
                 // Filter the data using your condition
                 const user = jsonData.filter(user => user.email === submitEvent.target.elements.email.value && user.password === submitEvent.target.elements.password.value);
 
