@@ -2,9 +2,12 @@
     "inspections": [
         {
         "details": {
-            "inspector": "John Doe",
+            "inspector": 1,
             "date": "2020-01-01",
-            "finished": true
+            "finished": true,
+            "city": "New York City",
+            "street": "Main Street",
+            "housenumber": "1234"
         },
         "damages": [
             {
@@ -51,9 +54,12 @@
         },
         {
         "details": {
-            "inspector": "Jane Smith",
+            "inspector": 1,
             "date": "2020-02-14",
-            "finished": false
+            "finished": false,
+            "city": "Los Angeles",
+            "street": "Elm Street",
+            "housenumber": "5678"
         },
         "damage": [
             {
@@ -100,9 +106,12 @@
         },
         {
         "details": {
-            "inspector": "Robert Johnson",
+            "inspector": 1,
             "date": "2020-03-31",
-            "finished": true
+            "finished": true,
+            "city": "Chicago",
+            "street": "Lake Street",
+            "housenumber": "9012"
         },
         "damage": [
             {
@@ -149,9 +158,12 @@
         },
         {
         "details": {
-            "inspector": "Samantha Williams",
+            "inspector": 1,
             "date": "2020-04-15",
-            "finished": false
+            "finished": false,
+            "city": "Houston",
+            "street": "Park Lane",
+            "housenumber": "3456"
         },
         "damage": [
             {
@@ -198,9 +210,12 @@
         },
         {
         "details": {
-            "inspector": "David Brown",
+            "inspector": 1,
             "date": "2020-05-06",
-            "finished": true
+            "finished": true,
+            "city": "Phoenix",
+            "street": "Desert Boulevard",
+            "housenumber": "7890"
         },
         "damage": [
             {

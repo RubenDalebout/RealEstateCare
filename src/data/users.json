@@ -1,6 +1,7 @@
 [
     {
         "email": "johndoe@realestatecare.com",
-        "password": "admin123"
+        "password": "admin123",
+        "id": 1
     }
 ]

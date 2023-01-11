@@ -43,7 +43,7 @@
     />
     <div>
         <div v-for="(inspection, index) in data" class="border-top border-bottom" :key="index">
-            <h2>Inspection {{ index + 1 }}</h2>
+            <h2>Inspection {{ inspection.details.street + " " + inspection.details.housenumber + ", " + inspection.details.city}} </h2>
             <div>
                 <h3>Details:</h3>
                 <p>Inspector: {{ inspection.details.inspector }}</p>
