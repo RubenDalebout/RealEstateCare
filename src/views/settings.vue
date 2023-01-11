@@ -72,32 +72,48 @@ export default {
                 // Get the user ID from local storage
                 const usrArr = JSON.parse(localStorage.getItem('user'));
                 if (!usrArr) {
-                alert('No user is logged in');
-                return;
+                    alert('No user is logged in');
+                    return;
                 }
 
                 // Send GET request to GitHub REST API to retrieve the users.json file
                 const response = await axios.get('https://api.github.com/repos/DeEchteZeeuw/RealEstateCare/contents/src/data/users.json', {
-                headers: {
-                    'Authorization': `Bearer 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`
-                }
+                    headers: {
+                        'Authorization': `Bearer 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`
+                    }
                 });
                 // parse the response content to json
                 const jsonData = JSON.parse(atob(response.data.content));
                 // Find the user by id in the jsonData
-                const userIndex = jsonData.findIndex(user => user.id === usrArr);
+                const userIndex = jsonData.findIndex(user => user.id === usrArr.id);
 
                 // if the user found in the json data
                 if (userIndex !== -1) {
-                // update the user settings
-                jsonData[userIndex].settings = this.settings;
-                // encode the json data to base64
-                const updateContent = btoa(JSON.stringify(jsonData));
+                    // update the user settings
+                    jsonData[userIndex].settings = this.settings;
+                    
+                    // encode the json data to base64
+                    const updateContent = btoa(JSON.stringify(jsonData));
 
-                // Send PATCH request to update the users.json file on GitHub
+                    // Send PATCH request to update the users.json file on GitHub
+                    const updateResponse = await axios.patch(`https://api.github.com/repos/DeEchteZeeuw/RealEstateCare/contents/src/data/users.json`, {
+                        headers: {
+                            'Authorization': `Bearer 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`
+                        },
+                        sha: response.data.sha,
+                        message: 'Update user settings',
+                        content: updateContent
+                    });
+                    if(updateResponse.status === 200) {
+                        alert('settings updated succesfully');
+                    } else {
+                        throw new Error(updateResponse.data);
+                    }
+                } else {
+                    alert('user not found');
                 }
-            } catch(err) {
-                console.log(err)
+            } catch(error) {
+                alert(error);
             }
         }
     }
