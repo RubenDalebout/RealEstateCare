@@ -1,5 +1,11 @@
 <template>
-    <inspections :finished="showFinished"/>
+    <main class="container">
+        <div class="row">
+            <div class="col">
+                <inspections :finished="showFinished"/>
+            </div>
+        </div>
+    </main>
 </template>
 
 <script>
