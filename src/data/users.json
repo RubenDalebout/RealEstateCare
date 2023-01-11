@@ -8,7 +8,7 @@
         "settings": {
             "darkTheme": false,
             "notifications": false,
-            "sounds": false
+            "sounds": true
         }
     }
 ]
