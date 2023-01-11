@@ -34,16 +34,16 @@
             <div class="col-sm">
                 <h1>Application settings</h1>
                 <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked">
-                    <label class="form-check-label" for="flexSwitchCheckChecked">Dark modus</label>
+                    <input class="form-check-input" type="checkbox" role="switch" id="darkModeSwitch" name="darkModeSwitch">
+                    <label class="form-check-label" for="darkModeSwitch">Dark modus</label>
                 </div>
                 <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked">
-                    <label class="form-check-label" for="flexSwitchCheckChecked">Notifications</label>
+                    <input class="form-check-input" type="checkbox" role="switch" id="notificationsSwitch" name="notificationsSwitch">
+                    <label class="form-check-label" for="notificationsSwitch">Notifications</label>
                 </div>
                 <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked">
-                    <label class="form-check-label" for="flexSwitchCheckChecked">Sounds</label>
+                    <input class="form-check-input" type="checkbox" role="switch" id="soundSwitch" name="soundSwitch">
+                    <label class="form-check-label" for="soundSwitch">Sounds</label>
                 </div>
             </div>
             <div class="col-2-sm"></div>
