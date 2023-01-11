@@ -51,38 +51,3 @@
         </div>
     </main>
 </template>
-
-<script>
-import fs from 'fs'
-
-export default {
-    data() {
-        // Get user from local storage
-        const user = JSON.parse(localStorage.getItem('user'));
-        // return user settings
-        return {
-            settings: user.settings,
-            id: user.id,
-        };
-    },
-    methods: {
-        updateSettings() {
-            // Get all users from the JSON file
-            const users = JSON.parse(fs.readFileSync('src/data/users.json'));
-
-            // Find the index of the user by id
-            const userIndex = users.findIndex(user => user.id === this.id);
-            if (userIndex !== -1) {
-                // update the settings of user
-                users[userIndex].settings = this.settings;
-
-                // Write the updated users array to the JSON file
-                fs.writeFileSync('src/data/users.json', JSON.stringify(users));
-                console.log("Successfully updated settings in JSON file");
-            } else {
-                console.log("User not found");
-            }
-        },
-    },
-};
-</script>
