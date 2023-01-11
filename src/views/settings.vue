@@ -51,3 +51,57 @@
         </div>
     </main>
 </template>
+
+<script>
+import axios from 'axios'
+
+export default {
+  data() {
+    return {
+      settings: {
+        darkTheme: false,
+        notifications: true,
+        sounds: true
+      },
+      githubAccessToken: "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"
+    }
+  },
+  methods: {
+    async updateSettings() {
+      try {
+        const response = await axios.get(
+          'https://raw.githubusercontent.com/DeEchteZeeuw/RealEstateCare/main/src/data/users.json',
+          {
+            headers: {
+              Authorization: `Bearer ${this.githubAccessToken}`
+            }
+          }
+        )
+        const users = response.data
+        const userId = localStorage.getItem('userId')
+        const userIndex = users.findIndex(u => u.id === parseInt(userId))
+        if (userIndex !== -1) {
+          users[userIndex].settings.darkTheme = this.settings.darkTheme
+          users[userIndex].settings.notifications = this.settings.notifications
+          users[userIndex].settings.sounds = this.settings.sounds
+          await axios.patch(
+            'https://api.github.com/repos/DeEchteZeeuw/RealEstateCare/contents/src/data/users.json',
+            {
+              message: 'Update user settings',
+              content: btoa(JSON.stringify(users)),
+              sha: sha,
+            },
+            {
+              headers: {
+                Authorization: `Bearer ${this.githubAccessToken}`
+              }
+            }
+          )
+        }
+      } catch (error) {
+        console.error(error)
+      }
+    }
+  }
+}
+</script>
