@@ -41,7 +41,7 @@ ion-button {
 }
 
 main#dashboard ion-icon {
-  font-size: 10rem;
+  font-size: 7rem;
 }
 
 a {
@@ -73,4 +73,14 @@ a:hover, .text-light a:hover {
   --bs-btn-active-border-color: #004b48;
   --bs-btn-disabled-bg: var(--bs-primary);
   --bs-btn-disabled-border-color: var(--bs-primary);
+}
+
+main {
+  margin-top: calc(138px);
+  margin-bottom: calc(76px + 1rem);
+}
+
+footer, header {
+  position: fixed;
+  z-index: 10;
 }
