@@ -1,3 +1,27 @@
+<template>
+    <main class="container">
+        <div class="row mt-5">
+            <div class="col-sm"></div>
+            <div class="col-sm">
+                <form @submit.prevent="loginRoute" id="login" name="login" method="post">
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="johndoe@realestatecare.com">
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;">
+                    </div>
+                    <div>
+                        <input type="submit" value="Login" class="btn btn-primary">
+                    </div>
+                </form>
+            </div>
+            <div class="col-sm"></div>
+        </div>
+    </main>
+</template>
+
 <script>
 import axios from 'axios';
 
@@ -15,12 +39,13 @@ export default {
                 // Send GET request to GitHub REST APIs to retrieve the users.json file
                 const response = await axios.get('https://api.github.com/repos/DeEchteZeeuw/RealEstateCare/contents/src/data/users.json', {
                   headers: {
-                    'Authorization': `Bearer ${YOUR_ACCESS_TOKEN}`
+                    'Authorization': `Bearer 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`
                   }
                 });
 
                 // Parse the response.data.content to json 
-                const jsonData = JSON.parse(Buffer.from(response.data.content, 'base64').toString());
+                const jsonData = JSON.parse(atob(response.data.content));
+                console.log(jsonData)
 
                 // Filter the data using your condition
                 const user = jsonData.filter(user => user.email === submitEvent.target.elements.email.value && user.password === submitEvent.target.elements.password.value);
