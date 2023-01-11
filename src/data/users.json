@@ -4,6 +4,11 @@
         "password": "admin123",
         "id": 1,
         "firstName": "John",
-        "lastName": "Doe"
+        "lastName": "Doe",
+        "settings": {
+            "darkTheme": false,
+            "notifications": false,
+            "sounds": false
+        }
     }
 ]

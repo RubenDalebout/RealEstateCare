@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <main class="container">
         <div class="row mt-5">
             <div class="col-sm"></div>
             <div class="col-sm">
@@ -19,7 +19,7 @@
             </div>
             <div class="col-sm"></div>
         </div>
-    </div>
+    </main>
 </template>
 
 <script>
@@ -42,16 +42,15 @@ export default {
                 const user = response.data.filter(user => user.email === submitEvent.target.elements.email.value && user.password === submitEvent.target.elements.password.value);
 
                 if (user.length > 0) {
-                    localStorage.setItem('user', submitEvent.target.elements.email.value)
-                    this.$router.go('/') 
-
-                    console.log(localStorage)
-                    
+                    // Removing the password key from the user object
+                    delete user[0].password;
+                    localStorage.setItem('user', JSON.stringify(user[0]));
+                    this.$router.go('/'); 
                 } else {
-                    alert('foutief')
+                    alert('foutief');
                 }
             });
-        },
+        }
     },
 };
 </script>
