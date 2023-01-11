@@ -19,6 +19,18 @@
             axios.get('src/data/inspections.json')
             .then((response) => {
                 this.data = response.data.inspections.filter(inspection => inspection.details.finished === this.finished); // Set the data array to the fetched data
+
+                // Fetch the user data from the "users.json" file
+                axios.get('src/data/users.json')
+                .then((response) => {
+                    this.users = response.data;
+                    // Iterate over the inspections and find the corresponding user and add the first and last name to the inspection object
+                    this.data.forEach(inspection => {
+                        const user = this.users.find(user => user.id === inspection.details.inspector);
+                        
+                        if (user) inspection.details.inspector = `${user.firstName} ${user.lastName}`;
+                    });
+                });
             });
         },
         methods: {
@@ -56,3 +68,4 @@
         </div>
     </div>
 </template>
+
