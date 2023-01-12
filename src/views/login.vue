@@ -36,17 +36,15 @@ export default {
     methods: {
         async loginRoute(submitEvent) {
             try {
-                // Send GET request to GitHub REST APIs to retrieve the users.json file
-                const response = await axios.get('https://api.github.com/repos/DeEchteZeeuw/RealEstateCare/contents/src/data/users.json', {
+                // Send GET request to jsonbin.io to retrieve the users.json file
+                const response = await axios.get('https://api.jsonbin.io/b/63c0345215ab31599e349bb2/latest', {
                   headers: {
-                    'Authorization': `Bearer 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`
+                    'secret-key': '$2b$10$6OQ5plkCt1vMLN8m7VMniOP5RSMQB3WOfPoQlYh/JNbs2xeF7psUu'
                   }
                 });
 
-                // Parse the response.data.content to json 
-                const jsonData = JSON.parse(atob(response.data.content));
                 // Filter the data using your condition
-                const user = jsonData.filter(user => user.email === submitEvent.target.elements.email.value && user.password === submitEvent.target.elements.password.value);
+                const user = response.data.filter(user => user.email === submitEvent.target.elements.email.value && user.password === submitEvent.target.elements.password.value);
 
                 if (user.length > 0) {
                     // Removing the password key from the user object
