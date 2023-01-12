@@ -77,13 +77,14 @@ export default {
                 }
 
                 // Send GET request to GitHub REST API to retrieve the users.json file
-                const response = await axios.get('https://api.github.com/repos/DeEchteZeeuw/RealEstateCare/contents/src/data/users.json', {
+                const response = await axios.get(`https://api.jsonbin.io/v3/b/63c0345215ab31599e349bb2/latest`, {
                     headers: {
-                        'Authorization': `Bearer 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`
+                        'Content-Type': 'application/json',
+                        'X-Master-Key': '$2b$10$6OQ5plkCt1vMLN8m7VMniOP5RSMQB3WOfPoQlYh/JNbs2xeF7psUu'
                     }
                 });
                 // parse the response content to json
-                const jsonData = JSON.parse(atob(response.data.content));
+                const jsonData = response.data.record;
                 // Find the user by id in the jsonData
                 const userIndex = jsonData.findIndex(user => user.id === usrArr.id);
 
@@ -92,22 +93,17 @@ export default {
                     // update the user settings
                     jsonData[userIndex].settings = this.settings;
                     
-                    // encode the json data to base64
-                    const updateContent = btoa(JSON.stringify(jsonData));
-
-                    // Send PATCH request to update the users.json file on GitHub
-                    const updateResponse = await axios.patch(`https://api.github.com/repos/DeEchteZeeuw/RealEstateCare/contents/src/data/users.json`, {
+                    const updateResponse = await axios.put(`https://api.jsonbin.io/v3/b/63c0345215ab31599e349bb2`, jsonData, {
                         headers: {
-                            'Authorization': `Bearer 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`
-                        },
-                        sha: response.data.sha,
-                        message: 'Update user settings',
-                        content: updateContent
+                            'Content-Type': 'application/json',
+                            'X-Master-Key': '$2b$10$6OQ5plkCt1vMLN8m7VMniOP5RSMQB3WOfPoQlYh/JNbs2xeF7psUu'
+                        }
                     });
                     if(updateResponse.status === 200) {
                         alert('settings updated succesfully');
                     } else {
                         throw new Error(updateResponse.data);
+                        
                     }
                 } else {
                     alert('user not found');
