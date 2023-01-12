@@ -7,11 +7,11 @@
                 <form @submit.prevent="updateAccountDetails" id="accountdetails" name="accountdetails" method="post">
                     <div class="mb-3">
                         <label for="firstname" class="form-label">Firstname</label>
-                        <input type="firstname" class="form-control" id="firstname" name="firstname" placeholder="John">
+                        <input type="firstname" class="form-control" id="firstname" name="firstname" placeholder="John" :value="firstname">
                     </div>
                     <div class="mb-3">
                         <label for="lastname" class="form-label">Lastname</label>
-                        <input type="lastname" class="form-control" id="lastname" name="lastname" placeholder="Do">
+                        <input type="lastname" class="form-control" id="lastname" name="lastname" placeholder="Do" :value="lastname">
                     </div>
                     <div class="mb-3">
                         <label for="newpassword" class="form-label">New password</label>
@@ -110,6 +110,20 @@ export default {
                         delete user.password;
 
                         localStorage.setItem('user', JSON.stringify(user));
+
+                        if (user.settings != undefined && user.settings != null) {
+                            if (user.settings.darkTheme != undefined && user.settings.darkTheme != null) {
+                                if (user.settings.darkTheme) {
+                                    document.querySelectorAll('[darkTheme]').forEach(e => {
+                                        if (e.getAttribute('disabled') === 'true') {
+                                            e.removeAttribute('disabled');
+                                        } else {
+                                            e.setAttribute('disabled', 'true');
+                                        }
+                                    })
+                                }
+                            }
+                        }
                     } else {
                         throw new Error(updateResponse.data);
                         

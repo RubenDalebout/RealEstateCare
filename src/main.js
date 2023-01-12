@@ -10,11 +10,27 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 
-import './assets/main.css'
+if (localStorage.getItem('user')) {
+    if (JSON.parse(localStorage.getItem('user'))) {
+        const usr = JSON.parse(localStorage.getItem('user'));
+
+        if (usr.settings != undefined && usr.settings != null) {
+            if (usr.settings.darkTheme != undefined && usr.settings.darkTheme != null) {
+                if (usr.settings.darkTheme) {
+                    document.querySelectorAll('[darkTheme]').forEach(e => {
+                        if (e.getAttribute('disabled') === 'true') {
+                            e.removeAttribute('disabled');
+                        } else {
+                            e.setAttribute('disabled', 'true');
+                        }
+                    })
+                }
+            }
+        }
+    }
+}
 
 const app = createApp(App);
-
-app.config.globalProperties.$loggedIn = false;
 
 app.use(IonicVue).use(router).use(IonIcon).component('ion-icon', IonIcon, {silent: true});
 
