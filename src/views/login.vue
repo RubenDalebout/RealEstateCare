@@ -37,14 +37,14 @@ export default {
         async loginRoute(submitEvent) {
             try {
                 // Send GET request to jsonbin.io to retrieve the users.json file
-                const response = await axios.get('https://api.jsonbin.io/b/63c0345215ab31599e349bb2/latest', {
-                  headers: {
-                    'secret-key': '$2b$10$6OQ5plkCt1vMLN8m7VMniOP5RSMQB3WOfPoQlYh/JNbs2xeF7psUu'
-                  }
+                const response = await axios.get('https://api.jsonbin.io/v3/b/63c0345215ab31599e349bb2/latest', {
+                    headers: {
+                        'X-Master-Key': '$2b$10$6OQ5plkCt1vMLN8m7VMniOP5RSMQB3WOfPoQlYh/JNbs2xeF7psUu'
+                    }
                 });
 
                 // Filter the data using your condition
-                const user = response.data.filter(user => user.email === submitEvent.target.elements.email.value && user.password === submitEvent.target.elements.password.value);
+                const user = response.data.record.filter(user => user.email === submitEvent.target.elements.email.value && user.password === submitEvent.target.elements.password.value);
 
                 if (user.length > 0) {
                     // Removing the password key from the user object
