@@ -1,12 +1,13 @@
 <template>
-    <main>
-        <h1>Inspections</h1>
-        <h2>{{addressId}}</h2>
-        <div v-for="inspection in inspections" :key="inspection.id">
-            <p>Inspection ID: {{ inspection.id }}</p>
-            <p>Date: {{ inspection.date }}</p>
-            <p>Inspector: {{ inspection.inspector }}</p>
-            <div class="badge" :class="{'badge-success': inspection.completed, 'badge-danger': !inspection.completed }">{{ inspection.completed ? 'Completed' : 'In progress' }}</div>
+    <main class="container list-group gap-3">
+        <h1>Inspections {{address}}</h1>
+        <div class="list-group-item border-top list-group-item-action d-flex justify-content-between align-items-center" v-for="inspection in inspections" :key="inspection.id">            
+            <div>
+                <p>Inspection ID: {{ inspection.id }}</p>
+                <p>Date: {{ inspection.date }}</p>
+                <p>Inspector: {{ inspection.inspector }}</p>
+                <div class="badge" :class="{'text-bg-success': inspection.completed, 'text-bg-danger': !inspection.completed }">{{ inspection.completed ? 'Completed' : 'In progress' }}</div>
+            </div>
             <router-link :to="{ name: 'inspection', params: { id: inspection.id } }" class="btn btn-primary">Go to Inspection</router-link>
         </div>
     </main>
@@ -14,14 +15,14 @@
 
 <script>
     import axios from 'axios';
-import { add } from 'ionicons/icons';
 
     export default {
         name: 'Inspections',
         data() {
         return {
             inspections: [],
-            addressId: ''
+            addressId: '',
+            address: '',
         };
     },
     async created() {
@@ -35,8 +36,10 @@ import { add } from 'ionicons/icons';
                 }
             });
 
-            let inspections = response.data.record.addresses.filter(address => address.id === this.addressId)[0].inspections.filter(inspection => inspection.completed === this.$route.params.completed);
+            let address = response.data.record.addresses.filter(address => address.id === this.addressId);
+            let inspections = address[0].inspections.filter(inspection => inspection.completed === this.$route.params.completed);
             this.inspections = inspections;
+            this.address = address[0].street + ', ' + address[0].city;
         } catch (error) {
             console.log(error);
         }
