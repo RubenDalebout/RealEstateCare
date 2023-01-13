@@ -8,7 +8,7 @@
                 <p>Inspector: {{ inspection.inspector }}</p>
                 <div class="badge" :class="{'text-bg-success': inspection.completed, 'text-bg-danger': !inspection.completed }">{{ inspection.completed ? 'Completed' : 'In progress' }}</div>
             </div>
-            <router-link :to="{ name: 'inspection', params: { id: inspection.id } }" class="btn btn-primary">Go to Inspection</router-link>
+            <router-link :to="{ name: 'inspection', params: { id: inspection.id, address: addressId } }" class="btn btn-primary">Go to Inspection</router-link>
         </div>
     </main>
 </template>
