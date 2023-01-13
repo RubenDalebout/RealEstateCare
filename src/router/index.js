@@ -54,6 +54,12 @@ const router = createRouter({
       name: 'inspections',
       component: () => import('../views/inspections.vue'),
       props: true
+    },
+    {
+      path: '/inspection/:id',
+      name: 'inspection',
+      component: () => import('../views/inspection.vue'),
+      props: true
     }
   ],
 })

@@ -3,11 +3,15 @@
         <h1>Inspections</h1>
         <h2>{{addressId}}</h2>
         <div v-for="inspection in inspections" :key="inspection.id">
-            <p>ID: {{ inspection.id }}</p>
-            <p>Completed: {{ inspection.completed }}</p>
+            <p>Inspection ID: {{ inspection.id }}</p>
+            <p>Date: {{ inspection.date }}</p>
+            <p>Inspector: {{ inspection.inspector }}</p>
+            <div class="badge" :class="{'badge-success': inspection.completed, 'badge-danger': !inspection.completed }">{{ inspection.completed ? 'Completed' : 'In progress' }}</div>
+            <router-link :to="{ name: 'inspection', params: { id: inspection.id } }" class="btn btn-primary">Go to Inspection</router-link>
         </div>
     </main>
 </template>
+
 <script>
     import axios from 'axios';
 import { add } from 'ionicons/icons';
