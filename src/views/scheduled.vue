@@ -34,8 +34,19 @@
         }
     },
     methods: {
-        viewInspections(id) {
-            this.$router.push({ name: 'inspections', params: { id } });
+        async viewInspections(id) {
+            try {
+                const response = await axios.get(`https://api.jsonbin.io/v3/b/63c1a09815ab31599e35cf00/latest`, {
+                    headers: {
+                    'Content-Type': 'application/json',
+                    'X-Master-Key': '$2b$10$6OQ5plkCt1vMLN8m7VMniOP5RSMQB3WOfPoQlYh/JNbs2xeF7psUu'
+                    }
+                });
+                let notCompletedInspections = response.data.record.addresses.filter(address => address.id === id)[0].inspections.filter(inspection => !inspection.completed);
+                this.$router.push({ name: 'inspections', params: { inspections: notCompletedInspections, id: id } });
+            } catch (error) {
+                console.log(error);
+            }
         }
     }
 };
