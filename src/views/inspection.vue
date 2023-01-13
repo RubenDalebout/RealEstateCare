@@ -1,14 +1,59 @@
 <template>
-    <main class="container list-group gap-3">
-        
+    <main class="container">
+        <form @submit.prevent="saveInspection">
+            <div class="form-group">
+                <label for="completion">Completion</label>
+                <input type="checkbox" v-model="inspection.completion" class="form-control" id="completion">
+            </div>
+            <div class="form-group">
+                <label for="cleanlinessScore">Cleanliness Score</label>
+                <select v-model="inspection.cleanlinessScore" class="form-control" id="cleanlinessScore">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="damage">Damage</label>
+                <damage-component v-for="(damage, index) in inspection.damage" :key="index" :damage="damage"></damage-component>
+                <button class="btn btn-primary" @click="addDamage">Add Damage</button>
+            </div>
+            <div class="form-group">
+                <label for="maintenance">Maintenance</label>
+                <maintenance-component v-for="(maintenance, index) in inspection.maintenance" :key="index" :maintenance="maintenance"></maintenance-component>
+                <button class="btn btn-primary" @click="addMaintenance">Add Maintenance</button>
+            </div>
+            <div class="form-group">
+                <label for="installations">Installations</label>
+                <installation-component v-for="(installation, index) in inspection.installations" :key="index" :installation="installation"></installation-component>
+                <button class="btn btn-primary" @click="addInstallation">Add Installation</button>
+            </div>
+            <div class="form-group">
+                <label for="modifications">Modifications</label>
+                <modification-component v-for="(modification, index) in inspection.modifications" :key="index" :modification="modification"></modification-component>
+                <button class="btn btn-primary" @click="addModification">Add Modification</button>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-danger" @click="cancelInspection">Cancel</button>
+                <button class="btn btn-success" type="submit">Save</button>
+                <button v-if="!inspection.completion" class="btn btn-success" @click="completeInspection">Complete</button>
+            </div>
+        </form>
     </main>
-</template>
+</template>  
 
 <script>
     import axios from 'axios';
 
     export default {
-        name: 'Inspections',
+        name: 'Inspection',
         data() {
         return {
             inspection: [],
@@ -16,9 +61,8 @@
         };
     },
     async created() {
-        let ids = JSON.parse(this.$route.params.id);
-        this.addressId= Number(ids[0]);
-        let inspectionId = Number(ids[1]);
+        this.addressId= Number(this.$route.params.address);
+        let inspectionId = Number(this.$route.params.id);
 
         try {
             const response = await axios.get(`https://api.jsonbin.io/v3/b/63c1a09815ab31599e35cf00/latest`, {
