@@ -1,17 +1,24 @@
 <template>
-    <div>
+    <main>
         <h1>Inspections</h1>
-        <ul>
-            <li v-for="inspection in inspections" :key="inspection.id">
-                {{ inspection.description }}
-            </li>
-        </ul>
-    </div>
+        <div v-for="inspection in inspections" :key="inspection.id">
+            <p>ID: {{ inspection.id }}</p>
+            <p>Completed: {{ inspection.completed }}</p>
+        </div>
+    </main>
 </template>
-  
-<script>
-    export default {
-        name: 'InspectionsView',
-        props: ['inspections']
+
+  <script>
+  export default {
+    name: 'Inspections',
+    data() {
+      return {
+        inspections: []
+      };
+    },
+    created() {
+      this.inspections = this.$route.params.inspections;
     }
-</script>
+  };
+  </script>
+  
