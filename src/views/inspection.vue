@@ -20,14 +20,17 @@
                     <option value="10">10</option>
                 </select>
             </div>
-            <div class="form-group">
-                <div class="d-flex justify-content-between">
-                    <span>Damage</span>
-                    <button class="btn btn-primary" @click="addDamage">Add Damage</button>
+            <div class="form-group border-top border-bottom my-3 py-3">
+                <h2>
+                    <span class="me-3">Damage</span>
                     <button class="btn btn-secondary" @click="showDamage = !showDamage">
                         <i v-if="!showDamage" class="fas fa-angle-down"></i>
                         <i v-if="showDamage" class="fas fa-angle-up"></i>
                     </button>
+                </h2>
+                
+                <div class="d-flex justify-content-between">
+                    <button class="btn btn-primary" @click="addDamage">Add Damage</button>
                 </div>
                 <transition name="fade">
                     <div v-if="showDamage">
@@ -35,14 +38,17 @@
                     </div>
                 </transition>
             </div>
-            <div class="form-group">
-                <div class="d-flex justify-content-between">
-                    <span>Maintenance</span>
-                    <button class="btn btn-primary" @click="addMaintenance">Add Maintenance</button>
+            <div class="form-group border-top border-bottom my-3 py-3">
+                <h2>
+                    <span class="me-3">Maintenance</span>
                     <button class="btn btn-secondary" @click="showMaintenance = !showMaintenance">
                         <i v-if="!showMaintenance" class="fas fa-angle-down"></i>
                         <i v-if="showMaintenance" class="fas fa-angle-up"></i>
                     </button>
+                </h2>
+
+                <div class="d-flex justify-content-between">
+                    <button class="btn btn-primary" @click="addMaintenance">Add Maintenance</button>
                 </div>
                 <transition name="fade">
                     <div v-if="showMaintenance">
@@ -50,14 +56,17 @@
                     </div>
                 </transition>
             </div>
-            <div class="form-group">
-                <div class="d-flex justify-content-between">
-                    <span>Installations</span>
-                    <button class="btn btn-primary" @click="addInstallation">Add Installation</button>
+            <div class="form-group border-top border-bottom my-3 py-3">
+                <h2>
+                    <span class="me-3">Installations</span>
                     <button class="btn btn-secondary" @click="showInstallation = !showInstallation">
                         <i v-if="!showInstallation" class="fas fa-angle-down"></i>
                         <i v-if="showInstallation" class="fas fa-angle-up"></i>
                     </button>
+                </h2>
+                
+                <div class="d-flex justify-content-between">
+                    <button class="btn btn-primary" @click="addInstallation">Add Installation</button>
                 </div>
                 <transition name="fade">
                     <div v-if="showInstallation">
@@ -65,25 +74,28 @@
                     </div>
                 </transition>
             </div>
-            <div class="form-group">
-                <div class="d-flex justify-content-between">
-                    <span>Modifications</span>
-                    <button class="btn btn-primary" @click="addModification">Add Modification</button>
+            <div class="form-group border-top border-bottom my-3 py-3">
+                <h2>
+                    <span class="me-3">Modifications</span>
                     <button class="btn btn-secondary" @click="showModification = !showModification">
                         <i v-if="!showModification" class="fas fa-angle-down"></i>
                         <i v-if="showModification" class="fas fa-angle-up"></i>
                     </button>
+                </h2>
+                <div class="d-flex justify-content-between">
+                    <button class="btn btn-primary" @click="addModification">Add Modification</button>
                 </div>
+
                 <transition name="fade">
                     <div v-if="showModification">
                         <modification-component v-for="(modification, index) in inspection.modifications" :key="index" :modification="modification"></modification-component>
                     </div>
                 </transition>
             </div>
-            <div class="form-group">
+            <div class="form-group d-flex gap-3">
                 <button class="btn btn-danger" @click="cancelInspection">Cancel</button>
-                <button class="btn btn-success" type="submit">Save</button>
-                <button v-if="!inspection.completion" class="btn btn-success" @click="completeInspection">Complete</button>
+                <button class="btn btn-success" type="submit">Save inspection</button>
+                <button v-if="!inspection.completion" class="btn btn-success" @click="completeInspection">Complete inspection</button>
             </div>
         </form>
     </main>
