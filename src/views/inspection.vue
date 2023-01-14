@@ -51,10 +51,10 @@
 
 <script>
     import axios from 'axios';
-    import DamageComponent from './DamageComponent.vue';
-    import MaintenanceComponent from './MaintenanceComponent.vue';
-    import InstallationComponent from './InstallationComponent.vue';
-    import ModificationComponent from './ModificationComponent.vue';
+    import DamageComponent from '../components/DamageComponent.vue';
+    import MaintenanceComponent from '../components/MaintenanceComponent.vue';
+    import InstallationComponent from '../components/InstallationComponent.vue';
+    import ModificationComponent from '../components/ModificationComponent.vue';
 
     export default {
         name: 'Inspection',
