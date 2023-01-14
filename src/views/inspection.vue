@@ -21,24 +21,64 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="damage">Damage</label>
-                <damage-component v-for="(damage, index) in inspection.damage" :key="index" :damage="damage"></damage-component>
-                <button class="btn btn-primary" @click="addDamage">Add Damage</button>
+                <div class="d-flex justify-content-between">
+                    <span>Damage</span>
+                    <button class="btn btn-primary" @click="addDamage">Add Damage</button>
+                    <button class="btn btn-secondary" @click="showDamage = !showDamage">
+                        <i v-if="!showDamage" class="fas fa-angle-down"></i>
+                        <i v-if="showDamage" class="fas fa-angle-up"></i>
+                    </button>
+                </div>
+                <transition name="fade">
+                    <div v-if="showDamage">
+                        <damage-component v-for="(damage, index) in inspection.damage" :key="index" :damage="damage"></damage-component>
+                    </div>
+                </transition>
             </div>
             <div class="form-group">
-                <label for="maintenance">Maintenance</label>
-                <maintenance-component v-for="(maintenance, index) in inspection.maintenance" :key="index" :maintenance="maintenance"></maintenance-component>
-                <button class="btn btn-primary" @click="addMaintenance">Add Maintenance</button>
+                <div class="d-flex justify-content-between">
+                    <span>Maintenance</span>
+                    <button class="btn btn-primary" @click="addMaintenance">Add Maintenance</button>
+                    <button class="btn btn-secondary" @click="showMaintenance = !showMaintenance">
+                        <i v-if="!showMaintenance" class="fas fa-angle-down"></i>
+                        <i v-if="showMaintenance" class="fas fa-angle-up"></i>
+                    </button>
+                </div>
+                <transition name="fade">
+                    <div v-if="showMaintenance">
+                        <maintenance-component v-for="(maintenance, index) in inspection.maintenance" :key="index" :maintenance="maintenance"></maintenance-component>
+                    </div>
+                </transition>
             </div>
             <div class="form-group">
-                <label for="installations">Installations</label>
-                <installation-component v-for="(installation, index) in inspection.installations" :key="index" :installation="installation"></installation-component>
-                <button class="btn btn-primary" @click="addInstallation">Add Installation</button>
+                <div class="d-flex justify-content-between">
+                    <span>Installations</span>
+                    <button class="btn btn-primary" @click="addInstallation">Add Installation</button>
+                    <button class="btn btn-secondary" @click="showInstallation = !showInstallation">
+                        <i v-if="!showInstallation" class="fas fa-angle-down"></i>
+                        <i v-if="showInstallation" class="fas fa-angle-up"></i>
+                    </button>
+                </div>
+                <transition name="fade">
+                    <div v-if="showInstallation">
+                        <installation-component v-for="(installation, index) in inspection.installations" :key="index" :installation="installation"></installation-component>
+                    </div>
+                </transition>
             </div>
             <div class="form-group">
-                <label for="modifications">Modifications</label>
-                <modification-component v-for="(modification, index) in inspection.modifications" :key="index" :modification="modification"></modification-component>
-                <button class="btn btn-primary" @click="addModification">Add Modification</button>
+                <div class="d-flex justify-content-between">
+                    <span>Modifications</span>
+                    <button class="btn btn-primary" @click="addModification">Add Modification</button>
+                    <button class="btn btn-secondary" @click="showModification = !showModification">
+                        <i v-if="!showModification" class="fas fa-angle-down"></i>
+                        <i v-if="showModification" class="fas fa-angle-up"></i>
+                    </button>
+                </div>
+                <transition name="fade">
+                    <div v-if="showModification">
+                        <modification-component v-for="(modification, index) in inspection.modifications" :key="index" :modification="modification"></modification-component>
+                    </div>
+                </transition>
             </div>
             <div class="form-group">
                 <button class="btn btn-danger" @click="cancelInspection">Cancel</button>
@@ -47,7 +87,7 @@
             </div>
         </form>
     </main>
-</template>  
+</template>
 
 <script>
     import axios from 'axios';
@@ -74,7 +114,11 @@
                     modifications: [],
                     cleanlinessScore: 0
                 },
-                addressId: ''
+                addressId: '',
+                showDamage: false,
+                showMaintenance: false,
+                showInstallation: false,
+                showModification: false
             };
         },
         async created() {
