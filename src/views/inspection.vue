@@ -51,31 +51,86 @@
 
 <script>
     import axios from 'axios';
+    import DamageComponent from './DamageComponent.vue';
+    import MaintenanceComponent from './MaintenanceComponent.vue';
+    import InstallationComponent from './InstallationComponent.vue';
+    import ModificationComponent from './ModificationComponent.vue';
 
     export default {
         name: 'Inspection',
+        components: {
+            DamageComponent,
+            MaintenanceComponent,
+            InstallationComponent,
+            ModificationComponent
+        },
         data() {
-        return {
-            inspection: [],
-            addressId: '',
-        };
-    },
-    async created() {
-        this.addressId= Number(this.$route.params.address);
-        let inspectionId = Number(this.$route.params.id);
+            return {
+                inspection: {
+                    completion: false,
+                    damage: [],
+                    maintenance: [],
+                    installations: [],
+                    modifications: [],
+                    cleanlinessScore: 0
+                },
+                addressId: ''
+            };
+        },
+        async created() {
+            this.addressId = Number(this.$route.params.address);
+            let inspectionId = Number(this.$route.params.id);
 
-        try {
-            const response = await axios.get(`https://api.jsonbin.io/v3/b/63c1a09815ab31599e35cf00/latest`, {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-Master-Key': '$2b$10$6OQ5plkCt1vMLN8m7VMniOP5RSMQB3WOfPoQlYh/JNbs2xeF7psUu'
-                }
-            });
-            
-            this.inspection = response.data.record.addresses.filter(address => address.id === this.addressId)[0].inspections.filter(inspection => inspection.id === inspectionId)[0];
-        } catch (error) {
-            console.log(error);
+            try {
+                const response = await axios.get(`https://api.jsonbin.io/v3/b/63c1a09815ab31599e35cf00/latest`, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-Master-Key': '$2b$10$6OQ5plkCt1vMLN8m7VMniOP5RSMQB3WOfPoQlYh/JNbs2xeF7psUu'
+                    }
+                });
+
+                this.inspection = response.data.record.addresses.filter(address => address.id === this.addressId)[0].inspections.filter(inspection => inspection.id === inspectionId)[0];
+            } catch (error) {
+                console.log(error);
+            }
+        },
+        methods: {
+            addDamage() {
+                this.inspection.damage.push({});
+            },
+            addMaintenance() {
+                this.inspection.maintenance.push({});
+            },
+            addInstallation() {
+                this.inspection.installations.push({});
+            },
+            addModification() {
+                this.inspection.modifications.push({});
+            },
+            async saveInspection() {
+            try {
+                const response = await axios.put(`https://api.jsonbin.io/v3/b/63c1a09815ab31599e35cf00`, {
+                    record: this.inspection,
+                    addressId: this.addressId
+                }, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-Master-Key': '$2b$10$6OQ5plkCt1vMLN8m7VMniOP5RSMQB3WOfPoQlYh/JNbs2xeF7psUu'
+                    }
+                });
+
+                console.log(response);
+            } catch (error) {
+                console.log(error);
+            }
+        },
+        cancelInspection() {
+        this.$router.push({ name: 'inspections', params: { address: this.addressId, completed: false } });
+        },
+        completeInspection() {
+            this.inspection.completion = true;
+            this.saveInspection();
         }
     }
-};
+}
 </script>
