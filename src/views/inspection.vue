@@ -8,7 +8,7 @@ import { caretDownOutline, caretUpOutline } from 'ionicons/icons';
             <h1>Inspection {{ inspection.id }}</h1>
             <div class="form-group">
                 <label for="cleanlinessScore">Cleanliness Score</label>
-                <select v-model="inspection.cleanlinessScore" class="form-control" id="cleanlinessScore">
+                <select v-model="inspection.cleanlinessScore" class="form-select" id="cleanlinessScore">
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -21,7 +21,7 @@ import { caretDownOutline, caretUpOutline } from 'ionicons/icons';
                     <option value="10">10</option>
                 </select>
             </div>
-            <div class="form-group border-top border-bottom my-3 py-3">
+            <div class="form-group my-3 py-3">
                 <h2>
                     <button type="button" class="btn btn-secondary" @click="showDamage = !showDamage">
                         <ion-icon v-if="!showDamage" class="m-auto" id="navigation-caretDownOutline-icon" :icon="caretDownOutline"></ion-icon>
@@ -39,7 +39,7 @@ import { caretDownOutline, caretUpOutline } from 'ionicons/icons';
                     </div>
                 </transition>
             </div>
-            <div class="form-group border-top border-bottom my-3 py-3">
+            <div class="form-group my-3 py-3">
                 <h2>
                     <button type="button" class="btn btn-secondary" @click="showMaintenance = !showMaintenance">
                         <ion-icon v-if="!showMaintenance" class="m-auto" id="navigation-caretDownOutline-icon" :icon="caretDownOutline"></ion-icon>
@@ -57,7 +57,7 @@ import { caretDownOutline, caretUpOutline } from 'ionicons/icons';
                     </div>
                 </transition>
             </div>
-            <div class="form-group border-top border-bottom my-3 py-3">
+            <div class="form-group my-3 py-3">
                 <h2>
                     <button type="button" class="btn btn-secondary" @click="showInstallation = !showInstallation">
                         <ion-icon v-if="!showInstallation" class="m-auto" id="navigation-caretDownOutline-icon" :icon="caretDownOutline"></ion-icon>
@@ -75,7 +75,7 @@ import { caretDownOutline, caretUpOutline } from 'ionicons/icons';
                     </div>
                 </transition>
             </div>
-            <div class="form-group border-top border-bottom my-3 py-3">
+            <div class="form-group my-3 py-3">
                 <h2>
                     <button type="button" class="btn btn-secondary" @click="showModification = !showModification">
                         <ion-icon v-if="!showModification" class="m-auto" id="navigation-caretDownOutline-icon" :icon="caretDownOutline"></ion-icon>
@@ -94,7 +94,7 @@ import { caretDownOutline, caretUpOutline } from 'ionicons/icons';
                 </transition>
             </div>
             <div class="form-group d-flex gap-3">
-                <button type="button" class="btn btn-danger" @click="cancelInspection">Cancel</button>
+                <button type="button" class="btn btn-danger" @click="cancelInspection(addressId, false)">Cancel</button>
                 <button class="btn btn-success" type="submit">Save inspection</button>
                 <button type="button" v-if="!inspection.completion" class="btn btn-success" @click="completeInspection">Complete inspection</button>
             </div>
@@ -181,8 +181,12 @@ import { caretDownOutline, caretUpOutline } from 'ionicons/icons';
                 console.log(error);
             }
         },
-        cancelInspection() {
-            this.$router.push({ name: 'inspections', params: { address: this.addressId, completed: false } });
+        cancelInspection(id, completion) {
+            try {
+                this.$router.push({ name: 'inspections', params: { id: id, completion: completion } });
+            } catch (error) {
+                console.log(error);
+            }
         },
         completeInspection() {
             this.inspection.completion = true;

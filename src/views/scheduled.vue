@@ -1,5 +1,5 @@
 <template>
-    <main>
+    <main class="container">
         <h1>Address List</h1>
         <div class="list-group">
             <a href="#" v-for="address in addresses" :key="address.id" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">

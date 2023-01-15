@@ -27,7 +27,7 @@
     },
     async created() {
         this.addressId = Number(this.$route.params.id);
-
+        
         try {
             const response = await axios.get(`https://api.jsonbin.io/v3/b/63c1a09815ab31599e35cf00/latest`, {
                 headers: {
