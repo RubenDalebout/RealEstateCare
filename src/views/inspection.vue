@@ -1,10 +1,11 @@
+<script setup>
+import { caretDownOutline, caretUpOutline } from 'ionicons/icons';
+</script>
+
 <template>
     <main class="container">
         <form @submit.prevent="saveInspection">
-            <div class="form-group">
-                <label for="completion">Completion</label>
-                <input type="checkbox" v-model="inspection.completion" class="form-control" id="completion">
-            </div>
+            <h1>Inspection {{ inspection.id }}</h1>
             <div class="form-group">
                 <label for="cleanlinessScore">Cleanliness Score</label>
                 <select v-model="inspection.cleanlinessScore" class="form-control" id="cleanlinessScore">
@@ -22,15 +23,15 @@
             </div>
             <div class="form-group border-top border-bottom my-3 py-3">
                 <h2>
-                    <span class="me-3">Damage</span>
-                    <button class="btn btn-secondary" @click="showDamage = !showDamage">
-                        <i v-if="!showDamage" class="fas fa-angle-down"></i>
-                        <i v-if="showDamage" class="fas fa-angle-up"></i>
+                    <button type="button" class="btn btn-secondary" @click="showDamage = !showDamage">
+                        <ion-icon v-if="!showDamage" class="m-auto" id="navigation-caretDownOutline-icon" :icon="caretDownOutline"></ion-icon>
+                        <ion-icon v-if="showDamage" class="m-auto" id="navigation-caretUpOutline-icon" :icon="caretUpOutline"></ion-icon>
                     </button>
+                    <span class="ms-3">Damage</span>
                 </h2>
                 
                 <div class="d-flex justify-content-between">
-                    <button class="btn btn-primary" @click="addDamage">Add Damage</button>
+                    <button type="button" class="btn btn-primary" @click="addDamage">Add Damage</button>
                 </div>
                 <transition name="fade">
                     <div v-if="showDamage">
@@ -40,15 +41,15 @@
             </div>
             <div class="form-group border-top border-bottom my-3 py-3">
                 <h2>
-                    <span class="me-3">Maintenance</span>
-                    <button class="btn btn-secondary" @click="showMaintenance = !showMaintenance">
-                        <i v-if="!showMaintenance" class="fas fa-angle-down"></i>
-                        <i v-if="showMaintenance" class="fas fa-angle-up"></i>
+                    <button type="button" class="btn btn-secondary" @click="showMaintenance = !showMaintenance">
+                        <ion-icon v-if="!showMaintenance" class="m-auto" id="navigation-caretDownOutline-icon" :icon="caretDownOutline"></ion-icon>
+                        <ion-icon v-if="showMaintenance" class="m-auto" id="navigation-caretUpOutline-icon" :icon="caretUpOutline"></ion-icon>
                     </button>
+                    <span class="ms-3">Maintenance</span>
                 </h2>
 
                 <div class="d-flex justify-content-between">
-                    <button class="btn btn-primary" @click="addMaintenance">Add Maintenance</button>
+                    <button type="button" class="btn btn-primary" @click="addMaintenance">Add Maintenance</button>
                 </div>
                 <transition name="fade">
                     <div v-if="showMaintenance">
@@ -58,15 +59,15 @@
             </div>
             <div class="form-group border-top border-bottom my-3 py-3">
                 <h2>
-                    <span class="me-3">Installations</span>
-                    <button class="btn btn-secondary" @click="showInstallation = !showInstallation">
-                        <i v-if="!showInstallation" class="fas fa-angle-down"></i>
-                        <i v-if="showInstallation" class="fas fa-angle-up"></i>
+                    <button type="button" class="btn btn-secondary" @click="showInstallation = !showInstallation">
+                        <ion-icon v-if="!showInstallation" class="m-auto" id="navigation-caretDownOutline-icon" :icon="caretDownOutline"></ion-icon>
+                        <ion-icon v-if="showInstallation" class="m-auto" id="navigation-caretUpOutline-icon" :icon="caretUpOutline"></ion-icon>
                     </button>
+                    <span class="ms-3">Installations</span>
                 </h2>
                 
                 <div class="d-flex justify-content-between">
-                    <button class="btn btn-primary" @click="addInstallation">Add Installation</button>
+                    <button type="button" class="btn btn-primary" @click="addInstallation">Add Installation</button>
                 </div>
                 <transition name="fade">
                     <div v-if="showInstallation">
@@ -76,14 +77,14 @@
             </div>
             <div class="form-group border-top border-bottom my-3 py-3">
                 <h2>
-                    <span class="me-3">Modifications</span>
-                    <button class="btn btn-secondary" @click="showModification = !showModification">
-                        <i v-if="!showModification" class="fas fa-angle-down"></i>
-                        <i v-if="showModification" class="fas fa-angle-up"></i>
+                    <button type="button" class="btn btn-secondary" @click="showModification = !showModification">
+                        <ion-icon v-if="!showModification" class="m-auto" id="navigation-caretDownOutline-icon" :icon="caretDownOutline"></ion-icon>
+                        <ion-icon v-if="showModification" class="m-auto" id="navigation-caretUpOutline-icon" :icon="caretUpOutline"></ion-icon>
                     </button>
+                    <span class="ms-3">Modifications</span>
                 </h2>
                 <div class="d-flex justify-content-between">
-                    <button class="btn btn-primary" @click="addModification">Add Modification</button>
+                    <button type="button" class="btn btn-primary" @click="addModification">Add Modification</button>
                 </div>
 
                 <transition name="fade">
@@ -93,9 +94,9 @@
                 </transition>
             </div>
             <div class="form-group d-flex gap-3">
-                <button class="btn btn-danger" @click="cancelInspection">Cancel</button>
+                <button type="button" class="btn btn-danger" @click="cancelInspection">Cancel</button>
                 <button class="btn btn-success" type="submit">Save inspection</button>
-                <button v-if="!inspection.completion" class="btn btn-success" @click="completeInspection">Complete inspection</button>
+                <button type="button" v-if="!inspection.completion" class="btn btn-success" @click="completeInspection">Complete inspection</button>
             </div>
         </form>
     </main>
