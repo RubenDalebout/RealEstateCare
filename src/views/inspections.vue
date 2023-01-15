@@ -1,7 +1,7 @@
 <template>
     <main class="container list-group gap-3">
         <h1>Inspections {{address}}</h1>
-        <div class="list-group-item border-top list-group-item-action d-flex justify-content-between align-items-center" v-for="inspection in inspections" :key="inspection.id">            
+        <div class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" v-for="inspection in inspections" :key="inspection.id">            
             <div>
                 <p>Inspection ID: {{ inspection.id }}</p>
                 <p>Date: {{ inspection.date }}</p>

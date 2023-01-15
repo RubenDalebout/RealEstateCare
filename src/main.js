@@ -4,7 +4,7 @@ import "bootstrap"
 
 import "@ionic/core/css/ionic.bundle.css"
 
-import { IonicVue, IonIcon } from '@ionic/vue';
+import { IonicVue, IonIcon, IonToast } from '@ionic/vue';
 
 import { createApp } from 'vue'
 import App from './App.vue'
@@ -32,6 +32,6 @@ if (localStorage.getItem('user')) {
 
 const app = createApp(App);
 
-app.use(IonicVue).use(router).use(IonIcon).component('ion-icon', IonIcon, {silent: true});
+app.use(IonicVue).use(router).use(IonIcon).component('ion-icon', IonIcon, {silent: true}).use(IonToast);
 
 app.mount('#app');

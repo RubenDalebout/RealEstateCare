@@ -99,6 +99,12 @@ import { caretDownOutline, caretUpOutline } from 'ionicons/icons';
                 <button type="button" v-if="!inspection.completion" class="btn btn-success" @click="completeInspection">Complete inspection</button>
             </div>
         </form>
+
+        <div v-if="showToast" class="toast-container">
+            <div v-bind:class="{'show': showToast}" :class="'toast toast-' + toastType">
+                {{ toastMessage }}
+            </div>
+        </div>
     </main>
 </template>
 
@@ -128,15 +134,20 @@ import { caretDownOutline, caretUpOutline } from 'ionicons/icons';
                     cleanlinessScore: 0
                 },
                 addressId: '',
+                inspectionId: '',
                 showDamage: false,
                 showMaintenance: false,
                 showInstallation: false,
-                showModification: false
+                showModification: false,
+                showToast: false,
+                toastMessage: '',
+                toastType: '',
             };
         },
         async created() {
             this.addressId = Number(this.$route.params.address);
             let inspectionId = Number(this.$route.params.id);
+            this.inspectionId = inspectionId;
 
             try {
                 const response = await axios.get(`https://api.jsonbin.io/v3/b/63c1a09815ab31599e35cf00/latest`, {
@@ -165,33 +176,79 @@ import { caretDownOutline, caretUpOutline } from 'ionicons/icons';
                 this.inspection.modifications.push({});
             },
             async saveInspection() {
-            try {
-                // const response = await axios.put(`https://api.jsonbin.io/v3/b/63c1a09815ab31599e35cf00`, {
-                //     record: this.inspection,
-                //     addressId: this.addressId
-                // }, {
-                //     headers: {
-                //         'Content-Type': 'application/json',
-                //         'X-Master-Key': '$2b$10$6OQ5plkCt1vMLN8m7VMniOP5RSMQB3WOfPoQlYh/JNbs2xeF7psUu'
-                //     }
-                // });
+                try {
+                    const response = await axios.get(`https://api.jsonbin.io/v3/b/63c1a09815ab31599e35cf00/latest`, {
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-Master-Key': '$2b$10$6OQ5plkCt1vMLN8m7VMniOP5RSMQB3WOfPoQlYh/JNbs2xeF7psUu'
+                        }
+                    });
 
-                console.log('saving?')
-            } catch (error) {
-                console.log(error);
+                    const addressIndex = response.data.record.addresses.findIndex(address => address.id === this.addressId);
+                    const inspectionIndex = response.data.record.addresses[addressIndex].inspections.findIndex(inspection => inspection.id === this.inspectionId);
+
+                    // Update data
+                    response.data.record.addresses[addressIndex].inspections[inspectionIndex].completion = this.inspection.completion; // Completion
+                    response.data.record.addresses[addressIndex].inspections[inspectionIndex].damage = this.inspection.damage; // Damage(s)
+                    response.data.record.addresses[addressIndex].inspections[inspectionIndex].maintenance = this.inspection.maintenance; // Maintenance(s)
+                    response.data.record.addresses[addressIndex].inspections[inspectionIndex].installations = this.inspection.installations; // Installation(s)
+                    response.data.record.addresses[addressIndex].inspections[inspectionIndex].modifications = this.inspection.modifications; // Modification(s)
+                    response.data.record.addresses[addressIndex].inspections[inspectionIndex].cleanlinessScore = this.inspection.cleanlinessScore; // CleanlinesScore
+                    response.data.record.addresses[addressIndex].inspections[inspectionIndex].somethingBroken = this.inspection.somethingBroken; // SomethingBroken;
+
+                    const update = await axios.put(`https://api.jsonbin.io/v3/b/63c1a09815ab31599e35cf00`, {
+                        addresses: response.data.record.addresses,
+                    }, {
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-Master-Key': '$2b$10$6OQ5plkCt1vMLN8m7VMniOP5RSMQB3WOfPoQlYh/JNbs2xeF7psUu'
+                        }
+                    });
+
+                    if (update.status === 200) {
+                        this.toastType = 'success';
+                        this.toastMessage = 'Inspection saved successfully';
+                        this.showToast = true;
+
+                        setTimeout(() => {
+                            this.toastType = '';
+                            this.toastMessage = '';
+                            this.showToast = false;
+                        }, 3000);
+                    }
+
+                    if (update.status !== 200) {
+                        this.toastType = 'error';
+                        this.toastMessage = 'Inspection not saved, error occurred';
+                        this.showToast = true;
+
+                        setTimeout(() => {
+                            this.toastType = '';
+                            this.toastMessage = '';
+                            this.showToast = false;
+                        }, 3000);
+                    }
+                } catch (error) {
+                    console.log(error);
+                }
+            },
+            cancelInspection(id, completion) {
+                try {
+                    this.$router.push({ name: 'inspections', params: { id: id, completion: completion } });
+                } catch (error) {
+                    console.log(error);
+                }
+            },
+            completeInspection() {
+                this.inspection.completion = true;
+                this.saveInspection();
+                
+                try {
+                    this.$router.push({ name: 'inspections', params: { id: id, completion: completion } });
+                } catch (error) {
+                    console.log(error);
+                }
             }
-        },
-        cancelInspection(id, completion) {
-            try {
-                this.$router.push({ name: 'inspections', params: { id: id, completion: completion } });
-            } catch (error) {
-                console.log(error);
-            }
-        },
-        completeInspection() {
-            this.inspection.completion = true;
-            this.saveInspection();
-        }
     }
 }
 </script>
