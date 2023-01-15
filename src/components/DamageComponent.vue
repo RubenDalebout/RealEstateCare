@@ -5,8 +5,8 @@
       <input type="text" v-model="damage.location" class="form-control" id="location">
     </div>
     <div class="form-group">
-      <label for="new">New</label>
-      <input type="checkbox" v-model="damage.new" class="form-control" id="new">
+      <label for="new" class="me-2">New</label>
+      <input type="checkbox" v-model="damage.new" class="form-check-input" id="new">
     </div>
     <div class="form-group">
       <label for="type">Type</label>
@@ -17,8 +17,8 @@
       <input type="date" v-model="damage.date" class="form-control" id="date">
     </div>
     <div class="form-group">
-      <label for="acuteAction">Acute Action</label>
-      <input type="checkbox" v-model="damage.acuteAction" class="form-control" id="acuteAction">
+      <label for="acuteAction" class="me-2">Acute Action</label>
+      <input type="checkbox" v-model="damage.acuteAction" class="form-check-input" id="acuteAction">
     </div>
     <div class="form-group">
       <label for="description">Description</label>
