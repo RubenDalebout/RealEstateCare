@@ -94,3 +94,13 @@ h1, h2, h3, h4, h5, h6 {
 a {
     color: white;
 }
+
+.list-group-item {
+  background-color: rgba(0, 0, 0, 0.1);
+  color: inherit
+}
+
+.list-group-item-action:focus, .list-group-item-action:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+  color: inherit
+}
