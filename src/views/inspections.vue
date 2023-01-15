@@ -6,7 +6,7 @@
                 <p>Inspection ID: {{ inspection.id }}</p>
                 <p>Date: {{ inspection.date }}</p>
                 <p>Inspector: {{ inspection.inspector }}</p>
-                <div class="badge" :class="{'text-bg-success': inspection.completed, 'text-bg-danger': !inspection.completed }">{{ inspection.completed ? 'Completed' : 'In progress' }}</div>
+                <div class="badge" :class="{'text-bg-success': inspection.completion, 'text-bg-danger': !inspection.completion }">{{ inspection.completion ? 'Completed' : 'In progress' }}</div>
             </div>
             <router-link :to="{ name: 'inspection', params: { id: inspection.id, address: addressId } }" class="btn btn-primary">Go to Inspection</router-link>
         </div>
@@ -37,7 +37,7 @@
             });
 
             let address = response.data.record.addresses.filter(address => address.id === this.addressId);
-            let inspections = address[0].inspections.filter(inspection => inspection.completed === this.$route.params.completed);
+            let inspections = address[0].inspections.filter(inspection => inspection.completion === (this.$route.params.completion === 'true'));
             this.inspections = inspections;
             this.address = address[0].street + ', ' + address[0].city;
         } catch (error) {

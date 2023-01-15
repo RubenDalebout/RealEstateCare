@@ -165,23 +165,23 @@
             },
             async saveInspection() {
             try {
-                const response = await axios.put(`https://api.jsonbin.io/v3/b/63c1a09815ab31599e35cf00`, {
-                    record: this.inspection,
-                    addressId: this.addressId
-                }, {
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-Master-Key': '$2b$10$6OQ5plkCt1vMLN8m7VMniOP5RSMQB3WOfPoQlYh/JNbs2xeF7psUu'
-                    }
-                });
+                // const response = await axios.put(`https://api.jsonbin.io/v3/b/63c1a09815ab31599e35cf00`, {
+                //     record: this.inspection,
+                //     addressId: this.addressId
+                // }, {
+                //     headers: {
+                //         'Content-Type': 'application/json',
+                //         'X-Master-Key': '$2b$10$6OQ5plkCt1vMLN8m7VMniOP5RSMQB3WOfPoQlYh/JNbs2xeF7psUu'
+                //     }
+                // });
 
-                
+                console.log('saving?')
             } catch (error) {
                 console.log(error);
             }
         },
         cancelInspection() {
-        this.$router.push({ name: 'inspections', params: { address: this.addressId, completed: false } });
+            this.$router.push({ name: 'inspections', params: { address: this.addressId, completed: false } });
         },
         completeInspection() {
             this.inspection.completion = true;

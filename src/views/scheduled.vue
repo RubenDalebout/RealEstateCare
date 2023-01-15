@@ -34,9 +34,9 @@
         }
     },
     methods: {
-        async viewInspections(id, completed) {
+        async viewInspections(id, completion) {
             try {
-                this.$router.push({ name: 'inspections', params: { id: id, completed: completed } });
+                this.$router.push({ name: 'inspections', params: { id: id, completion: completion } });
             } catch (error) {
                 console.log(error);
             }
