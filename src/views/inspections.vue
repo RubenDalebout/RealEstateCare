@@ -47,7 +47,7 @@
                 });
 
                 let address = response.data.record.addresses.filter(address => address.id === this.addressId);
-                let inspections = address[0].inspections.filter(inspection => inspection.completion === (localStorage.getItem('completion') === 'true'));
+                let inspections = address[0].inspections.filter(inspection => inspection.completion === (localStorage.getItem('completion') === 'true') && inspection.inspector === JSON.parse(localStorage.getItem('user')).id);
                 this.inspections = inspections;
                 this.address = address[0].street + ', ' + address[0].city;
             } catch (error) {
