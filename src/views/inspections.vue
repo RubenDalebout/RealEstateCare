@@ -7,7 +7,6 @@
                 <div>
                     <p>Inspection ID: {{ inspection.id }}</p>
                     <p>Date: {{ inspection.date }}</p>
-                    <p>Inspector: {{ inspection.inspector }}</p>
                     <div class="badge" :class="{'text-bg-success': inspection.completion, 'text-bg-danger': !inspection.completion }">{{ inspection.completion ? 'Completed' : 'In progress' }}</div>
                 </div>
                 <router-link :to="{ name: 'inspection' }" @click="saveParamsToLocalStorage(inspection.id, addressId)" class="btn btn-primary">Go to Inspection</router-link>
