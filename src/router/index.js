@@ -50,16 +50,14 @@ const router = createRouter({
       component: () => import('../views/login.vue')
     },
     {
-      path: '/inspections/:id:completion',
+      path: '/inspections/',
       name: 'inspections',
       component: () => import('../views/inspections.vue'),
-      props: true
     },
     {
-      path: '/inspection/:id:address',
+      path: '/inspection/',
       name: 'inspection',
       component: () => import('../views/inspection.vue'),
-      props: true
     }
   ],
 })

@@ -1,5 +1,6 @@
 <template>
     <main class="container">
+        <router-link :to="{ name: 'home' }" class="btn btn-danger">Go back</router-link>
         <h1>Address List</h1>
         <div class="list-group">
             <a href="#" v-for="address in addresses" :key="address.id" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
@@ -36,7 +37,9 @@
     methods: {
         async viewInspections(id, completion) {
             try {
-                this.$router.push({ name: 'inspections', params: { id: id, completion: completion } });
+                localStorage.setItem('addressId', id);
+                localStorage.setItem('completion', completion)
+                this.$router.push({ name: 'inspections'});
             } catch (error) {
                 console.log(error);
             }

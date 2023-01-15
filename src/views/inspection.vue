@@ -4,7 +4,8 @@ import { caretDownOutline, caretUpOutline } from 'ionicons/icons';
 
 <template>
     <main class="container">
-        <form @submit.prevent="saveInspection">
+        <button type="button" class="btn btn-danger" @click="cancelInspection()">Back to inspections</button>
+        <form v-if="this.inspection.id !== ''" @submit.prevent="saveInspection">
             <h1>Inspection {{ inspection.id }}</h1>
             <div class="form-group">
                 <label for="cleanlinessScore">Cleanliness Score</label>
@@ -94,11 +95,15 @@ import { caretDownOutline, caretUpOutline } from 'ionicons/icons';
                 </transition>
             </div>
             <div class="form-group d-flex gap-3">
-                <button type="button" class="btn btn-danger" @click="cancelInspection(addressId, false)">Cancel</button>
+                <button type="button" class="btn btn-danger" @click="cancelInspection()">Cancel</button>
                 <button class="btn btn-success" type="submit">Save inspection</button>
                 <button type="button" v-if="!inspection.completion" class="btn btn-success" @click="completeInspection">Complete inspection</button>
             </div>
         </form>
+
+        <div v-else class="text-danger">
+            <p>No inspection was found. Would you like to navigate back to the inspection overview? You can do so via the "Back to inspections" button.</p>
+        </div>
 
         <div v-if="showToast" class="toast-container">
             <div v-bind:class="{'show': showToast}" :class="'toast toast-' + toastType">
@@ -145,8 +150,8 @@ import { caretDownOutline, caretUpOutline } from 'ionicons/icons';
             };
         },
         async created() {
-            this.addressId = Number(this.$route.params.address);
-            let inspectionId = Number(this.$route.params.id);
+            this.addressId = Number(localStorage.getItem('addressId'));
+            let inspectionId = Number(localStorage.getItem('inspectionId'));
             this.inspectionId = inspectionId;
 
             try {
@@ -157,7 +162,20 @@ import { caretDownOutline, caretUpOutline } from 'ionicons/icons';
                     }
                 });
 
-                this.inspection = response.data.record.addresses.filter(address => address.id === this.addressId)[0].inspections.filter(inspection => inspection.id === inspectionId)[0];
+                if (response.data.record.addresses !== undefined && response.data.record.addresses !== null) {
+                    if (this.addressId !== undefined && this.addressId !== null && response.data.record.addresses.filter(address => address.id === this.addressId) !== undefined && response.data.record.addresses.filter(address => address.id === this.addressId) !== null) {
+                        let address = response.data.record.addresses.filter(address => address.id === this.addressId);
+                        if (address.length > 0) {
+                            address = address[0];
+                            if (address.inspections.filter(inspection => inspection.id === inspectionId) !== undefined && address.inspections.filter(inspection => inspection.id === inspectionId) !== null) {
+                                let inspection = address.inspections.filter(inspection => inspection.id === inspectionId);
+                                if (inspection.length > 0) {
+                                    this.inspection = inspection[0];
+                                }
+                            }
+                        }
+                    }
+                }
             } catch (error) {
                 console.log(error);
             }
@@ -232,9 +250,9 @@ import { caretDownOutline, caretUpOutline } from 'ionicons/icons';
                     console.log(error);
                 }
             },
-            cancelInspection(id, completion) {
+            cancelInspection() {
                 try {
-                    this.$router.push({ name: 'inspections', params: { id: id, completion: completion } });
+                    this.$router.push({ name: 'inspections' });
                 } catch (error) {
                     console.log(error);
                 }
@@ -244,7 +262,7 @@ import { caretDownOutline, caretUpOutline } from 'ionicons/icons';
                 this.saveInspection();
                 
                 try {
-                    this.$router.push({ name: 'inspections', params: { id: id, completion: completion } });
+                    this.$router.push({ name: 'inspections' });
                 } catch (error) {
                     console.log(error);
                 }
