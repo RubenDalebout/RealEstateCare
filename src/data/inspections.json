@@ -9,6 +9,7 @@
                     "id": 101,
                     "date": "2022-01-01",
                     "completion": true,
+                    "inspector": 1,
                     "damage": [
                         {
                             "location": "Kitchen",
@@ -48,6 +49,7 @@
                     "id": 102,
                     "date": "2022-02-01",
                     "completion": false,
+                    "inspector": 1,
                     "damage": [],
                     "maintenance": [],
                     "installations": [],
@@ -69,6 +71,7 @@
                     "id": 103,
                     "date": "",
                     "completion": false,
+                    "inspector": 1,
                     "damage": [],
                     "maintenance": [],
                     "installations": [],
@@ -87,6 +90,7 @@
                     "id": 104,
                     "date": "2022-03-01",
                     "completion": true,
+                    "inspector": 1,
                     "damage": [
                         {
                             "location": "Bathroom",
@@ -126,6 +130,7 @@
                     "id": 105,
                     "date": "",
                     "completion": false,
+                    "inspector": 1,
                     "damage": [],
                     "maintenance": [],
                     "installations": [],
@@ -144,6 +149,7 @@
                     "id": 106,
                     "date": "",
                     "completion": false,
+                    "inspector": 1,
                     "damage": [],
                     "maintenance": [],
                     "installations": [],
@@ -155,6 +161,7 @@
                     "id": 107,
                     "date": "",
                     "completion": false,
+                    "inspector": 1,
                     "damage": [],
                     "maintenance": [],
                     "installations": [],
