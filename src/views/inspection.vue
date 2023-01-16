@@ -247,8 +247,14 @@ import { caretDownOutline, caretUpOutline } from 'ionicons/icons';
                         }, 3000);
                     }
                 } catch (error) {
+                    // Save the inspection to the offlineInspection array when there's no internet connection
+                    let offlineInspections = JSON.parse(localStorage.getItem('offlineInspections')) || [];
+                    this.inspection.inspectionId = this.inspectionId;
+                    this.inspection.addressId = this.addressId;
+                    offlineInspections.push(this.inspection);
+                    localStorage.setItem('offlineInspections', JSON.stringify(offlineInspections));
                     this.toastType = 'error';
-                    this.toastMessage = (err.code != 'ERR_NETWORK') ? 'There has been an error occurred, contact the developer!' : 'You dont have wifi!';
+                    this.toastMessage = 'You do not have wifi, Inspection saved in offline mode';
                     this.showToast = true;
 
                     setTimeout(() => {
@@ -256,8 +262,6 @@ import { caretDownOutline, caretUpOutline } from 'ionicons/icons';
                         this.toastMessage = '';
                         this.showToast = false;
                     }, 3000);
-
-                    return;
                 }
             },
             cancelInspection() {
