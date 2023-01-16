@@ -1,5 +1,5 @@
 <script setup>
-import { triangle, ellipse, square, notifications, settings, notificationsOutline } from 'ionicons/icons';
+import { triangle, ellipse, square, notifications, settings, notificationsOutline, notificationsOffOutline } from 'ionicons/icons';
 </script>
 
 <template>
@@ -20,7 +20,8 @@ import { triangle, ellipse, square, notifications, settings, notificationsOutlin
                 <nav>
                     <ul class="list-unstyled m-0">
                         <li class="d-flex gap-3">
-                            <ion-icon class="fs-1" id="notifications-icon" :icon="notificationsOutline"></ion-icon>
+                            <ion-icon v-if="notificationsEnabled" class="fs-1" id="notifications-icon" :icon="notificationsOutline"></ion-icon>
+                            <ion-icon v-else class="fs-1" id="notifications-off-icon" :icon="notificationsOffOutline"></ion-icon>
                             <router-link to="/settings"><ion-icon class="fs-1" id="settings-icon" :icon="settings"></ion-icon></router-link>
                         </li>
                     </ul>
