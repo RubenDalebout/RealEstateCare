@@ -36,16 +36,14 @@ export default {
     data() {
         let notifications = true;
         let loggedIn = false;
-            if (localStorage.getItem('user')) {
-                if (JSON.parse(localStorage.getItem('user'))) {
-                    loggedIn = true;
-                    if (JSON.parse(localStorage.getItem('user')).settings) {
-                        if (JSON.parse(localStorage.getItem('user')).settings.notification) {
-                            let notifications = JSON.parse(localStorage.getItem('user')).settings.notification;
-                        }
-                    }
+        if (localStorage.getItem('user')) {
+            if (JSON.parse(localStorage.getItem('user'))) {
+                loggedIn = true;
+                if (JSON.parse(localStorage.getItem('user')).settings) {
+                    notifications = (JSON.parse(localStorage.getItem('user')).settings.notifications) ? true : false;
                 }
             }
+        }
         return {
             loggedIn: loggedIn,
             notificationsEnabled: notifications,

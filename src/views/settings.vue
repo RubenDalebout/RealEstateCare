@@ -61,6 +61,7 @@
 
 <script>
 import axios from 'axios';
+import appHeader from '../components/AppHeader.vue'
 
 export default {
     data() {
@@ -138,6 +139,8 @@ export default {
                             this.toastType = '';
                             this.toastMessage = '';
                             this.showToast = false;
+
+                            this.$router.go()
                         }, 3000);
 
                         const user = jsonData[userIndex];
@@ -186,8 +189,9 @@ export default {
                     return;
                 }
             } catch(error) {
+                console.log(error)
                 this.toastType = 'error';
-                this.toastMessage = (err.code != 'ERR_NETWORK') ? 'There has been an error occurred, contact the developer!' : 'You dont have wifi!';
+                this.toastMessage = (error.code != 'ERR_NETWORK') ? 'There has been an error occurred, contact the developer!' : 'You dont have wifi!';
                 this.showToast = true;
 
                 setTimeout(() => {
