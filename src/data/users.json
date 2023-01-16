@@ -10,5 +10,113 @@
             "notifications": false,
             "sounds": true
         }
+    },
+    {
+        "email": "janedoe@realestatecare.com",
+        "password": "admin456",
+        "id": 2,
+        "firstName": "Jane",
+        "lastName": "Doe",
+        "settings": {
+            "darkTheme": true,
+            "notifications": true,
+            "sounds": false
+        }
+    },
+    {
+        "email": "jimsmith@realestatecare.com",
+        "password": "admin789",
+        "id": 3,
+        "firstName": "Jim",
+        "lastName": "Smith",
+        "settings": {
+            "darkTheme": false,
+            "notifications": true,
+            "sounds": true
+        }
+    },
+    {
+        "email": "jennasmith@realestatecare.com",
+        "password": "admin101",
+        "id": 4,
+        "firstName": "Jenna",
+        "lastName": "Smith",
+        "settings": {
+            "darkTheme": true,
+            "notifications": false,
+            "sounds": false
+        }
+    },
+    {
+        "email": "jacksond@realestatecare.com",
+        "password": "admin112",
+        "id": 5,
+        "firstName": "Jackson",
+        "lastName": "Doe",
+        "settings": {
+            "darkTheme": false,
+            "notifications": true,
+            "sounds": true
+        }
+    },
+    {
+        "email": "emmamiller@realestatecare.com",
+        "password": "admin121",
+        "id": 6,
+        "firstName": "Emma",
+        "lastName": "Miller",
+        "settings": {
+            "darkTheme": true,
+            "notifications": true,
+            "sounds": false
+        }
+    },
+    {
+        "email": "michaelj@realestatecare.com",
+        "password": "admin131",
+        "id": 7,
+        "firstName": "Michael",
+        "lastName": "Johnson",
+        "settings": {
+            "darkTheme": false,
+            "notifications": false,
+            "sounds": true
+        }
+    },
+    {
+        "email": "ashleyt@realestatecare.com",
+        "password": "admin141",
+        "id": 8,
+        "firstName": "Ashley",
+        "lastName": "Taylor",
+        "settings": {
+            "darkTheme": true,
+            "notifications": true,
+            "sounds": false
+        }
+    },
+    {
+        "email": "mattm@realestatecare.com",
+        "password": "admin151",
+        "id": 9,
+        "firstName": "Matt",
+        "lastName": "Moore",
+        "settings": {
+            "darkTheme": false,
+            "notifications": true,
+            "sounds": true
+        }
+    },
+    {
+        "email": "davids@realestatecare.com",
+        "password": "admin161",
+        "id": 10,
+        "firstName": "David",
+        "lastName": "Smith",
+        "settings": {
+            "darkTheme": true,
+            "notifications": false,
+            "sounds": false
+        }
     }
 ]
