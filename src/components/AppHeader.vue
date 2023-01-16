@@ -22,7 +22,7 @@ import { triangle, ellipse, square, notifications, settings, notificationsOutlin
                         <li class="d-flex gap-3">
                             <ion-icon v-if="notificationsEnabled" class="fs-1" id="notifications-icon" :icon="notificationsOutline"></ion-icon>
                             <ion-icon v-else class="fs-1" id="notifications-off-icon" :icon="notificationsOffOutline"></ion-icon>
-                            <router-link to="/settings"><ion-icon class="fs-1" id="settings-icon" :icon="settings"></ion-icon></router-link>
+                            <router-link v-if="loggedIn" to="/settings"><ion-icon class="fs-1" id="settings-icon" :icon="settings"></ion-icon></router-link>
                         </li>
                     </ul>
                 </nav>
@@ -35,8 +35,10 @@ import { triangle, ellipse, square, notifications, settings, notificationsOutlin
 export default {
     data() {
         let notifications = true;
+        let loggedIn = false;
             if (localStorage.getItem('user')) {
                 if (JSON.parse(localStorage.getItem('user'))) {
+                    loggedIn = true;
                     if (JSON.parse(localStorage.getItem('user')).settings) {
                         if (JSON.parse(localStorage.getItem('user')).settings.notification) {
                             let notifications = JSON.parse(localStorage.getItem('user')).settings.notification;
@@ -45,6 +47,7 @@ export default {
                 }
             }
         return {
+            loggedIn: loggedIn,
             notificationsEnabled: notifications,
         }
     },
