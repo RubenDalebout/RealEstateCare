@@ -3,7 +3,7 @@
         <router-link :to="{ name: 'home' }" class="btn btn-danger">Go back</router-link>
         <h1>Address List</h1>
         <div class="list-group">
-            <a href="#" v-for="address in addresses" :key="address.id" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+            <a href="#" v-for="address in addresses" :key="address.id" class="list-group-item list-group-item-action d-flex flex-column justify-content-between align-items-center">
                 {{ address.street }}, {{ address.city }}
                 <button class="btn btn-primary" @click="viewInspections(address.id, true)">View Inspections</button>
             </a>
