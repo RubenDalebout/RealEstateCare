@@ -2,138 +2,212 @@
     "addresses": [
         {
             "id": 1,
-            "street": "123 Main St",
-            "city": "Anytown",
+            "street": "38 Park Ave",
+            "city": "New York",
             "inspections": [
-                {
-                    "id": 101,
-                    "date": "2022-01-01",
-                    "completion": true,
-                    "inspector": 1,
-                    "damage": [
-                        {
-                            "location": "Kitchen",
-                            "new": true,
-                            "type": "willful",
-                            "date": "2022-01-01",
-                            "acuteAction": true,
-                            "description": "Broken window",
-                            "photos": ["https://example.com/damage1.jpg", "https://example.com/damage2.jpg"]
-                        }
-                    ],
-                    "maintenance": [
-                        {
-                            "location": "Living room",
-                            "type": "painting",
-                            "acuteAction": true,
-                            "costEstimate": "0-500",
-                            "photos": ["https://example.com/maintenance1.jpg"]
-                        }
-                    ],
-                    "installations": [
-                        {
-                            "location": "Basement",
-                            "type": "cooling",
-                            "reportedErrors": "Temperature not consistent",
-                            "testProcedure": "https://example.com/cooling-test-procedure.pdf",
-                            "approved": true,
-                            "comments": "System needs maintenance",
-                            "photos": ["https://example.com/installation1.jpg"]
-                        }
-                    ],
-                    "modifications": [],
-                    "cleanlinessScore": 8,
-                    "somethingBroken": true
-                },
                 {
                     "id": 102,
                     "date": "2022-02-01",
                     "completion": false,
-                    "inspector": 1,
+                    "inspector": 2,
                     "damage": [],
                     "maintenance": [],
                     "installations": [],
-                    "modifications": [
-                        {
-                            "existingSituation": "https://example.com/existing-modifications.pdf",
-                            "location": "Bedroom",
-                            "performedBy": "Tenant",
-                            "description": "Installed new light fixtures",
-                            "action": "Accept",
-                            "comments": "Light fixtures need to be wired properly",
-                            "photos": []
-                        }
-                    ],
+                    "modifications": [],
                     "cleanlinessScore": 0,
                     "somethingBroken": false
                 },
                 {
                     "id": 103,
-                    "date": "",
-                    "completion": false,
-                    "inspector": 1,
-                    "damage": [],
+                    "date": "2022-03-01",
+                    "completion": true,
+                    "inspector": 3,
+                    "damage": [
+                        {
+                        "location": "Bedroom",
+                        "new": false,
+                        "type": "accidental",
+                        "date": "2022-03-01",
+                        "acuteAction": false,
+                        "description": "Water damage",
+                        "photos": []
+                        }
+                    ],
                     "maintenance": [],
                     "installations": [],
                     "modifications": [],
-                    "cleanlinessScore": 0,
-                    "somethingBroken": false
-                }
-            ]
-        },
-        {
-            "id": 2,
-            "street": "456 Elm St",
-            "city": "Anytown",
-            "inspections": [
+                    "cleanlinessScore": 6,
+                    "somethingBroken": true
+                },
                 {
                     "id": 104,
-                    "date": "2022-03-01",
+                    "date": "2022-04-01",
                     "completion": true,
-                    "inspector": 1,
-                    "damage": [
-                        {
-                            "location": "Bathroom",
-                            "new": false,
-                            "type": "normal wear and tear",
-                            "date": "2022-03-01",
-                            "acuteAction": false,
-                            "description": "Leaking faucet",
-                            "photos": ["https://example.com/damage3.jpg"]
-                        }
-                    ],
+                    "inspector": 4,
+                    "damage": [],
                     "maintenance": [
                         {
-                            "location": "Bedroom",
-                            "type": "wood rot",
-                            "acuteAction": false,
-                            "costEstimate": "500-1500",
-                            "photos": ["https://example.com/maintenance2.jpg", "https://example.com/maintenance3.jpg"]
+                            "location": "Bathroom",
+                            "type": "plumbing",
+                            "acuteAction": true,
+                            "costEstimate": "1000-2000",
+                            "photos": []
                         }
                     ],
-                    "installations": [
-                        {
-                            "location": "Attic",
-                            "type": "heating",
-                            "reportedErrors": "Thermostat not working",
-                            "testProcedure": "https://example.com/heating-test-procedure.pdf",
-                            "approved": false,
-                            "comments": "Thermostat needs to be replaced",
-                            "photos": ["https://example.com/installation2.jpg"]
-                        }
-                    ],
+                    "installations": [],
                     "modifications": [],
                     "cleanlinessScore": 9,
                     "somethingBroken": false
                 },
                 {
                     "id": 105,
-                    "date": "",
+                    "date": "2022-05-01",
+                    "completion": false,
+                    "inspector": 5,
+                    "damage": [],
+                    "maintenance": [],
+                    "installations": [
+                        {
+                            "location": "Attic",
+                            "type": "insulation",
+                            "reportedErrors": "",
+                            "testProcedure": "",
+                            "approved": false,
+                            "comments": "",
+                            "photos": []
+                        }
+                    ],
+                    "modifications": [],
+                    "cleanlinessScore": 0,
+                    "somethingBroken": false
+                },
+                {
+                    "id": 106,
+                    "date": "2022-06-01",
+                    "completion": true,
+                    "inspector": 6,
+                    "damage": [],
+                    "maintenance": [],
+                    "installations": [],
+                    "modifications": [
+                        {
+                            "location": "Garage",
+                            "type": "electrical",
+                            "date": "2022-06-01",
+                            "description": "Rewiring",
+                            "photos": [
+                                "https://example.com/modification1.jpg",
+                                "https://example.com/modification2.jpg"
+                            ]
+                        }
+                    ],
+                    "cleanlinessScore": 10,
+                    "somethingBroken": false
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "street": "5 Fifth Ave",
+            "city": "New York",
+            "inspections": [
+                {
+                    "id": 107,
+                    "date": "2022-07-01",
+                    "completion": true,
+                    "inspector": 7,
+                    "damage": [
+                        {
+                            "location": "Lawn",
+                            "new": true,
+                            "type": "natural",
+                            "date": "2022-07-01",
+                            "acuteAction": true,
+                            "description": "Tree fall",
+                            "photos": [
+                                "https://example.com/damage1.jpg",
+                                "https://example.com/damage2.jpg"
+                            ]
+                        }
+                    ],
+                    "maintenance": [],
+                    "installations": [],
+                    "modifications": [],
+                    "cleanlinessScore": 7,
+                    "somethingBroken": true
+                },      
+                {
+                    "id": 108,
+                    "date": "2022-08-01",
+                    "completion": false,
+                    "inspector": 8,
+                    "damage": [],
+                    "maintenance": [],
+                    "installations": [],
+                    "modifications": [],
+                    "cleanlinessScore": 0,
+                    "somethingBroken": false
+                },
+                {
+                    "id": 109,
+                    "date": "2022-09-01",
+                    "completion": true,
+                    "inspector": 9,
+                    "damage": [
+                        {
+                            "location": "Balcony",
+                            "new": false,
+                            "type": "vandalism",
+                            "date": "2022-09-01",
+                            "acuteAction": false,
+                            "description": "Broken railing",
+                            "photos": []
+                        }
+                    ],
+                    "maintenance": [],
+                    "installations": [],
+                    "modifications": [],
+                    "cleanlinessScore": 5,
+                    "somethingBroken": true
+                },
+                {
+                    "id": 110,
+                    "date": "2022-10-01",
+                    "completion": true,
+                    "inspector": 10,
+                    "damage": [],
+                    "maintenance": [
+                        {
+                            "location": "Roof",
+                            "type": "repairs",
+                            "acuteAction": true,
+                            "costEstimate": "500-1000",
+                            "photos": []
+                        }
+                    ],
+                    "installations": [],
+                    "modifications": [],
+                    "cleanlinessScore": 8,
+                    "somethingBroken": false
+                },
+                {
+                    "id": 111,
+                    "date": "2022-11-01",
                     "completion": false,
                     "inspector": 1,
                     "damage": [],
                     "maintenance": [],
-                    "installations": [],
+                    "installations": [
+                        {
+                            "location": "Garden",
+                            "type": "irrigation",
+                            "reportedErrors": "",
+                            "testProcedure": "",
+                            "approved": false,
+                            "comments": "",
+                            "photos": []
+                        }
+                    ],
                     "modifications": [],
                     "cleanlinessScore": 0,
                     "somethingBroken": false
@@ -142,14 +216,37 @@
         },
         {
             "id": 3,
-            "street": "789 Oak St",
-            "city": "Anytown",
+            "street": "39a Broadway",
+            "city": "New York",
             "inspections": [
                 {
-                    "id": 106,
-                    "date": "",
+                    "id": 112,
+                    "date": "2022-12-01",
+                    "completion": true,
+                    "inspector": 2,
+                    "damage": [
+                      {
+                        "location": "Driveway",
+                        "new": true,
+                        "type": "vehicular",
+                        "date": "2022-12-01",
+                        "acuteAction": true,
+                        "description": "Oil leak",
+                        "photos": [
+                            "https://example.com/damage1.jpg",
+                            "https://example.com/damage2.jpg"
+                        ]
+                      }
+                    ],
+                    "maintenance": [],
+                    "installations": [],
+                    "modifications": []
+                },
+                {
+                    "id": 113,
+                    "date": "2022-12-01",
                     "completion": false,
-                    "inspector": 1,
+                    "inspector": 3,
                     "damage": [],
                     "maintenance": [],
                     "installations": [],
@@ -158,8 +255,1376 @@
                     "somethingBroken": false
                 },
                 {
-                    "id": 107,
-                    "date": "",
+                    "id": 114,
+                    "date": "2022-12-01",
+                    "completion": true,
+                    "inspector": 4,
+                    "damage": [
+                        {
+                            "location": "Porch",
+                            "new": false,
+                            "type": "accidental",
+                            "date": "2022-12-01",
+                            "acuteAction": false,
+                            "description": "Broken step",
+                            "photos": []
+                        }
+                    ],
+                    "maintenance": [],
+                    "installations": [],
+                    "modifications": [],
+                    "cleanlinessScore": 5,
+                    "somethingBroken": true
+                },
+                {
+                    "id": 115,
+                    "date": "2022-12-01",
+                    "completion": true,
+                    "inspector": 5,
+                    "damage": [],
+                    "maintenance": [
+                        {
+                            "location": "Pool",
+                            "type": "pool cleaning",
+                            "acuteAction": true,
+                            "costEstimate": "1000-3000",
+                            "photos": []
+                        }
+                    ],
+                    "installations": [],
+                    "modifications": [],
+                    "cleanlinessScore": 8,
+                    "somethingBroken": false
+                },
+                {
+                    "id": 116,
+                    "date": "2022-12-01",
+                    "completion": false,
+                    "inspector": 6,
+                    "damage": [],
+                    "maintenance": [],
+                    "installations": [
+                        {
+                            "location": "Shed",
+                            "type": "electrical",
+                            "reportedErrors": "",
+                            "testProcedure": "",
+                            "approved": false,
+                            "comments": "",
+                            "photos": []
+                        }
+                    ],
+                    "modifications": [],
+                    "cleanlinessScore": 0,
+                    "somethingBroken": false
+                }          
+            ]
+        },
+        {
+            "id": 4,
+            "street": "3 Lexington Ave",
+            "city": "New York",
+            "inspections": [
+                {
+                    "id": 121,
+                    "date": "2022-12-03",
+                    "completion": true,
+                    "inspector": 1,
+                    "damage": [
+                        {
+                            "location": "Living Room",
+                            "new": true,
+                            "type": "fire",
+                            "date": "2022-12-03",
+                            "acuteAction": true,
+                            "description": "Burn marks",
+                            "photos": [
+                                "https://example.com/damage1.jpg",
+                                "https://example.com/damage2.jpg"
+                            ]
+                        }
+                    ],
+                    "maintenance": [],
+                    "installations": [],
+                    "modifications": [],
+                    "cleanlinessScore": 7,
+                    "somethingBroken": true
+                },
+                {
+                    "id": 122,
+                    "date": "2022-12-03",
+                    "completion": false,
+                    "inspector": 2,
+                    "damage": [],
+                    "maintenance": [],
+                    "installations": [],
+                    "modifications": [],
+                    "cleanlinessScore": 0,
+                    "somethingBroken": false
+                },
+                {
+                    "id": 123,
+                    "date": "2022-12-03",
+                    "completion": true,
+                    "inspector": 3,
+                    "damage": [
+                        {
+                            "location": "Bathroom",
+                            "new": false,
+                            "type": "water",
+                            "date": "2022-12-03",
+                            "acuteAction": false,
+                            "description": "Mold",
+                            "photos": []
+                        }
+                    ],
+                    "maintenance": [],
+                    "installations": [],
+                    "modifications": [],
+                    "cleanlinessScore": 5,
+                    "somethingBroken": true
+                },
+                {
+                    "id": 124,
+                    "date": "2022-12-03",
+                    "completion": true,
+                    "inspector": 4,
+                    "damage": [],
+                    "maintenance": [
+                        {
+                            "location": "Bedroom",
+                            "type": "carpet cleaning",
+                            "acuteAction": true,
+                            "costEstimate": "1000-3000",
+                            "photos": []
+                        }
+                    ],
+                    "installations": [],
+                    "modifications": [],
+                    "cleanlinessScore": 8,
+                    "somethingBroken": false
+                },
+                {
+                    "id": 125,
+                    "date": "2022-12-03",
+                    "completion": false,
+                    "inspector": 5,
+                    "damage": [],
+                    "maintenance": [],
+                    "installations": [
+                        {
+                            "location": "Attic",
+                            "type": "insulation",
+                            "reportedErrors": "",
+                            "testProcedure": "",
+                            "approved": false,
+                            "comments": "",
+                            "photos": []
+                        }
+                    ],
+                    "modifications": [],
+                    "cleanlinessScore": 0,
+                    "somethingBroken": false
+                }          
+            ]
+        },
+        {
+            "id": 5,
+            "street": "89 Madison Ave",
+            "city": "New York",
+            "inspections": [
+                {
+                    "id": 126,
+                    "date": "2022-12-04",
+                    "completion": true,
+                    "inspector": 6,
+                    "damage": [
+                      {
+                        "location": "Garage",
+                        "new": true,
+                        "type": "break-in",
+                        "date": "2022-12-04",
+                        "acuteAction": true,
+                        "description": "Broken lock",
+                        "photos": [
+                          "https://example.com/damage1.jpg",
+                          "https://example.com/damage2.jpg"
+                        ]
+                      }
+                    ],
+                    "maintenance": [],
+                    "installations": [],
+                    "modifications": []
+                  },
+                  {
+                    "id": 127,
+                    "date": "2022-12-04",
+                    "completion": false,
+                    "inspector": 7,
+                    "damage": [],
+                    "maintenance": [],
+                    "installations": [],
+                    "modifications": [],
+                    "cleanlinessScore": 0,
+                    "somethingBroken": false
+                  },
+                  {
+                    "id": 128,
+                    "date": "2022-12-04",
+                    "completion": true,
+                    "inspector": 8,
+                    "damage": [
+                      {
+                        "location": "Staircase",
+                        "new": false,
+                        "type": "wear and tear",
+                        "date": "2022-12-04",
+                        "acuteAction": false,
+                        "description": "Loose handrail",
+                        "photos": []
+                      }
+                    ],
+                    "maintenance": [],
+                    "installations": [],
+                    "modifications": [],
+                    "cleanlinessScore": 5,
+                    "somethingBroken": true
+                  },
+                  {
+                    "id": 129,
+                    "date": "2022-12-04",
+                    "completion": true,
+                    "inspector": 9,
+                    "damage": [],
+                    "maintenance": [
+                      {
+                        "location": "Lawn",
+                        "type": "lawn mowing",
+                        "acuteAction": true,
+                        "costEstimate": "500-1000",
+                        "photos": []
+                      }
+                    ],
+                    "installations": [],
+                    "modifications": [],
+                    "cleanlinessScore": 8,
+                    "somethingBroken": false
+                  },
+                  {
+                    "id": 130,
+                    "date": "2022-12-04",
+                    "completion": false,
+                    "inspector": 10,
+                    "damage": [],
+                    "maintenance": [],
+                    "installations": [
+                      {
+                        "location": "Office",
+                        "type": "telecom",
+                        "reportedErrors": "",
+                        "testProcedure": "",
+                        "approved": false,
+                        "comments": "",
+                        "photos": []
+                      }
+                    ],
+                    "modifications": [],
+                    "cleanlinessScore": 0,
+                    "somethingBroken": false
+                  }
+            ]
+        },
+        {
+            "id": 6,
+            "street": "43 Union Square W",
+            "city": "New York",
+            "inspections": [
+                {
+                    "id": 131,
+                    "date": "2022-12-05",
+                    "completion": true,
+                    "inspector": 1,
+                    "damage": [
+                      {
+                        "location": "Kitchen",
+                        "new": true,
+                        "type": "willful",
+                        "date": "2022-12-05",
+                        "acuteAction": true,
+                        "description": "Broken window",
+                        "photos": [
+                          "https://example.com/damage1.jpg",
+                          "https://example.com/damage2.jpg"
+                        ]
+                      }
+                    ],
+                    "maintenance": [],
+                    "installations": [],
+                    "modifications": []
+                  },
+                  {
+                    "id": 132,
+                    "date": "2022-12-05",
+                    "completion": false,
+                    "inspector": 2,
+                    "damage": [],
+                    "maintenance": [],
+                    "installations": [],
+                    "modifications": [],
+                    "cleanlinessScore": 0,
+                    "somethingBroken": false
+                  },
+                  {
+                    "id": 133,
+                    "date": "2022-12-05",
+                    "completion": true,
+                    "inspector": 3,
+                    "damage": [
+                      {
+                        "location": "Living Room",
+                        "new": false,
+                        "type": "vandalism",
+                        "date": "2022-12-05",
+                        "acuteAction": false,
+                        "description": "Broken furniture",
+                        "photos": []
+                      }
+                    ],
+                    "maintenance": [],
+                    "installations": [],
+                    "modifications": [],
+                    "cleanlinessScore": 5,
+                    "somethingBroken": true
+                  },
+                  {
+                    "id": 134,
+                    "date": "2022-12-05",
+                    "completion": true,
+                    "inspector": 4,
+                    "damage": [],
+                    "maintenance": [
+                      {
+                        "location": "Bathroom",
+                        "type": "pressure washing",
+                        "acuteAction": true,
+                        "costEstimate": "1000-3000",
+                        "photos": []
+                      }
+                    ],
+                    "installations": [],
+                    "modifications": [],
+                    "cleanlinessScore": 8,
+                    "somethingBroken": false
+                  },
+                  {
+                    "id": 135,
+                    "date": "2022-12-05",
+                    "completion": false,
+                    "inspector": 5,
+                    "damage": [],
+                    "maintenance": [],
+                    "installations": [
+                      {
+                        "location": "Basement",
+                        "type": "cooling",
+                        "reportedErrors": "Temperature not consistent",
+                        "testProcedure": "https://example.com/cooling-test-procedure.pdf",
+                        "approved": false,
+                        "comments": "System needs maintenance",
+                        "photos": []
+                      }
+                    ],
+                    "modifications": [],
+                    "cleanlinessScore": 0,
+                    "somethingBroken": false
+                  }          
+            ]
+        },
+        {
+            "id": 7,
+            "street": "23 Broadway",
+            "city": "New York",
+            "inspections": [
+                {
+                    "id": 136,
+                    "date": "2022-12-06",
+                    "completion": true,
+                    "inspector": 6,
+                    "damage": [
+                      {
+                        "location": "Bedroom",
+                        "new": true,
+                        "type": "flood",
+                        "date": "2022-12-06",
+                        "acuteAction": true,
+                        "description": "Water damage",
+                        "photos": [
+                          "https://example.com/damage1.jpg",
+                          "https://example.com/damage2.jpg"
+                        ]
+                      }
+                    ],
+                    "maintenance": [],
+                    "installations": [],
+                    "modifications": []
+                  },
+                  {
+                    "id": 137,
+                    "date": "2022-12-06",
+                    "completion": false,
+                    "inspector": 7,
+                    "damage": [],
+                    "maintenance": [],
+                    "installations": [],
+                    "modifications": [],
+                    "cleanlinessScore": 0,
+                    "somethingBroken": false
+                  },
+                  {
+                    "id": 138,
+                    "date": "2022-12-06",
+                    "completion": true,
+                    "inspector": 8,
+                    "damage": [
+                      {
+                        "location": "Dining Room",
+                        "new": false,
+                        "type": "structural",
+                        "date": "2022-12-06",
+                        "acuteAction": false,
+                        "description": "Cracked wall",
+                        "photos": []
+                      }
+                    ],
+                    "maintenance": [],
+                    "installations": [],
+                    "modifications": [],
+                    "cleanlinessScore": 5,
+                    "somethingBroken": true
+                  },
+                  {
+                    "id": 139,
+                    "date": "2022-12-06",
+                    "completion": true,
+                    "inspector": 9,
+                    "damage": [],
+                    "maintenance": [
+                      {
+                        "location": "Laundry Room",
+                        "type": "appliance repair",
+                        "acuteAction": true,
+                        "costEstimate": "500-1000",
+                        "photos": []
+                      }
+                    ],
+                    "installations": [],
+                    "modifications": [],
+                    "cleanlinessScore": 8,
+                    "somethingBroken": false
+                  },
+                  {
+                    "id": 140,
+                    "date": "2022-12-06",
+                    "completion": false,
+                    "inspector": 10,
+                    "damage": [],
+                    "maintenance": [],
+                    "installations": [
+                      {
+                        "location": "Attic",
+                        "type": "insulation",
+                        "reportedErrors": "",
+                        "testProcedure": "",
+                        "approved": false,
+                        "comments": "",
+                        "photos": []
+                      }
+                    ],
+                    "modifications": [],
+                    "cleanlinessScore": 0,
+                    "somethingBroken": false
+                  }       
+            ]
+        },
+        {
+            "id": 8,
+            "street": "119 Wall St",
+            "city": "New York",
+            "inspections": [
+                {
+                    "id": 141,
+                    "date": "2022-12-07",
+                    "completion": true,
+                    "inspector": 1,
+                    "damage": [
+                      {
+                        "location": "Kitchen",
+                        "new": true,
+                        "type": "willful",
+                        "date": "2022-12-07",
+                        "acuteAction": true,
+                        "description": "Broken window",
+                        "photos": [
+                          "https://example.com/damage1.jpg",
+                          "https://example.com/damage2.jpg"
+                        ]
+                      }
+                    ],
+                    "maintenance": [],
+                    "installations": [],
+                    "modifications": []
+                  },
+                  {
+                    "id": 142,
+                    "date": "2022-12-07",
+                    "completion": false,
+                    "inspector": 2,
+                    "damage": [],
+                    "maintenance": [],
+                    "installations": [],
+                    "modifications": [],
+                    "cleanlinessScore": 0,
+                    "somethingBroken": false
+                  },
+                  {
+                    "id": 143,
+                    "date": "2022-12-07",
+                    "completion": true,
+                    "inspector": 3,
+                    "damage": [
+                      {
+                        "location": "Living Room",
+                        "new": false,
+                        "type": "vandalism",
+                        "date": "2022-12-07",
+                        "acuteAction": false,
+                        "description": "Broken furniture",
+                        "photos": []
+                      }
+                    ],
+                    "maintenance": [],
+                    "installations": [],
+                    "modifications": [],
+                    "cleanlinessScore": 5,
+                    "somethingBroken": true
+                  },
+                  {
+                    "id": 144,
+                    "date": "2022-12-07",
+                    "completion": true,
+                    "inspector": 4,
+                    "damage": [],
+                    "maintenance": [
+                      {
+                        "location": "Bathroom",
+                        "type": "pressure washing",
+                        "acuteAction": true,
+                        "costEstimate": "1000-3000",
+                        "photos": []
+                      }
+                    ],
+                    "installations": [],
+                    "modifications": [],
+                    "cleanlinessScore": 8,
+                    "somethingBroken": false
+                  },
+                  {
+                    "id": 145,
+                    "date": "2022-12-07",
+                    "completion": false,
+                    "inspector": 5,
+                    "damage": [],
+                    "maintenance": [],
+                    "installations": [
+                      {
+                        "location": "Basement",
+                        "type": "cooling",
+                        "reportedErrors": "Temperature not consistent",
+                        "testProcedure": "https://example.com/cooling-test-procedure.pdf",
+                        "approved": false,
+                        "comments": "System needs maintenance",
+                        "photos": []
+                      }
+                    ],
+                    "modifications": [],
+                    "cleanlinessScore": 0,
+                    "somethingBroken": false
+                  }                   
+            ]
+        },
+        {
+            "id": 9,
+            "street": "48c Amsterdam Ave",
+            "city": "New York",
+            "inspections": [
+                {
+                    "id": 146,
+                    "date": "2022-12-08",
+                    "completion": true,
+                    "inspector": 6,
+                    "damage": [
+                      {
+                        "location": "Bedroom",
+                        "new": true,
+                        "type": "flood",
+                        "date": "2022-12-08",
+                        "acuteAction": true,
+                        "description": "Water damage",
+                        "photos": [
+                          "https://example.com/damage1.jpg",
+                          "https://example.com/damage2.jpg"
+                        ]
+                      }
+                    ],
+                    "maintenance": [],
+                    "installations": [],
+                    "modifications": []
+                  },
+                  {
+                    "id": 147,
+                    "date": "2022-12-08",
+                    "completion": false,
+                    "inspector": 7,
+                    "damage": [],
+                    "maintenance": [],
+                    "installations": [],
+                    "modifications": [],
+                    "cleanlinessScore": 0,
+                    "somethingBroken": false
+                  },
+                  {
+                    "id": 148,
+                    "date": "2022-12-08",
+                    "completion": true,
+                    "inspector": 8,
+                    "damage": [
+                      {
+                        "location": "Dining Room",
+                        "new": false,
+                        "type": "structural",
+                        "date": "2022-12-08",
+                        "acuteAction": false,
+                        "description": "Cracked wall",
+                        "photos": []
+                      }
+                    ],
+                    "maintenance": [],
+                    "installations": [],
+                    "modifications": [],
+                    "cleanlinessScore": 5,
+                    "somethingBroken": true
+                  },
+                  {
+                    "id": 149,
+                    "date": "2022-12-08",
+                    "completion": true,
+                    "inspector": 9,
+                    "damage": [],
+                    "maintenance": [
+                      {
+                        "location": "Laundry Room",
+                        "type": "appliance repair",
+                        "acuteAction": true,
+                        "costEstimate": "500-1000",
+                        "photos": []
+                      }
+                    ],
+                    "installations": [],
+                    "modifications": [],
+                    "cleanlinessScore": 8,
+                    "somethingBroken": false
+                  },
+                  {
+                    "id": 150,
+                    "date": "2022-12-08",
+                    "completion": false,
+                    "inspector": 10,
+                    "damage": [],
+                    "maintenance": [],
+                    "installations": [
+                      {
+                        "location": "Attic",
+                        "type": "insulation",
+                        "reportedErrors": "",
+                        "testProcedure": "",
+                        "approved": false,
+                        "comments": "",
+                        "photos": []
+                      }
+                    ],
+                    "modifications": [],
+                    "cleanlinessScore": 0,
+                    "somethingBroken": false
+                  }          
+            ]
+        },
+        {
+            "id": 10,
+            "street": "39b Columbus Ave",
+            "city": "New York",
+            "inspections": [
+                {
+                    "id": 151,
+                    "date": "2022-12-09",
+                    "completion": true,
+                    "inspector": 1,
+                    "damage": [
+                      {
+                        "location": "Kitchen",
+                        "new": true,
+                        "type": "willful",
+                        "date": "2022-12-09",
+                        "acuteAction": true,
+                        "description": "Broken window",
+                        "photos": [
+                          "https://example.com/damage1.jpg",
+                          "https://example.com/damage2.jpg"
+                        ]
+                      }
+                    ],
+                    "maintenance": [],
+                    "installations": [],
+                    "modifications": []
+                  },
+                  {
+                    "id": 152,
+                    "date": "2022-12-09",
+                    "completion": false,
+                    "inspector": 2,
+                    "damage": [],
+                    "maintenance": [],
+                    "installations": [],
+                    "modifications": [],
+                    "cleanlinessScore": 0,
+                    "somethingBroken": false
+                  },
+                  {
+                    "id": 153,
+                    "date": "2022-12-09",
+                    "completion": true,
+                    "inspector": 3,
+                    "damage": [
+                      {
+                        "location": "Living Room",
+                        "new": false,
+                        "type": "vandalism",
+                        "date": "2022-12-09",
+                        "acuteAction": false,
+                        "description": "Broken furniture",
+                        "photos": []
+                      }
+                    ],
+                    "maintenance": [],
+                    "installations": [],
+                    "modifications": [],
+                    "cleanlinessScore": 5,
+                    "somethingBroken": true
+                  },
+                  {
+                    "id": 154,
+                    "date": "2022-12-09",
+                    "completion": true,
+                    "inspector": 4,
+                    "damage": [],
+                    "maintenance": [
+                      {
+                        "location": "Bathroom",
+                        "type": "pressure washing",
+                        "acuteAction": true,
+                        "costEstimate": "1000-3000",
+                        "photos": []
+                      }
+                    ],
+                    "installations": [],
+                    "modifications": [],
+                    "cleanlinessScore": 8,
+                    "somethingBroken": false
+                  },
+                  {
+                    "id": 154,
+                    "date": "2022-12-09",
+                    "completion": false,
+                    "inspector": 5,
+                    "damage": [],
+                    "maintenance": [],
+                    "installations": [
+                      {
+                        "location": "Basement",
+                        "type": "cooling",
+                        "reportedErrors": "Temperature not consistent",
+                        "testProcedure": "https://example.com/cooling-test-procedure.pdf",
+                        "approved": false,
+                        "comments": "System needs maintenance",
+                        "photos": []
+                      }
+                    ],
+                    "modifications": [],
+                    "cleanlinessScore": 0,
+                    "somethingBroken": false
+                  }                    
+            ]
+        },
+        {
+            "id": 11,
+            "street": "124 West End Ave",
+            "city": "New York",
+            "inspections": [
+                {
+                    "id": 155,
+                    "date": "2022-12-10",
+                    "completion": true,
+                    "inspector": 6,
+                    "damage": [
+                      {
+                        "location": "Bedroom",
+                        "new": true,
+                        "type": "flood",
+                        "date": "2022-12-10",
+                        "acuteAction": true,
+                        "description": "Water damage",
+                        "photos": [
+                          "https://example.com/damage1.jpg",
+                          "https://example.com/damage2.jpg"
+                        ]
+                      }
+                    ],
+                    "maintenance": [],
+                    "installations": [],
+                    "modifications": []
+                  },
+                  {
+                    "id": 156,
+                    "date": "2022-12-10",
+                    "completion": false,
+                    "inspector": 7,
+                    "damage": [],
+                    "maintenance": [],
+                    "installations": [],
+                    "modifications": [],
+                    "cleanlinessScore": 0,
+                    "somethingBroken": false
+                  },
+                  {
+                    "id": 157,
+                    "date": "2022-12-10",
+                    "completion": true,
+                    "inspector": 8,
+                    "damage": [
+                      {
+                        "location": "Dining Room",
+                        "new": false,
+                        "type": "structural",
+                        "date": "2022-12-10",
+                        "acuteAction": false,
+                        "description": "Cracked wall",
+                        "photos": []
+                      }
+                    ],
+                    "maintenance": [],
+                    "installations": [],
+                    "modifications": [],
+                    "cleanlinessScore": 5,
+                    "somethingBroken": true
+                  },
+                  {
+                    "id": 158,
+                    "date": "2022-12-10",
+                    "completion": true,
+                    "inspector": 9,
+                    "damage": [],
+                    "maintenance": [
+                      {
+                        "location": "Laundry Room",
+                        "type": "appliance repair",
+                        "acuteAction": true,
+                        "costEstimate": "500-1000",
+                        "photos": []
+                      }
+                    ],
+                    "installations": [],
+                    "modifications": [],
+                    "cleanlinessScore": 8,
+                    "somethingBroken": false
+                  },
+                  {
+                    "id": 159,
+                    "date": "2022-12-10",
+                    "completion": false,
+                    "inspector": 10,
+                    "damage": [],
+                    "maintenance": [],
+                    "installations": [
+                      {
+                        "location": "Attic",
+                        "type": "insulation",
+                        "reportedErrors": "",
+                        "testProcedure": "",
+                        "approved": false,
+                        "comments": "",
+                        "photos": []
+                      }
+                    ],
+                    "modifications": [],
+                    "cleanlinessScore": 0,
+                    "somethingBroken": false
+                  }         
+            ]
+        },
+        {
+            "id": 12,
+            "street": "448 Central Park S",
+            "city": "New York",
+            "inspections": [
+                {
+                    "id": 160,
+                    "date": "2022-12-11",
+                    "completion": true,
+                    "inspector": 1,
+                    "damage": [
+                      {
+                        "location": "Kitchen",
+                        "new": true,
+                        "type": "willful",
+                        "date": "2022-12-11",
+                        "acuteAction": true,
+                        "description": "Broken window",
+                        "photos": [
+                          "https://example.com/damage1.jpg",
+                          "https://example.com/damage2.jpg"
+                        ]
+                      }
+                    ],
+                    "maintenance": [],
+                    "installations": [],
+                    "modifications": []
+                  },
+                  {
+                    "id": 161,
+                    "date": "2022-12-11",
+                    "completion": false,
+                    "inspector": 2,
+                    "damage": [],
+                    "maintenance": [],
+                    "installations": [],
+                    "modifications": [],
+                    "cleanlinessScore": 0,
+                    "somethingBroken": false
+                  },
+                  {
+                    "id": 162,
+                    "date": "2022-12-11",
+                    "completion": true,
+                    "inspector": 3,
+                    "damage": [
+                      {
+                        "location": "Living Room",
+                        "new": false,
+                        "type": "vandalism",
+                        "date": "2022-12-11",
+                        "acuteAction": false,
+                        "description": "Broken furniture",
+                        "photos": []
+                      }
+                    ],
+                    "maintenance": [],
+                    "installations": [],
+                    "modifications": [],
+                    "cleanlinessScore": 5,
+                    "somethingBroken": true
+                  },
+                  {
+                    "id": 163,
+                    "date": "2022-12-11",
+                    "completion": true,
+                    "inspector": 4,
+                    "damage": [],
+                    "maintenance": [
+                      {
+                        "location": "Bathroom",
+                        "type": "pressure washing",
+                        "acuteAction": true,
+                        "costEstimate": "1000-3000",
+                        "photos": []
+                      }
+                    ],
+                    "installations": [],
+                    "modifications": [],
+                    "cleanlinessScore": 8,
+                    "somethingBroken": false
+                  },
+                  {
+                    "id": 164,
+                    "date": "2022-12-11",
+                    "completion": false,
+                    "inspector": 5,
+                    "damage": [],
+                    "maintenance": [],
+                    "installations": [
+                      {
+                        "location": "Basement",
+                        "type": "cooling",
+                        "reportedErrors": "Temperature not consistent",
+                        "testProcedure": "https://example.com/cooling-test-procedure.pdf",
+                        "approved": false,
+                        "comments": "System needs maintenance",
+                        "photos": []
+                      }
+                    ],
+                    "modifications": [],
+                    "cleanlinessScore": 0,
+                    "somethingBroken": false
+                  }          
+            ]
+        },
+        {
+            "id": 13,
+            "street": "1a St Nicholas Ave",
+            "city": "New York",
+            "inspections": [
+                {
+                    "id": 165,
+                    "date": "2022-12-12",
+                    "completion": true,
+                    "inspector": 6,
+                    "damage": [
+                      {
+                        "location": "Bedroom",
+                        "new": true,
+                        "type": "flood",
+                        "date": "2022-12-12",
+                        "acuteAction": true,
+                        "description": "Water damage",
+                        "photos": [
+                          "https://example.com/damage1.jpg",
+                          "https://example.com/damage2.jpg"
+                        ]
+                      }
+                    ],
+                    "maintenance": [],
+                    "installations": [],
+                    "modifications": []
+                  },
+                  {
+                    "id": 166,
+                    "date": "2022-12-12",
+                    "completion": false,
+                    "inspector": 7,
+                    "damage": [],
+                    "maintenance": [],
+                    "installations": [],
+                    "modifications": [],
+                    "cleanlinessScore": 0,
+                    "somethingBroken": false
+                  },
+                  {
+                    "id": 167,
+                    "date": "2022-12-12",
+                    "completion": true,
+                    "inspector": 8,
+                    "damage": [
+                      {
+                        "location": "Dining Room",
+                        "new": false,
+                        "type": "structural",
+                        "date": "2022-12-12",
+                        "acuteAction": false,
+                        "description": "Cracked wall",
+                        "photos": []
+                      }
+                    ],
+                    "maintenance": [],
+                    "installations": [],
+                    "modifications": [],
+                    "cleanlinessScore": 5,
+                    "somethingBroken": true
+                  },
+                  {
+                    "id": 168,
+                    "date": "2022-12-12",
+                    "completion": true,
+                    "inspector": 9,
+                    "damage": [],
+                    "maintenance": [
+                      {
+                        "location": "Laundry Room",
+                        "type": "appliance repair",
+                        "acuteAction": true,
+                        "costEstimate": "500-1000",
+                        "photos": []
+                      }
+                    ],
+                    "installations": [],
+                    "modifications": [],
+                    "cleanlinessScore": 8,
+                    "somethingBroken": false
+                  },
+                  {
+                    "id": 169,
+                    "date": "2022-12-12",
+                    "completion": false,
+                    "inspector": 10,
+                    "damage": [],
+                    "maintenance": [],
+                    "installations": [
+                      {
+                        "location": "Attic",
+                        "type": "insulation",
+                        "reportedErrors": "",
+                        "testProcedure": "",
+                        "approved": false,
+                        "comments": "",
+                        "photos": []
+                      }
+                    ],
+                    "modifications": [],
+                    "cleanlinessScore": 0,
+                    "somethingBroken": false
+                  }          
+            ]
+        },
+        {
+            "id": 14,
+            "street": "42 E Houston St",
+            "city": "New York",
+            "inspections": [
+                {
+                    "id": 170,
+                    "date": "2022-12-13",
+                    "completion": true,
+                    "inspector": 1,
+                    "damage": [
+                      {
+                        "location": "Kitchen",
+                        "new": true,
+                        "type": "willful",
+                        "date": "2022-12-13",
+                        "acuteAction": true,
+                        "description": "Broken window",
+                        "photos": [
+                          "https://example.com/damage1.jpg",
+                          "https://example.com/damage2.jpg"
+                        ]
+                      }
+                    ],
+                    "maintenance": [],
+                    "installations": [],
+                    "modifications": []
+                  },
+                  {
+                    "id": 171,
+                    "date": "2022-12-13",
+                    "completion": false,
+                    "inspector": 2,
+                    "damage": [],
+                    "maintenance": [],
+                    "installations": [],
+                    "modifications": [],
+                    "cleanlinessScore": 0,
+                    "somethingBroken": false
+                  },
+                  {
+                    "id": 172,
+                    "date": "2022-12-13",
+                    "completion": true,
+                    "inspector": 3,
+                    "damage": [
+                      {
+                        "location": "Living Room",
+                        "new": false,
+                        "type": "vandalism",
+                        "date": "2022-12-13",
+                        "acuteAction": false,
+                        "description": "Broken furniture",
+                        "photos": []
+                      }
+                    ],
+                    "maintenance": [],
+                    "installations": [],
+                    "modifications": [],
+                    "cleanlinessScore": 5,
+                    "somethingBroken": true
+                  },
+                  {
+                    "id": 173,
+                    "date": "2022-12-13",
+                    "completion": true,
+                    "inspector": 4,
+                    "damage": [],
+                    "maintenance": [
+                      {
+                        "location": "Bathroom",
+                        "type": "pressure washing",
+                        "acuteAction": true,
+                        "costEstimate": "1000-3000",
+                        "photos": []
+                      }
+                    ],
+                    "installations": [],
+                    "modifications": [],
+                    "cleanlinessScore": 8,
+                    "somethingBroken": false
+                  },
+                  {
+                    "id": 174,
+                    "date": "2022-12-13",
+                    "completion": false,
+                    "inspector": 5,
+                    "damage": [],
+                    "maintenance": [],
+                    "installations": [
+                      {
+                        "location": "Basement",
+                        "type": "cooling",
+                        "reportedErrors": "Temperature not consistent",
+                        "testProcedure": "https://example.com/cooling-test-procedure.pdf",
+                        "approved": false,
+                        "comments": "System needs maintenance",
+                        "photos": []
+                      }
+                    ],
+                    "modifications": [],
+                    "cleanlinessScore": 0,
+                    "somethingBroken": false
+                  }          
+            ]
+        },
+        {
+            "id": 15,
+            "street": "86 W 52nd St",
+            "city": "New York",
+            "inspections": [
+                {
+                    "id": 175,
+                    "date": "2022-12-14",
+                    "completion": true,
+                    "inspector": 6,
+                    "damage": [
+                      {
+                        "location": "Bedroom",
+                        "new": true,
+                        "type": "flood",
+                        "date": "2022-12-14",
+                        "acuteAction": true,
+                        "description": "Water damage",
+                        "photos": [
+                          "https://example.com/damage1.jpg",
+                          "https://example.com/damage2.jpg"
+                        ]
+                      }
+                    ],
+                    "maintenance": [],
+                    "installations": [],
+                    "modifications": []
+                  },
+                  {
+                    "id": 176,
+                    "date": "2022-12-14",
+                    "completion": false,
+                    "inspector": 7,
+                    "damage": [],
+                    "maintenance": [],
+                    "installations": [],
+                    "modifications": [],
+                    "cleanlinessScore": 0,
+                    "somethingBroken": false
+                  },
+                  {
+                    "id": 177,
+                    "date": "2022-12-14",
+                    "completion": true,
+                    "inspector": 8,
+                    "damage": [
+                      {
+                        "location": "Dining Room",
+                        "new": false,
+                        "type": "structural",
+                        "date": "2022-12-14",
+                        "acuteAction": false,
+                        "description": "Cracked wall",
+                        "photos": []
+                      }
+                    ],
+                    "maintenance": [],
+                    "installations": [],
+                    "modifications": [],
+                    "cleanlinessScore": 5,
+                    "somethingBroken": true
+                  },
+                  {
+                    "id": 178,
+                    "date": "2022-12-14",
+                    "completion": true,
+                    "inspector": 8,
+                    "damage": [],
+                    "maintenance": [
+                      {
+                        "location": "Laundry Room",
+                        "type": "appliance repair",
+                        "acuteAction": true,
+                        "costEstimate": "500-1000",
+                        "photos": []
+                      }
+                    ],
+                    "installations": [],
+                    "modifications": [],
+                    "cleanlinessScore": 8,
+                    "somethingBroken": false
+                  },
+                  {
+                    "id": 179,
+                    "date": "2022-12-14",
+                    "completion": false,
+                    "inspector": 9,
+                    "damage": [],
+                    "maintenance": [],
+                    "installations": [
+                      {
+                        "location": "Attic",
+                        "type": "insulation",
+                        "reportedErrors": "",
+                        "testProcedure": "",
+                        "approved": false,
+                        "comments": "",
+                        "photos": []
+                      }
+                    ],
+                    "modifications": [],
+                    "cleanlinessScore": 0,
+                    "somethingBroken": false
+                  }          
+            ]
+        },
+        {
+            "id": 16,
+            "street": "16 E 42nd St",
+            "city": "New York",
+            "inspections": [
+                {
+                    "id": 180,
+                    "date": "2022-12-15",
+                    "completion": true,
+                    "inspector": 10,
+                    "damage": [
+                      {
+                        "location": "Kitchen",
+                        "new": true,
+                        "type": "willful",
+                        "date": "2022-12-15",
+                        "acuteAction": true,
+                        "description": "Broken window",
+                        "photos": [
+                          "https://example.com/damage1.jpg",
+                          "https://example.com/damage2.jpg"
+                        ]
+                      }
+                    ],
+                    "maintenance": [],
+                    "installations": [],
+                    "modifications": []
+                  },
+                  {
+                    "id": 181,
+                    "date": "2022-12-15",
                     "completion": false,
                     "inspector": 1,
                     "damage": [],
@@ -168,20 +1633,496 @@
                     "modifications": [],
                     "cleanlinessScore": 0,
                     "somethingBroken": false
-                }
+                  },
+                  {
+                    "id": 182,
+                    "date": "2022-12-15",
+                    "completion": true,
+                    "inspector": 2,
+                    "damage": [
+                      {
+                        "location": "Living Room",
+                        "new": false,
+                        "type": "vandalism",
+                        "date": "2022-12-15",
+                        "acuteAction": false,
+                        "description": "Broken furniture",
+                        "photos": []
+                      }
+                    ],
+                    "maintenance": [],
+                    "installations": [],
+                    "modifications": [],
+                    "cleanlinessScore": 5,
+                    "somethingBroken": true
+                  },
+                  {
+                    "id": 183,
+                    "date": "2022-12-15",
+                    "completion": true,
+                    "inspector": 3,
+                    "damage": [],
+                    "maintenance": [
+                      {
+                        "location": "Bathroom",
+                        "type": "pressure washing",
+                        "acuteAction": true,
+                        "costEstimate": "1000-3000",
+                        "photos": []
+                      }
+                    ],
+                    "installations": [],
+                    "modifications": [],
+                    "cleanlinessScore": 8,
+                    "somethingBroken": false
+                  },
+                  {
+                    "id": 184,
+                    "date": "2022-12-15",
+                    "completion": false,
+                    "inspector": 4,
+                    "damage": [],
+                    "maintenance": [],
+                    "installations": [
+                      {
+                        "location": "Basement",
+                        "type": "cooling",
+                        "reportedErrors": "Temperature not consistent",
+                        "testProcedure": "https://example.com/cooling-test-procedure.pdf",
+                        "approved": false,
+                        "comments": "System needs maintenance",
+                        "photos": []
+                      }
+                    ],
+                    "modifications": [],
+                    "cleanlinessScore": 0,
+                    "somethingBroken": false
+                  }          
             ]
         },
         {
-            "id": 4,
-            "street": "654 Pine St",
-            "city": "Anytown",
-            "inspections": []
+            "id": 17,
+            "street": "22 W 34th St",
+            "city": "New York",
+            "inspections": [
+                {
+                    "id": 185,
+                    "date": "2022-12-16",
+                    "completion": true,
+                    "inspector": 5,
+                    "damage": [
+                      {
+                        "location": "Bedroom",
+                        "new": true,
+                        "type": "flood",
+                        "date": "2022-12-16",
+                        "acuteAction": true,
+                        "description": "Water damage",
+                        "photos": [
+                          "https://example.com/damage1.jpg",
+                          "https://example.com/damage2.jpg"
+                        ]
+                      }
+                    ],
+                    "maintenance": [],
+                    "installations": [],
+                    "modifications": []
+                  },
+                  {
+                    "id": 186,
+                    "date": "2022-12-16",
+                    "completion": false,
+                    "inspector": 6,
+                    "damage": [],
+                    "maintenance": [],
+                    "installations": [],
+                    "modifications": [],
+                    "cleanlinessScore": 0,
+                    "somethingBroken": false
+                  },
+                  {
+                    "id": 187,
+                    "date": "2022-12-16",
+                    "completion": true,
+                    "inspector": 7,
+                    "damage": [
+                      {
+                        "location": "Dining Room",
+                        "new": false,
+                        "type": "structural",
+                        "date": "2022-12-16",
+                        "acuteAction": false,
+                        "description": "Cracked wall",
+                        "photos": []
+                      }
+                    ],
+                    "maintenance": [],
+                    "installations": [],
+                    "modifications": [],
+                    "cleanlinessScore": 5,
+                    "somethingBroken": true
+                  },
+                  {
+                    "id": 188,
+                    "date": "2022-12-16",
+                    "completion": true,
+                    "inspector": 8,
+                    "damage": [],
+                    "maintenance": [
+                      {
+                        "location": "Laundry Room",
+                        "type": "appliance repair",
+                        "acuteAction": true,
+                        "costEstimate": "500-1000",
+                        "photos": []
+                      }
+                    ],
+                    "installations": [],
+                    "modifications": [],
+                    "cleanlinessScore": 8,
+                    "somethingBroken": false
+                  },
+                  {
+                    "id": 189,
+                    "date": "2022-12-16",
+                    "completion": false,
+                    "inspector": 9,
+                    "damage": [],
+                    "maintenance": [],
+                    "installations": [
+                      {
+                        "location": "Attic",
+                        "type": "insulation",
+                        "reportedErrors": "",
+                        "testProcedure": "",
+                        "approved": false,
+                        "comments": "",
+                        "photos": []
+                      }
+                    ],
+                    "modifications": [],
+                    "cleanlinessScore": 0,
+                    "somethingBroken": false
+                  }          
+            ]
         },
         {
-            "id": 5,
-            "street": "987 Cedar St",
-            "city": "Anytown",
-            "inspections": []
+            "id": 18,
+            "street": "49 E 25th St",
+            "city": "New York",
+            "inspections": [
+                {
+                    "id": 190,
+                    "date": "2022-12-17",
+                    "completion": true,
+                    "inspector": 10,
+                    "damage": [
+                      {
+                        "location": "Kitchen",
+                        "new": true,
+                        "type": "willful",
+                        "date": "2022-12-17",
+                        "acuteAction": true,
+                        "description": "Broken window",
+                        "photos": [
+                          "https://example.com/damage1.jpg",
+                          "https://example.com/damage2.jpg"
+                        ]
+                      }
+                    ],
+                    "maintenance": [],
+                    "installations": [],
+                    "modifications": []
+                  },
+                  {
+                    "id": 191,
+                    "date": "2022-12-17",
+                    "completion": false,
+                    "inspector": 1,
+                    "damage": [],
+                    "maintenance": [],
+                    "installations": [],
+                    "modifications": [],
+                    "cleanlinessScore": 0,
+                    "somethingBroken": false
+                  },
+                  {
+                    "id": 192,
+                    "date": "2022-12-17",
+                    "completion": true,
+                    "inspector": 2,
+                    "damage": [
+                      {
+                        "location": "Living Room",
+                        "new": false,
+                        "type": "vandalism",
+                        "date": "2022-12-17",
+                        "acuteAction": false,
+                        "description": "Broken furniture",
+                        "photos": []
+                      }
+                    ],
+                    "maintenance": [],
+                    "installations": [],
+                    "modifications": [],
+                    "cleanlinessScore": 5,
+                    "somethingBroken": true
+                  },
+                  {
+                    "id": 193,
+                    "date": "2022-12-17",
+                    "completion": true,
+                    "inspector": 3,
+                    "damage": [],
+                    "maintenance": [
+                      {
+                        "location": "Bathroom",
+                        "type": "pressure washing",
+                        "acuteAction": true,
+                        "costEstimate": "1000-3000",
+                        "photos": []
+                      }
+                    ],
+                    "installations": [],
+                    "modifications": [],
+                    "cleanlinessScore": 8,
+                    "somethingBroken": false
+                  },
+                  {
+                    "id": 194,
+                    "date": "2022-12-17",
+                    "completion": false,
+                    "inspector": 4,
+                    "damage": [],
+                    "maintenance": [],
+                    "installations": [
+                      {
+                        "location": "Basement",
+                        "type": "cooling",
+                        "reportedErrors": "Temperature not consistent",
+                        "testProcedure": "https://example.com/cooling-test-procedure.pdf",
+                        "approved": false,
+                        "comments": "System needs maintenance",
+                        "photos": []
+                      }
+                    ],
+                    "modifications": [],
+                    "cleanlinessScore": 0,
+                    "somethingBroken": false
+                  }          
+            ]
+        },
+        {
+            "id": 19,
+            "street": "19 W 16th St",
+            "city": "New York",
+            "inspections": [
+                {
+                    "id": 195,
+                    "date": "2022-12-18",
+                    "completion": true,
+                    "inspector": 5,
+                    "damage": [
+                      {
+                        "location": "Bedroom",
+                        "new": true,
+                        "type": "flood",
+                        "date": "2022-12-18",
+                        "acuteAction": true,
+                        "description": "Water damage",
+                        "photos": [
+                          "https://example.com/damage1.jpg",
+                          "https://example.com/damage2.jpg"
+                        ]
+                      }
+                    ],
+                    "maintenance": [],
+                    "installations": [],
+                    "modifications": []
+                  },
+                  {
+                    "id": 196,
+                    "date": "2022-12-18",
+                    "completion": false,
+                    "inspector": 6,
+                    "damage": [],
+                    "maintenance": [],
+                    "installations": [],
+                    "modifications": [],
+                    "cleanlinessScore": 0,
+                    "somethingBroken": false
+                  },
+                  {
+                    "id": 197,
+                    "date": "2022-12-18",
+                    "completion": true,
+                    "inspector": 7,
+                    "damage": [
+                      {
+                        "location": "Dining Room",
+                        "new": false,
+                        "type": "structural",
+                        "date": "2022-12-18",
+                        "acuteAction": false,
+                        "description": "Cracked wall",
+                        "photos": []
+                      }
+                    ],
+                    "maintenance": [],
+                    "installations": [],
+                    "modifications": [],
+                    "cleanlinessScore": 5,
+                    "somethingBroken": true
+                  },
+                  {
+                    "id": 197,
+                    "date": "2022-12-18",
+                    "completion": true,
+                    "inspector": 7,
+                    "damage": [
+                      {
+                        "location": "Dining Room",
+                        "new": false,
+                        "type": "structural",
+                        "date": "2022-12-18",
+                        "acuteAction": false,
+                        "description": "Cracked wall",
+                        "photos": []
+                      }
+                    ],
+                    "maintenance": [],
+                    "installations": [],
+                    "modifications": [],
+                    "cleanlinessScore": 5,
+                    "somethingBroken": true
+                  },
+                  {
+                    "id": 198,
+                    "date": "2022-12-18",
+                    "completion": true,
+                    "inspector": 8,
+                    "damage": [],
+                    "maintenance": [
+                      {
+                        "location": "Laundry Room",
+                        "type": "appliance repair",
+                        "acuteAction": true,
+                        "costEstimate": "500-1000",
+                        "photos": []
+                      }
+                    ],
+                    "installations": [],
+                    "modifications": [],
+                    "cleanlinessScore": 8,
+                    "somethingBroken": false
+                  }                    
+            ]
+        },
+        {
+            "id": 20,
+            "street": "42 E 8th St",
+            "city": "New York",
+            "inspections": [
+                {
+                    "id": 199,
+                    "date": "2022-12-19",
+                    "completion": true,
+                    "inspector": 9,
+                    "damage": [
+                      {
+                        "location": "Kitchen",
+                        "new": true,
+                        "type": "willful",
+                        "date": "2022-12-19",
+                        "acuteAction": true,
+                        "description": "Broken window",
+                        "photos": [
+                          "https://example.com/damage1.jpg",
+                          "https://example.com/damage2.jpg"
+                        ]
+                      }
+                    ],
+                    "maintenance": [],
+                    "installations": [],
+                    "modifications": []
+                  },
+                  {
+                    "id": 200,
+                    "date": "2022-12-19",
+                    "completion": false,
+                    "inspector": 10,
+                    "damage": [],
+                    "maintenance": [],
+                    "installations": [],
+                    "modifications": [],
+                    "cleanlinessScore": 0,
+                    "somethingBroken": false
+                  },
+                  {
+                    "id": 201,
+                    "date": "2022-12-19",
+                    "completion": true,
+                    "inspector": 1,
+                    "damage": [
+                      {
+                        "location": "Living Room",
+                        "new": false,
+                        "type": "vandalism",
+                        "date": "2022-12-19",
+                        "acuteAction": false,
+                        "description": "Broken furniture",
+                        "photos": []
+                      }
+                    ],
+                    "maintenance": [],
+                    "installations": [],
+                    "modifications": [],
+                    "cleanlinessScore": 5,
+                    "somethingBroken": true
+                  },
+                  {
+                    "id": 202,
+                    "date": "2022-12-19",
+                    "completion": true,
+                    "inspector": 2,
+                    "damage": [],
+                    "maintenance": [
+                      {
+                        "location": "Bathroom",
+                        "type": "pressure washing",
+                        "acuteAction": true,
+                        "costEstimate": "1000-3000",
+                        "photos": []
+                      }
+                    ],
+                    "installations": [],
+                    "modifications": [],
+                    "cleanlinessScore": 8,
+                    "somethingBroken": false
+                  },
+                  {
+                    "id": 203,
+                    "date": "2022-12-19",
+                    "completion": false,
+                    "inspector": 3,
+                    "damage": [],
+                    "maintenance": [],
+                    "installations": [
+                      {
+                        "location": "Basement",
+                        "type": "cooling",
+                        "reportedErrors": "Temperature not consistent",
+                        "testProcedure": "https://example.com/cooling-test-procedure.pdf",
+                        "approved": false,
+                        "comments": "System needs maintenance",
+                        "photos": []
+                      }
+                    ],
+                    "modifications": [],
+                    "cleanlinessScore": 0,
+                    "somethingBroken": false
+                  }         
+            ]
         }
     ]
 }
