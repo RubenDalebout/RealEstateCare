@@ -45,7 +45,7 @@ export default {
                 }
             }
         return {
-            notificationsEnabled: notifications;
+            notificationsEnabled: notifications,
         }
     },
 }
