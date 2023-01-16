@@ -22,6 +22,7 @@
         };
     },
     async created() {
+        localStorage.setItem('completion', true);
         try {
             const response = await axios.get(`https://api.jsonbin.io/v3/b/63c1a09815ab31599e35cf00/latest`, {
                 headers: {
@@ -29,7 +30,28 @@
                 'X-Master-Key': '$2b$10$6OQ5plkCt1vMLN8m7VMniOP5RSMQB3WOfPoQlYh/JNbs2xeF7psUu'
                 }
             });
+            
             this.addresses = response.data.record.addresses;
+
+            for (let i = 0; i < response.data.record.addresses.length; i++) {
+                let address = response.data.record.addresses[i];
+                if (address.inspections === null || address.inspections === undefined) continue;
+
+                let found = false;
+                for (let j = 0; j < address.inspections.length; j++) {
+                    let inspection = address.inspections[j];
+                    if (inspection.inspector === JSON.parse(localStorage.getItem('user')).id && inspection.completion === JSON.parse(localStorage.getItem('completion'))) {
+                        found = true;
+                        console.log(inspection)
+                        break;
+                    }
+                }
+
+                if (!found) {
+                    response.data.record.addresses.splice(i, 1);
+                    i--;
+                }
+            }
         } catch (error) {
             console.log(error);
         }
