@@ -95,9 +95,9 @@ import { caretDownOutline, caretUpOutline } from 'ionicons/icons';
                 </transition>
             </div>
             <div class="form-group d-flex gap-3">
-                <button type="button" class="btn btn-danger" @click="cancelInspection()">Cancel</button>
-                <button class="btn btn-success" type="submit">Save inspection</button>
-                <button type="button" v-if="!inspection.completion" class="btn btn-success" @click="completeInspection">Complete inspection</button>
+                <button :disabled="saving" type="button" class="btn btn-danger" @click="cancelInspection()">Cancel</button>
+                <button :disabled="saving" class="btn btn-success" type="submit">Save inspection</button>
+                <button :disabled="saving" type="button" v-if="!inspection.completion" class="btn btn-success" @click="completeInspection">Complete inspection</button>
             </div>
         </form>
 
@@ -147,6 +147,7 @@ import { caretDownOutline, caretUpOutline } from 'ionicons/icons';
                 showToast: false,
                 toastMessage: '',
                 toastType: '',
+                saving: false,
             };
         },
         async created() {
@@ -195,6 +196,7 @@ import { caretDownOutline, caretUpOutline } from 'ionicons/icons';
             },
             async saveInspection() {
                 try {
+                    this.saving = true;
                     const response = await axios.get(`https://api.jsonbin.io/v3/b/63c1a09815ab31599e35cf00/latest`, {
                         headers: {
                             'Content-Type': 'application/json',
@@ -263,6 +265,8 @@ import { caretDownOutline, caretUpOutline } from 'ionicons/icons';
                         this.showToast = false;
                     }, 3000);
                 }
+
+                this.saving = false;
             },
             cancelInspection() {
                 try {

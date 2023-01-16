@@ -43,7 +43,6 @@ import { add } from 'ionicons/icons';
                     let inspection = address.inspections[j];
                     if (inspection.inspector === JSON.parse(localStorage.getItem('user')).id && inspection.completion === JSON.parse(localStorage.getItem('completion'))) {
                         found = true;
-                        console.log(inspection)
                         break;
                     }
                 }

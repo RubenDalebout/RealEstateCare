@@ -22,7 +22,7 @@
                         <input type="newpassword" class="form-control" id="newpassword" name="newpassword" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;">
                     </div>
                     <div>
-                        <input type="submit" value="Change account" class="btn btn-primary">
+                        <input :disabled="saving" type="submit" value="Change account" class="btn btn-primary">
                     </div>
                 </form>
             </div>
@@ -45,7 +45,7 @@
                     <input class="form-check-input" type="checkbox" role="switch" id="soundSwitch" v-model="settings.sounds">
                     <label class="form-check-label" for="soundSwitch">Sounds</label>
                 </div>
-                <button class="btn btn-primary" @click="updateSettings()">Save changes</button>
+                <button :disabled="saving" class="btn btn-primary" @click="updateSettings()">Save changes</button>
             </div>
             <div class="col-2-sm"></div>
         </div>
@@ -61,7 +61,6 @@
 
 <script>
 import axios from 'axios';
-import appHeader from '../components/AppHeader.vue'
 
 export default {
     data() {
@@ -78,6 +77,7 @@ export default {
             showToast: false,
             toastMessage: '',
             toastType: '',
+            saving: false,
         };
     },
     methods: {
@@ -87,6 +87,7 @@ export default {
         },  
         async updateSettings() {
             try {
+                this.saving = true;
                 // Get the user ID from local storage
                 const usrArr = JSON.parse(localStorage.getItem('user'));
                 if (!usrArr) {
@@ -185,8 +186,6 @@ export default {
                         this.toastMessage = '';
                         this.showToast = false;
                     }, 3000);
-
-                    return;
                 }
             } catch(error) {
                 console.log(error)
@@ -199,17 +198,28 @@ export default {
                     this.toastMessage = '';
                     this.showToast = false;
                 }, 3000);
-
-                return;
             }
+
+            this.saving = false;
         },
         async updateAccountDetails() {
+            this.saving = true;
             try {
                 // Get the user ID from local storage
                 const usrArr = JSON.parse(localStorage.getItem('user'));
                 if (!usrArr) {
-                    alert('No user is logged in');
-                return;
+                    this.toastType = 'error';
+                    this.toastMessage = 'No user logged in!';
+                    this.showToast = true;
+
+                    setTimeout(() => {
+                        this.toastType = '';
+                        this.toastMessage = '';
+                        this.showToast = false;
+                    }, 3000);
+
+                    this.saving = false;
+                    return;
                 }
 
                 // Send GET request to jsonbin.io to retrieve the user data
@@ -254,11 +264,29 @@ export default {
                                 if (newPassword.value.length >= 6) {
                                     jsonData[userIndex].password = newPassword.value;
                                 } else {
-                                    alert('Password needs to be at least 6 characters');
+                                    this.toastType = 'error';
+                                    this.toastMessage = 'Password needs to be at least 6 characters';
+                                    this.showToast = true;
+
+                                    setTimeout(() => {
+                                        this.toastType = '';
+                                        this.toastMessage = '';
+                                        this.showToast = false;
+                                    }, 3000);
+                                    this.saving = false;
                                     return;
                                 }
                             } else {
-                                alert('Passwords are not equal');
+                                this.toastType = 'error';
+                                this.toastMessage = 'Passwords are not equal';
+                                this.showToast = true;
+
+                                setTimeout(() => {
+                                    this.toastType = '';
+                                    this.toastMessage = '';
+                                    this.showToast = false;
+                                }, 3000);
+                                this.saving = false;
                                 return;
                             }
                         }
@@ -273,7 +301,15 @@ export default {
                     });
                        
                     if(updateResponse.status === 200) {
-                        alert('Account updated succesfully');
+                        this.toastType = 'success';
+                        this.toastMessage = 'Account updated successfully';
+                        this.showToast = true;
+
+                        setTimeout(() => {
+                            this.toastType = '';
+                            this.toastMessage = '';
+                            this.showToast = false;
+                        }, 3000);
 
                         if (newPassword) newPassword.value = "";
                         if (confirmNewPassword) confirmNewPassword.value = "";
@@ -284,14 +320,40 @@ export default {
                         localStorage.setItem('user', JSON.stringify(user));
 
                     } else {
-                        throw new Error(updateResponse.data);
+                        this.toastType = 'error';
+                        this.toastMessage = (response.code != 'ERR_NETWORK') ? 'There has been an error occurred, contact the developer!' : 'You dont have wifi!';
+                        this.showToast = true;
+
+                        setTimeout(() => {
+                            this.toastType = '';
+                            this.toastMessage = '';
+                            this.showToast = false;
+                        }, 3000);
                     }
                 } else {
-                    alert('user not found');
+                    this.toastType = 'error';
+                    this.toastMessage = 'No user has been found with that email';
+                    this.showToast = true;
+
+                    setTimeout(() => {
+                        this.toastType = '';
+                        this.toastMessage = '';
+                        this.showToast = false;
+                    }, 3000);
                 }
             } catch(error) {
-                alert(error);
+                this.toastType = 'error';
+                this.toastMessage = (error.code != 'ERR_NETWORK') ? 'There has been an error occurred, contact the developer!' : 'You dont have wifi!';
+                this.showToast = true;
+
+                setTimeout(() => {
+                    this.toastType = '';
+                    this.toastMessage = '';
+                    this.showToast = false;
+                }, 3000);
             }
+
+            this.saving = false;
         }
     }
 }
