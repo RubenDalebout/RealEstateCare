@@ -91,8 +91,15 @@ export default {
                 // Get the user ID from local storage
                 const usrArr = JSON.parse(localStorage.getItem('user'));
                 if (!usrArr) {
-                    alert('No user is logged in');
-                    return;
+                    this.toastType = 'success';
+                    this.toastMessage = 'Not loggedin';
+                    this.showToast = true;
+
+                    setTimeout(() => {
+                        this.toastType = '';
+                        this.toastMessage = '';
+                        this.showToast = false;
+                    }, 3000);
                 }
 
                 // Send GET request to GitHub REST API to retrieve the users.json file
