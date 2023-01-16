@@ -49,6 +49,7 @@
             </div>
             <div class="col-2-sm"></div>
         </div>
+        <button class="btn btn-danger mt-3" @click="logout()">Logout</button>
     </main>
 </template>
 
@@ -70,6 +71,10 @@ export default {
         };
     },
     methods: {
+        logout() {
+            localStorage.clear();
+            this.$router.push({ name: 'home' });
+        },  
         async updateSettings() {
             try {
                 // Get the user ID from local storage
