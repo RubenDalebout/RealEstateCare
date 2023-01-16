@@ -38,7 +38,7 @@
             <li class="list-group-item">In the notifications section, you can turn on or off notifications for new inspections and completed inspections.</li>
         </ul>
 
-        <h2>Additional Support</h2>
+        <h2 class="my-3">Additional Support</h2>
         <p>If you have any issues or questions about using the RealEstateCare app, please contact our support team at <a href="mailto:dev@realestatecare.com">dev@realestatecare.com</a>. We are happy to help!</p>
     </main>
 </template>
