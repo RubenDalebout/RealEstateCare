@@ -8,7 +8,7 @@
 <script>
 import AppHeader from '@/components/AppHeader.vue'
 import AppFooter from '@/components/AppFooter.vue'
-import NoWifiModal from '@/components/NoWifiModal.vue'
+import NoWifiModal from '@/components/WifiCheck.vue'
 
 
 export default {
