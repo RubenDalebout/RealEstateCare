@@ -35,7 +35,7 @@ import { triangle, ellipse, square, notifications, settings, notificationsOutlin
 export default {
     data() {
         return {
-            notificationsEnabled: JSON.parse(localstorage.getItem('user')).settings.notification
+            notificationsEnabled: JSON.parse(localStorage.getItem('user')).settings.notification
         }
     },
 }
