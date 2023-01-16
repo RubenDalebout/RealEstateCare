@@ -19,6 +19,12 @@
             </div>
             <div class="col-sm"></div>
         </div>
+
+        <div v-if="showToast" class="toast-container">
+            <div v-bind:class="{'show': showToast}" :class="'toast toast-' + toastType">
+                {{ toastMessage }}
+            </div>
+        </div>
     </main>
 </template>
 
@@ -31,6 +37,9 @@ export default {
             email: "",
             password: "",
             alert: "",
+            showToast: false,
+            toastMessage: '',
+            toastType: '',
         };
     },
     methods: {
@@ -42,6 +51,20 @@ export default {
                         'X-Master-Key': '$2b$10$6OQ5plkCt1vMLN8m7VMniOP5RSMQB3WOfPoQlYh/JNbs2xeF7psUu'
                     }
                 });
+
+                if (response.status !== 200) {
+                    this.toastType = 'error';
+                    this.toastMessage = 'Could not verify the user';
+                    this.showToast = true;
+
+                    setTimeout(() => {
+                        this.toastType = '';
+                        this.toastMessage = '';
+                        this.showToast = false;
+                    }, 3000);
+
+                    return;
+                }
 
                 // Filter the data using your condition
                 const user = response.data.record.filter(user => user.email === submitEvent.target.elements.email.value && user.password === submitEvent.target.elements.password.value);
@@ -56,9 +79,28 @@ export default {
                     // navigate user to home page
                     this.$router.go('/'); 
                 } else {
-                    alert('foutief');
+                    this.toastType = 'error';
+                    this.toastMessage = 'There is no user with those credentials found';
+                    this.showToast = true;
+
+                    setTimeout(() => {
+                        this.toastType = '';
+                        this.toastMessage = '';
+                        this.showToast = false;
+                    }, 3000);
                 }
             } catch (err) {
+                this.toastType = 'error';
+                this.toastMessage = (err.code != 'ERR_NETWORK') ? 'There has been an error occurred, contact the developer!' : 'You dont have wifi!';
+                this.showToast = true;
+
+                setTimeout(() => {
+                    this.toastType = '';
+                    this.toastMessage = '';
+                    this.showToast = false;
+                }, 3000);
+
+                return;
                 console.error(err);
             }
         }
