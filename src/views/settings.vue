@@ -50,6 +50,12 @@
             <div class="col-2-sm"></div>
         </div>
         <button class="btn btn-danger mt-3" @click="logout()">Logout</button>
+
+        <div v-if="showToast" class="toast-container">
+            <div v-bind:class="{'show': showToast}" :class="'toast toast-' + toastType">
+                {{ toastMessage }}
+            </div>
+        </div>
     </main>
 </template>
 
@@ -67,7 +73,10 @@ export default {
             },
             firstname: usrArr.firstName,
             lastname: usrArr.lastName,
-            password: ''
+            password: '',
+            showToast: false,
+            toastMessage: '',
+            toastType: '',
         };
     },
     methods: {
@@ -91,6 +100,19 @@ export default {
                         'X-Master-Key': '$2b$10$6OQ5plkCt1vMLN8m7VMniOP5RSMQB3WOfPoQlYh/JNbs2xeF7psUu'
                     }
                 });
+
+                if (response.status !== 200) {
+                    this.toastType = 'error';
+                    this.toastMessage = 'Couldnt retrieve user settings';
+                    this.showToast = true;
+
+                    setTimeout(() => {
+                        this.toastType = '';
+                        this.toastMessage = '';
+                        this.showToast = false;
+                    }, 3000);
+                }
+
                 // parse the response content to json
                 const jsonData = response.data.record;
                 // Find the user by id in the jsonData
@@ -108,7 +130,15 @@ export default {
                         }
                     });
                     if(updateResponse.status === 200) {
-                        alert('settings updated succesfully');
+                        this.toastType = 'success';
+                        this.toastMessage = 'Settings saved successfully';
+                        this.showToast = true;
+
+                        setTimeout(() => {
+                            this.toastType = '';
+                            this.toastMessage = '';
+                            this.showToast = false;
+                        }, 3000);
 
                         const user = jsonData[userIndex];
                         
@@ -119,25 +149,54 @@ export default {
                         if (user.settings != undefined && user.settings != null) {
                             if (user.settings.darkTheme != undefined && user.settings.darkTheme != null) {
                                 if (user.settings.darkTheme) {
-                                    document.querySelectorAll('[darkTheme]').forEach(e => {
-                                        if (e.getAttribute('disabled') === 'true') {
-                                            e.removeAttribute('disabled');
-                                        } else {
-                                            e.setAttribute('disabled', 'true');
-                                        }
-                                    })
+                                    let darkThemeElements = document.querySelectorAll('[darkTheme="dark"]');
+                                    for (let i = 0; i < darkThemeElements.length; i++) {
+                                        darkThemeElements[i].removeAttribute("disabled");
+                                    }
+                                    let defaultThemeElements = document.querySelectorAll('[darkTheme="default"]');
+                                    for (let i = 0; i < defaultThemeElements.length; i++) {
+                                        defaultThemeElements[i].setAttribute("disabled", "true");
+                                    }
+                                    } else {
+                                    let darkThemeElements = document.querySelectorAll('[darkTheme="dark"]');
+                                    for (let i = 0; i < darkThemeElements.length; i++) {
+                                        darkThemeElements[i].setAttribute("disabled", "true");
+                                    }
+                                    let defaultThemeElements = document.querySelectorAll('[darkTheme="default"]');
+                                    for (let i = 0; i < defaultThemeElements.length; i++) {
+                                        defaultThemeElements[i].removeAttribute("disabled");
+                                    }
                                 }
                             }
                         }
                     } else {
                         throw new Error(updateResponse.data);
-                        
                     }
                 } else {
-                    alert('user not found');
+                    this.toastType = 'error';
+                    this.toastMessage = 'User is not found in the API!';
+                    this.showToast = true;
+
+                    setTimeout(() => {
+                        this.toastType = '';
+                        this.toastMessage = '';
+                        this.showToast = false;
+                    }, 3000);
+
+                    return;
                 }
             } catch(error) {
-                alert(error);
+                this.toastType = 'error';
+                this.toastMessage = (err.code != 'ERR_NETWORK') ? 'There has been an error occurred, contact the developer!' : 'You dont have wifi!';
+                this.showToast = true;
+
+                setTimeout(() => {
+                    this.toastType = '';
+                    this.toastMessage = '';
+                    this.showToast = false;
+                }, 3000);
+
+                return;
             }
         },
         async updateAccountDetails() {

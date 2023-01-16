@@ -101,7 +101,6 @@ export default {
                 }, 3000);
 
                 return;
-                console.error(err);
             }
         }
     }

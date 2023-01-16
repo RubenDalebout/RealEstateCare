@@ -247,7 +247,17 @@ import { caretDownOutline, caretUpOutline } from 'ionicons/icons';
                         }, 3000);
                     }
                 } catch (error) {
-                    console.log(error);
+                    this.toastType = 'error';
+                    this.toastMessage = (err.code != 'ERR_NETWORK') ? 'There has been an error occurred, contact the developer!' : 'You dont have wifi!';
+                    this.showToast = true;
+
+                    setTimeout(() => {
+                        this.toastType = '';
+                        this.toastMessage = '';
+                        this.showToast = false;
+                    }, 3000);
+
+                    return;
                 }
             },
             cancelInspection() {
