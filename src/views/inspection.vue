@@ -121,7 +121,7 @@ import { caretDownOutline, caretUpOutline } from 'ionicons/icons';
                 <!-- "Save inspection" button that saves the current inspection -->
                 <button :disabled="saving" class="btn btn-success" type="submit">Save inspection</button>
                 <!-- "Complete inspection" button that marks the inspection as completed, only visible if the inspection is not already completed -->
-                <button :disabled="saving" type="button" v-if="!inspection.completion" class="btn btn-success" @click="completeInspection">Complete inspection</button>
+                <button :disabled="saving" type="button" class="btn btn-success" @click="completeInspection">Complete inspection</button>
             </div>
 
         </form>
@@ -184,7 +184,7 @@ import { caretDownOutline, caretUpOutline } from 'ionicons/icons';
         // when the component is created, retrieve the inspection data from the API
         async created() {
             this.addressId = store.getters.address;
-            let inspectionId = false;
+            let inspectionId = store.getters.inspection;
             this.inspectionId = inspectionId;
 
             try {
