@@ -168,3 +168,11 @@ footer, header {
 h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
 }
+
+.camera-preview {
+  z-index: 1000;
+}
+
+.camera-preview video {
+  padding: 0 1rem;
+}
