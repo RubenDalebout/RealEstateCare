@@ -30,12 +30,12 @@ export default new Vuex.Store({
   },
   getters: {
       user: state => state.user,
-      userID: state => (state.user.id != undefined) ? state.user.id : false,
+      userID: state => (state.user != undefined && state.user != null && state.user.id != undefined && state.user.id != null) ? state.user.id : false,
       userNotifications: state => (state.user.settings != undefined && state.user.settings.notifications != undefined) ? state.user.settings.notifications : false,
-      completion: state => state.completion,
-      address: state => state.address,
-      inspection: state => state.inspection,
-      offlineInspections: state=> (state.offlineInspections != undefined) ? state.offlineInspections : false
+      completion: state => (state.completion != undefined && state.completion != null) ? state.completion : false,
+      address: state => (state.address != undefined && state.address != null) ? state.address : false,
+      inspection: state => (state.inspection != undefined && state.inspection != null) ? state.inspection : false,
+      offlineInspections: state=> (state.offlineInspections != undefined && state.offlineInspections != null) ? state.offlineInspections : false
   },
   mutations: {
       setUser(state, newUser) {
