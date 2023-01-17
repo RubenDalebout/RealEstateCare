@@ -1,10 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/dashboard.vue'
 
-import store from '../store/store'
-
 const router = createRouter({
-    history: createWebHistory(import.meta.env.BASE_URL), //creating a web history with the base URL
+    history: createWebHistory(), //creating a web history with the base URL
     routes: [
         {
             path: '/', //when user navigates to the root path
@@ -55,7 +53,7 @@ const router = createRouter({
             path: '/inspection/', //when user navigates to the /inspection path
             name: 'inspection',
             component: () => import('../views/inspection.vue'), //lazy loading the component
-        }
+        },
     ],
 })
 
