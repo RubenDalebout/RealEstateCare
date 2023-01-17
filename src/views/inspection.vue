@@ -157,8 +157,13 @@
             ModificationComponent
         },
         mounted() {
-            this.caretDownOutline = caretDownOutline,
-            this.caretUpOutline = caretUpOutline
+            this.caretDownOutline = caretDownOutline;
+            this.caretUpOutline = caretUpOutline;
+
+            this.showDamage = false;
+            this.showMaintenance = false;
+            this.showInstallation = false;
+            this.showModification = false;
         },
         data() {
             return {
@@ -174,10 +179,10 @@
                 },
                 addressId: '',
                 inspectionId: '',
-                showDamage: false,
-                showMaintenance: false,
-                showInstallation: false,
-                showModification: false,
+                showDamage: true,
+                showMaintenance: true,
+                showInstallation: true,
+                showModification: true,
                 showToast: false,
                 toastMessage: '',
                 toastType: '',
