@@ -156,8 +156,14 @@
             InstallationComponent,
             ModificationComponent
         },
+        mounted() {
+            this.caretDownOutline = caretDownOutline,
+            this.caretUpOutline = caretUpOutline
+        },
         data() {
             return {
+                caretDownOutline: null,
+                caretUpOutline: null,
                 inspection: {
                     completion: false,
                     damage: [],
