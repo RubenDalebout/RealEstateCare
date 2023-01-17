@@ -12,7 +12,7 @@
         </div>
         <!-- form-group for acute action checkbox -->
         <div class="form-group">
-            <label for="acuteAction">Acute Action</label>
+            <label for="acuteAction" class="me-2">Acute Action</label>
             <input type="checkbox" v-model="maintenance.acuteAction" class="form-check-input" id="acuteAction">
         </div>
         <!-- form-group for cost estimate input -->

@@ -22,7 +22,7 @@
         </div>
         <!-- Form group for approved checkbox -->
         <div class="form-group">
-            <label for="approved">Approved</label>
+            <label for="approved" class="me-2">Approved</label>
             <input type="checkbox" v-model="installation.approved" class="form-check-input" id="approved">
         </div>
         <!-- Form group for comments input -->
