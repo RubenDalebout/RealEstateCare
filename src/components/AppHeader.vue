@@ -39,20 +39,16 @@
 
     export default {
         data() {
-            // notificationsEnabled is used to check if notifications are enabled or not
-            let notificationsEnabled = true;
-            // loggedIn is used to check if user is logged in or not
-            let loggedIn = false;
-            // checking if user is logged in
-            if (store.getters.userID) {
-                loggedIn = true;
-                // checking if notifications are enabled in user's settings
-                notificationsEnabled = store.getters.userNotifications;
-            }
             return {
-                loggedIn: loggedIn,
-                notificationsEnabled: notificationsEnabled,
+                notificationsEnabled: true,
+                loggedIn: false,
             }
         },
+        created(){
+            if (store.getters.userID) {
+                this.loggedIn = true;
+                this.notificationsEnabled = store.getters.userNotifications;
+            }
+        }
     }
 </script>

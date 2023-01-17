@@ -35,16 +35,14 @@
 
     export default {
         data() {
-            let loggedIn = false;
-            // check if there is a user in local storage
-            if (store.getters.userID) {
-            // if there is a user in local storage, parse the user object and set loggedIn to true
-                loggedIn = true;
-            }
-            // return the data object with the loggedIn variable
             return {
-                loggedIn: loggedIn,
+                loggedIn: false,
             }
         },
+        created(){
+            if (store.getters.userID) {
+                this.loggedIn = true;
+            }
+        }
     }
 </script>
