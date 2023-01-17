@@ -15,7 +15,7 @@ const vuexPersist = new VuexPersist({
   })
 })
 
-import App from '../app.vue'
+import App from '~/src/app.vue'
 const app = createApp(App);
 app.use(Vuex)
 
