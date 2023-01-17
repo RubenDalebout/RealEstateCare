@@ -11,6 +11,22 @@ import { IonicVue, IonIcon, IonToast } from '@ionic/vue';
 
 // Import createApp function from Vue
 import { createApp } from 'vue'
+// Import createStore function from Vuex
+import { createStore } from 'vuex'
+
+// Create a new store instance.
+const store = createStore({
+    state () {
+        return {
+        count: 0
+        }
+    },
+    mutations: {
+        increment (state) {
+        state.count++
+        }
+    }
+});
 
 // Import App.vue and router
 import App from './App.vue'
@@ -43,7 +59,7 @@ if (localStorage.getItem('user')) {
 const app = createApp(App);
 
 // Use Ionic Vue, router, IonIcon and IonToast
-app.use(IonicVue).use(router).use(IonIcon).component('ion-icon', IonIcon, {silent: true}).use(IonToast);
+app.use(IonicVue).use(router).use(IonIcon).component('ion-icon', IonIcon, {silent: true}).use(IonToast).use(store);
 
 // Mount the app to the element with id "app"
 app.mount('#app');

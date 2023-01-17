@@ -1,4 +1,4 @@
-<script>
+<script setup>
     // import the build, search, and alertCircle icons from the ionicons library 
     import { build, search, alertCircle } from 'ionicons/icons';
 </script>
@@ -38,7 +38,7 @@
                 if (localStorage.getItem('user')) {
                     // if there is a user in local storage, parse the user object and set loggedIn to true
                     if (localStorage.getItem('user')) {
-                        (JSON.parse(localStorage.getItem('user'))) {
+                        if (JSON.parse(localStorage.getItem('user'))) {
                             loggedIn = true;
                         }
                     }
