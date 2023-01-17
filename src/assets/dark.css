@@ -1,4 +1,4 @@
-@import './base.css';
+@import './base.min.css';
 
 :root {
   --bs-primary: #00aaa2;
