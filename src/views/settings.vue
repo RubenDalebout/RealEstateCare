@@ -2,8 +2,10 @@
     <main class="container">
         <div class="row">
             <div class="col-2-sm"></div>
+            <!-- Profile settings container -->
             <div class="col-sm">
                 <h1>Profile settings</h1>
+                <!-- Profile form -->
                 <form @submit.prevent="updateAccountDetails" id="accountdetails" name="accountdetails" method="post">
                     <div class="mb-3">
                         <label for="firstname" class="form-label">Firstname</label>
@@ -22,6 +24,7 @@
                         <input type="newpassword" class="form-control" id="newpassword" name="newpassword" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;">
                     </div>
                     <div>
+                        <!-- Update user information -->
                         <input :disabled="saving" type="submit" value="Change account" class="btn btn-primary">
                     </div>
                 </form>
@@ -31,6 +34,7 @@
         <hr>
         <div class="row">
             <div class="col-2-sm"></div>
+            <!-- Application settings for user container -->
             <div class="col-sm">
                 <h1>Application settings</h1>
                 <div class="form-check form-switch">
@@ -45,6 +49,7 @@
                     <input class="form-check-input" type="checkbox" role="switch" id="soundSwitch" v-model="settings.sounds">
                     <label class="form-check-label" for="soundSwitch">Sounds</label>
                 </div>
+                <!-- Update application settings for user -->
                 <button :disabled="saving" class="btn btn-primary" @click="updateSettings()">Save changes</button>
             </div>
             <div class="col-2-sm"></div>

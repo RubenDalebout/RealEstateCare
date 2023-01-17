@@ -32,6 +32,11 @@
 
 <script>
 import axios from 'axios';
+import { useStore } from 'vuex'
+
+const store = useStore();
+
+console.log(store)
 
 export default {
     data() {
@@ -78,7 +83,7 @@ export default {
                     delete user[0].password;
 
                     // Set the user object to the localStorage
-                    localStorage.setItem('user', JSON.stringify(user[0]));
+                    this.$store.commit('updateUser', user[0]);
 
                     // navigate user to home page
                     this.$router.go('/'); 
@@ -96,6 +101,7 @@ export default {
                 }
             } catch (err) {
                 // something went wrong show an error toast
+                console.log(err)
                 this.toastType = 'error';
                 this.toastMessage = (err.code != 'ERR_NETWORK') ? 'There has been an error occurred, contact the developer!' : 'You dont have wifi!';
                 this.showToast = true;

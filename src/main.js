@@ -11,31 +11,17 @@ import { IonicVue, IonIcon, IonToast } from '@ionic/vue';
 
 // Import createApp function from Vue
 import { createApp } from 'vue'
-// Import createStore function from Vuex
-import { createStore } from 'vuex'
 
-// Create a new store instance.
-const store = createStore({
-    state () {
-        return {
-        count: 0
-        }
-    },
-    mutations: {
-        increment (state) {
-        state.count++
-        }
-    }
-});
+import store from "./store/store.min.js";
 
 // Import App.vue and router
 import App from './App.vue'
 import router from './router'
 
 // Check if the user has dark theme enabled
-if (localStorage.getItem('user')) {
-    if (JSON.parse(localStorage.getItem('user'))) {
-        const usr = JSON.parse(localStorage.getItem('user'));
+if (store.state.user && typeof store.state.user === 'object') {
+    if (Object.keys(store.state.user).length > 0) {
+        const usr = store.state.user;
 
         // Check if the user has settings and if the dark theme is enabled
         if (usr.settings != undefined && usr.settings != null) {
