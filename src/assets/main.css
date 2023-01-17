@@ -27,6 +27,6 @@ a:hover, .text-light a:hover {
   --bs-btn-disabled-border-color: var(--bs-primary);
 }
 
-a:hover, .text-light a:hover {
+footer .router-link-active {
   color: white;
 }
