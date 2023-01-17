@@ -6,7 +6,7 @@ import { caretDownOutline, caretUpOutline } from 'ionicons/icons';
     <main class="container">
         <!-- button to go back to inspection list -->
         <button type="button" class="btn btn-danger" @click="cancelInspection()">Back to inspections</button> 
-        <form v-if="this.inspection.id !== ''" @submit.prevent="saveInspection">
+        <form @submit.prevent="saveInspection">
             <!-- form to edit inspection, only visible if inspection id is present -->
             <h1>Inspection {{ inspection.id }}</h1>
             <div class="form-group">
@@ -126,7 +126,7 @@ import { caretDownOutline, caretUpOutline } from 'ionicons/icons';
 
         </form>
 
-        <div v-else class="text-danger">
+        <div class="text-danger">
             <!-- Display message if no inspection was found -->
             <p>No inspection was found. Would you like to navigate back to the inspection overview? You can do so via the "Back to inspections" button.</p>
         </div>
