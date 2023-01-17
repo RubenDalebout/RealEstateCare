@@ -12,7 +12,7 @@
                     <div class="badge" :class="{'text-bg-success': inspection.completion, 'text-bg-danger': !inspection.completion }">{{ inspection.completion ? 'Completed' : 'In progress' }}</div>
                 </div>
                 <!-- link to the inspection page, passing the inspection id and address id through local storage -->
-                <router-link :to="{ name: 'inspection' }" @click="saveParamsToLocalStorage(inspection.id, addressId)" class="btn btn-primary">Go to Inspection</router-link>
+                <router-link :to="{ name: 'inspection' }" @click="saveParams(inspection.id, addressId)" class="btn btn-primary">Go to Inspection</router-link>
             </div>
         </div>
     </main>
@@ -20,6 +20,8 @@
 
 <script>
     import axios from 'axios';
+import { add } from 'ionicons/icons';
+    import store from '../store/store.js'
 
     export default {
         name: 'Inspections',
@@ -32,14 +34,14 @@
             };
         },
         methods: {
-            saveParamsToLocalStorage(inspection, address) {
-                localStorage.setItem('inspectionId', inspection);
-                localStorage.setItem('addressId', address);
+            saveParams(inspection, address) {
+                store.commit("changeInspection", inspection);
+                store.commit("changeAddress", address);
             }
         },
         async created() {
-            this.addressId = Number(localStorage.getItem('addressId'));
-            this.archive = (localStorage.getItem('completion') === 'true') ? 'completed' : 'scheduled';
+            this.addressId = store.getters.address;
+            this.archive = (store.getters.completion) ? 'completed' : 'scheduled';
             
             try {
                 //get the data from the api
@@ -52,7 +54,7 @@
 
                 //filter the inspections for the selected address and completion status
                 let address = response.data.record.addresses.filter(address => address.id === this.addressId);
-                let inspections = address[0].inspections.filter(inspection => inspection.completion === (localStorage.getItem('completion') === 'true') && inspection.inspector === JSON.parse(localStorage.getItem('user')).id);
+                let inspections = address[0].inspections.filter(inspection => inspection.completion === (store.getters.completion) && inspection.inspector === store.getters.userID);
                 //set the filtered inspections and address to be displayed
                 this.inspections = inspections;
                 this.address = address[0].street + ', ' + address[0].city;

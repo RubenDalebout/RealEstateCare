@@ -13,6 +13,7 @@
   
 <script>
     import axios from 'axios';
+    import store from '../store/store.js'
   
     export default {
         name: "AddressList",
@@ -24,7 +25,8 @@
     // Create function, which will be called when component is created
     async created() {
         // Store completion status in local storage
-        localStorage.setItem('completion', true);
+        store.commit('toggleCompletion', true);
+
         try {
             // Make a GET request to the specified API endpoint
             const response = await axios.get(`https://api.jsonbin.io/v3/b/63c1a09815ab31599e35cf00/latest`, {
@@ -45,7 +47,7 @@
                 let found = false;
                 for (let j = 0; j < address.inspections.length; j++) {
                     let inspection = address.inspections[j];
-                    if (inspection.inspector === JSON.parse(localStorage.getItem('user')).id && inspection.completion === JSON.parse(localStorage.getItem('completion'))) {
+                    if (inspection.inspector === store.getters.userID && inspection.completion === store.getters.completion) {
                         found = true;
                         break;
                     }
@@ -64,9 +66,9 @@
         async viewInspections(id, completion) {
             try {
                 // Save the address id to local storage so it can be accessed in the inspections view
-                localStorage.setItem('addressId', id);
+                store.commit("changeAddress", id)
                 // Save the completion status to local storage so it can be accessed in the inspections view
-                localStorage.setItem('completion', completion)
+                store.commit("toggleCompletion", completion)
                 // Navigate to the inspections view
                 this.$router.push({ name: 'inspections'});
             } catch (error) {

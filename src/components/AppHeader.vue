@@ -44,12 +44,10 @@
             // loggedIn is used to check if user is logged in or not
             let loggedIn = false;
             // checking if user is logged in
-            if (Object.keys(store.getters.user).length > 0 && store.getters.user.id != null && store.getters.user.id != undefined) {
+            if (store.getters.userID) {
                 loggedIn = true;
                 // checking if notifications are enabled in user's settings
-                if (Object.keys(store.getters.user.settings).length > 0 && store.getters.user.settings.notifications != null && store.getters.user.settings.notifications != undefined) {
-                    notificationsEnabled = (store.getters.user.settings.notifications) ? true : false;
-                }
+                notificationsEnabled = store.getters.userNotifications;
             }
             return {
                 loggedIn: loggedIn,

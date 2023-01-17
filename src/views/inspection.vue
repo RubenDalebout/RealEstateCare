@@ -143,6 +143,8 @@ import { caretDownOutline, caretUpOutline } from 'ionicons/icons';
 
 <script>
     import axios from 'axios';
+    import store from '../store/store.js'
+
     import DamageComponent from '../components/DamageComponent.vue';
     import MaintenanceComponent from '../components/MaintenanceComponent.vue';
     import InstallationComponent from '../components/InstallationComponent.vue';
@@ -181,8 +183,8 @@ import { caretDownOutline, caretUpOutline } from 'ionicons/icons';
         },
         // when the component is created, retrieve the inspection data from the API
         async created() {
-            this.addressId = Number(localStorage.getItem('addressId'));
-            let inspectionId = Number(localStorage.getItem('inspectionId'));
+            this.addressId = store.getters.address;
+            let inspectionId = store.getters.inspection;
             this.inspectionId = inspectionId;
 
             try {
@@ -292,11 +294,11 @@ import { caretDownOutline, caretUpOutline } from 'ionicons/icons';
                     }
                 } catch (error) {
                     // Save the inspection to the offlineInspection array when there's no internet connection
-                    let offlineInspections = JSON.parse(localStorage.getItem('offlineInspections')) || [];
+                    let offlineInspections = store.getters.offlineInspections || [];
                     this.inspection.inspectionId = this.inspectionId;
                     this.inspection.addressId = this.addressId;
                     offlineInspections.push(this.inspection);
-                    localStorage.setItem('offlineInspections', JSON.stringify(offlineInspections));
+                    store.commit("setOfflineInspections", offlineInspections);
                     this.toastType = 'error';
                     this.toastMessage = 'You do not have wifi, Inspection saved in offline mode';
                     this.showToast = true;
@@ -324,7 +326,9 @@ import { caretDownOutline, caretUpOutline } from 'ionicons/icons';
                 this.saveInspection();
                 
                 try {
-                    this.$router.push({ name: 'inspections' });
+                    store.commit("toggleCompletion", true)
+
+                    this.$router.push({ name: 'inspection' });
                 } catch (error) {
                     console.log(error);
                 }

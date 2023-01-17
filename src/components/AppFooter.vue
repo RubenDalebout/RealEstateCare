@@ -31,18 +31,16 @@
 </template>
 
 <script>
+    import store from '../store/store.js'
+
     export default {
         data() {
             let loggedIn = false;
-                // check if there is a user in local storage
-                if (localStorage.getItem('user')) {
-                    // if there is a user in local storage, parse the user object and set loggedIn to true
-                    if (localStorage.getItem('user')) {
-                        if (JSON.parse(localStorage.getItem('user'))) {
-                            loggedIn = true;
-                        }
-                    }
-                }
+            // check if there is a user in local storage
+            if (store.getters.userID) {
+            // if there is a user in local storage, parse the user object and set loggedIn to true
+                loggedIn = true;
+            }
             // return the data object with the loggedIn variable
             return {
                 loggedIn: loggedIn,
