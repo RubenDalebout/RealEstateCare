@@ -86,7 +86,7 @@ export default {
     methods: {
         logout() {
             store.commit("setUser", {})
-            this.$router.push({ name: 'home' });
+            this.$router.go({ name: 'home' });
         },  
         async updateSettings() {
             try {
