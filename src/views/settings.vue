@@ -150,8 +150,6 @@ export default {
                             this.toastType = '';
                             this.toastMessage = '';
                             this.showToast = false;
-
-                            this.$router.go()
                         }, 3000);
 
                         const user = jsonData[userIndex];
