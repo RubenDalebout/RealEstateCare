@@ -43,6 +43,22 @@
             if (store.getters.userID) {
                 this.loggedIn = true;
             }
+        },
+        watch: {
+            '$store.getters.userID': {
+                handler(newValue) {
+                    this.loggedIn = newValue;
+                },
+                deep: true
+            }
+        },
+        mounted() {
+            this.$store.watch(
+                (state) => (state.getters != undefined && state.getters.userID != undefined) ? state.getters.userID : false,
+                (newValue) => {
+                    this.loggedIn = newValue;
+                }
+            );
         }
     }
 </script>

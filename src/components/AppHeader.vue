@@ -40,15 +40,31 @@
     export default {
         data() {
             return {
-                notificationsEnabled: true,
                 loggedIn: false,
+                notificationsEnabled: false,
             }
         },
-        created(){
+        created() {
             if (store.getters.userID) {
                 this.loggedIn = true;
                 this.notificationsEnabled = store.getters.userNotifications;
             }
+        },
+        watch: {
+            '$store.getters.userNotifications': {
+                handler(newValue) {
+                    this.notificationsEnabled = newValue;
+                },
+                deep: true
+            }
+        },
+        mounted() {
+            this.$store.watch(
+                (state) => (state.getters != undefined && state.getters.userNotifications != undefined) ? state.getters.userNotifications : false,
+                (newValue) => {
+                    this.notificationsEnabled = newValue;
+                }
+            );
         }
     }
 </script>
