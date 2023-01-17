@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/dashboard.vue'
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL), //creating a web history with the base URL
@@ -7,7 +6,7 @@ const router = createRouter({
         {
             path: '/', //when user navigates to the root path
             name: 'home', //name of the route
-            component: HomeView //component to be rendered
+            component: () => import('../views/dashboard.vue') //lazy loading the component
         },
         {
             path: '/completed', //when user navigates to the /completed path
