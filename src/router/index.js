@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/dashboard.vue'
 
+import store from '../store/store'
+
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL), //creating a web history with the base URL
     routes: [
@@ -55,23 +57,6 @@ const router = createRouter({
             component: () => import('../views/inspection.vue'), //lazy loading the component
         }
     ],
-})
-
-router.beforeEach((to, from, next) => {
-    // check if the user is not trying to access the login page and if the user is not logged in
-    if (to.name != 'login' && !localStorage.getItem('user')) {
-        // redirect the user to the login page
-        next({ name: 'login' })
-    } else {
-        // check if the user is trying to access the login page and if the user is already logged in
-        if (to.name === 'login' && localStorage.getItem('user')) {
-            // redirect the user to the home page
-            next({name: 'home'});
-        } else {
-            // continue to the next route
-            next();
-        }
-    }
 })
 
 export default router

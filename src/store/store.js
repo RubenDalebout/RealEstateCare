@@ -1,55 +1,45 @@
-import { createStore } from 'vuex'
+import { createApp } from 'vue'
+import Vuex from 'vuex'
+import VuexPersist from 'vuex-persist'
 
-// root state object.
-// each Vuex instance is just a single state tree.
-const state = {
-  count: 0
-}
+const vuexPersist = new VuexPersist({
+  key: 'vuex', // The key to store the state on in the storage provider.
+  storage: window.localStorage, // or sessionStorage or whatever storage you are using.
+  // Function that passes the state and returns the state with only the objects you want to store.
+  reducer: state => ({ user: state.user })
+})
 
-// mutations are operations that actually mutate the state.
-// each mutation handler gets the entire state tree as the
-// first argument, followed by additional payload arguments.
-// mutations must be synchronous and can be recorded by plugins
-// for debugging purposes.
-const mutations = {
-  increment (state) {
-    state.count++
+import App from '../app.vue'
+const app = createApp(App);
+app.use(Vuex)
+
+export default new Vuex.Store({
+  state: {
+      user: {},
+      completion: false,
+      address: 0,
+      inspection: 0
   },
-  decrement (state) {
-    state.count--
-  }
-}
-
-// actions are functions that cause side effects and can involve
-// asynchronous operations.
-const actions = {
-  increment: ({ commit }) => commit('increment'),
-  decrement: ({ commit }) => commit('decrement'),
-  incrementIfOdd ({ commit, state }) {
-    if ((state.count + 1) % 2 === 0) {
-      commit('increment')
-    }
+  getters: {
+      user: state => state.user,
+      userID: state=> (state.user.id != undefined) ? state.user.id : false,
+      completion: state => state.completion,
+      address: state => state.address,
+      inspection: state => state.inspection
   },
-  incrementAsync ({ commit }) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        commit('increment')
-        resolve()
-      }, 1000)
-    })
-  }
-}
-
-// getters are functions.
-const getters = {
-  evenOrOdd: state => state.count % 2 === 0 ? 'even' : 'odd'
-}
-
-// A Vuex instance is created by combining the state, mutations, actions,
-// and getters.
-export default createStore({
-  state,
-  getters,
-  actions,
-  mutations
+  mutations: {
+      setUser(state, newUser) {
+          state.user = newUser
+      },
+      toggleCompletion(state) {
+          state.completion = !state.completion
+      },
+      changeAddress(state, newAddress) {
+          state.address = newAddress
+      },
+      changeInspection(state, newInspection) {
+          state.inspection = newInspection
+      }
+  },
+  plugins: [vuexPersist.plugin]
 })

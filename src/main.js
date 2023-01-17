@@ -12,7 +12,8 @@ import { IonicVue, IonIcon, IonToast } from '@ionic/vue';
 // Import createApp function from Vue
 import { createApp } from 'vue'
 
-import store from "./store/store.min.js";
+// Import store
+import store from './store/store.js'
 
 // Import App.vue and router
 import App from './App.vue'
@@ -49,3 +50,20 @@ app.use(IonicVue).use(router).use(IonIcon).component('ion-icon', IonIcon, {silen
 
 // Mount the app to the element with id "app"
 app.mount('#app');
+
+router.beforeEach((to, from, next) => {
+    // check if the user is not trying to access the login page and if the user is not logged in
+    if (to.name != 'login' && Object.keys(store.getters.user).length < 1) {
+        // redirect the user to the login page
+        next({ name: 'login' })
+    } else {
+        // check if the user is trying to access the login page and if the user is already logged in
+        if (to.name === 'login' && Object.keys(store.getters.user).length > 0 && store.getters.user.id != null && store.getters.user.id != undefined) {
+            // redirect the user to the home page
+            next({name: 'home'});
+        } else {
+            // continue to the next route
+            next();
+        }
+    }
+})

@@ -32,11 +32,7 @@
 
 <script>
 import axios from 'axios';
-import { useStore } from 'vuex'
-
-const store = useStore();
-
-console.log(store)
+import store from '../store/store.js'
 
 export default {
     data() {
@@ -83,7 +79,7 @@ export default {
                     delete user[0].password;
 
                     // Set the user object to the localStorage
-                    this.$store.commit('updateUser', user[0]);
+                    store.commit('setUser', user[0]);
 
                     // navigate user to home page
                     this.$router.go('/'); 

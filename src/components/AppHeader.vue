@@ -35,6 +35,8 @@
 </template>
 
 <script>
+    import store from '../store/store.js'
+
     export default {
         data() {
             // notificationsEnabled is used to check if notifications are enabled or not
@@ -42,13 +44,11 @@
             // loggedIn is used to check if user is logged in or not
             let loggedIn = false;
             // checking if user is logged in
-            if (localStorage.getItem('user')) {
-                if (JSON.parse(localStorage.getItem('user'))) {
-                    loggedIn = true;
-                    // checking if notifications are enabled in user's settings
-                    if (JSON.parse(localStorage.getItem('user')).settings) {
-                        notificationsEnabled = (JSON.parse(localStorage.getItem('user')).settings.notifications) ? true : false;
-                    }
+            if (Object.keys(store.getters.user).length > 0 && store.getters.user.id != null && store.getters.user.id != undefined) {
+                loggedIn = true;
+                // checking if notifications are enabled in user's settings
+                if (Object.keys(store.getters.user.settings).length > 0 && store.getters.user.settings.notifications != null && store.getters.user.settings.notifications != undefined) {
+                    notificationsEnabled = (store.getters.user.settings.notifications) ? true : false;
                 }
             }
             return {
