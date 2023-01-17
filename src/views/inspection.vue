@@ -1,7 +1,3 @@
-<script setup>
-import { caretDownOutline, caretUpOutline } from 'ionicons/icons';
-</script>
-
 <template>
     <main class="container">
         <!-- button to go back to inspection list -->
@@ -142,6 +138,7 @@ import { caretDownOutline, caretUpOutline } from 'ionicons/icons';
 </template>
 
 <script>
+    import { caretDownOutline, caretUpOutline } from 'ionicons/icons';
     import axios from 'axios';
     import store from '../store/store.js'
 
@@ -183,7 +180,6 @@ import { caretDownOutline, caretUpOutline } from 'ionicons/icons';
         },
         // when the component is created, retrieve the inspection data from the API
         async created() {
-            console.log(this.inspection)
             this.addressId = store.getters.address;
             let inspectionId = store.getters.inspection;
             this.inspectionId = inspectionId;
