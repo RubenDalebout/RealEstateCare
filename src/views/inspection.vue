@@ -183,6 +183,7 @@ import { caretDownOutline, caretUpOutline } from 'ionicons/icons';
         },
         // when the component is created, retrieve the inspection data from the API
         async created() {
+            console.log(this.inspection)
             this.addressId = store.getters.address;
             let inspectionId = store.getters.inspection;
             this.inspectionId = inspectionId;
