@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/dashboard.vue'
 
 const router = createRouter({
+    base: '/',
     history: createWebHistory(), //creating a web history with the base URL
     routes: [
         {
