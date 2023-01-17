@@ -6,7 +6,7 @@ import { caretDownOutline, caretUpOutline } from 'ionicons/icons';
     <main class="container">
         <!-- button to go back to inspection list -->
         <button type="button" class="btn btn-danger" @click="cancelInspection()">Back to inspections</button> 
-        <form v-if="this.inspection !== undefined && this.inspection.id !== ''" @submit.prevent="saveInspection">
+        <form v-if="typeof this.inspection !== 'undefined' && this.inspection.id !== ''" @submit.prevent="saveInspection">
             <!-- form to edit inspection, only visible if inspection id is present -->
             <h1>Inspection {{ inspection.id }}</h1>
             <div class="form-group">
