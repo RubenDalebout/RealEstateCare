@@ -26,3 +26,7 @@ a:hover, .text-light a:hover {
   --bs-btn-disabled-bg: var(--bs-primary);
   --bs-btn-disabled-border-color: var(--bs-primary);
 }
+
+a:hover, .text-light a:hover {
+  color: white;
+}
