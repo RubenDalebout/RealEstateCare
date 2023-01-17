@@ -4,8 +4,10 @@ import { caretDownOutline, caretUpOutline } from 'ionicons/icons';
 
 <template>
     <main class="container">
-        <button type="button" class="btn btn-danger" @click="cancelInspection()">Back to inspections</button>
+        <!-- button to go back to inspection list -->
+        <button type="button" class="btn btn-danger" @click="cancelInspection()">Back to inspections</button> 
         <form v-if="this.inspection.id !== ''" @submit.prevent="saveInspection">
+            <!-- form to edit inspection, only visible if inspection id is present -->
             <h1>Inspection {{ inspection.id }}</h1>
             <div class="form-group">
                 <label for="cleanlinessScore">Cleanliness Score</label>
@@ -22,91 +24,117 @@ import { caretDownOutline, caretUpOutline } from 'ionicons/icons';
                     <option value="10">10</option>
                 </select>
             </div>
+            <!-- Damage section -->
             <div class="form-group my-3 py-3">
                 <h2>
+                    <!-- Toggle button to show/hide the damage section -->
                     <button type="button" class="btn btn-secondary" @click="showDamage = !showDamage">
                         <ion-icon v-if="!showDamage" class="m-auto" id="navigation-caretDownOutline-icon" :icon="caretDownOutline"></ion-icon>
                         <ion-icon v-if="showDamage" class="m-auto" id="navigation-caretUpOutline-icon" :icon="caretUpOutline"></ion-icon>
                     </button>
                     <span class="ms-3">Damage</span>
                 </h2>
-                
+                <!-- Button to add a new damage item -->
                 <div class="d-flex justify-content-between">
                     <button type="button" class="btn btn-primary" @click="addDamage">Add Damage</button>
                 </div>
+                <!-- Transition to show/hide the damage items -->
                 <transition name="fade">
                     <div v-if="showDamage">
+                        <!-- Component to display and edit a damage item -->
                         <damage-component v-for="(damage, index) in inspection.damage" :key="index" :damage="damage"></damage-component>
                     </div>
                 </transition>
             </div>
+
+            <!-- Maintenance section -->
             <div class="form-group my-3 py-3">
                 <h2>
+                    <!-- Toggle button to show/hide the maintenance section -->
                     <button type="button" class="btn btn-secondary" @click="showMaintenance = !showMaintenance">
                         <ion-icon v-if="!showMaintenance" class="m-auto" id="navigation-caretDownOutline-icon" :icon="caretDownOutline"></ion-icon>
                         <ion-icon v-if="showMaintenance" class="m-auto" id="navigation-caretUpOutline-icon" :icon="caretUpOutline"></ion-icon>
                     </button>
                     <span class="ms-3">Maintenance</span>
                 </h2>
-
+                <!-- button to add a new maintenance item -->
                 <div class="d-flex justify-content-between">
                     <button type="button" class="btn btn-primary" @click="addMaintenance">Add Maintenance</button>
                 </div>
+                <!-- Transition to show/hide the maintenance items -->
                 <transition name="fade">
                     <div v-if="showMaintenance">
+                        <!-- Component to display and edit a maintenance item -->
                         <maintenance-component v-for="(maintenance, index) in inspection.maintenance" :key="index" :maintenance="maintenance"></maintenance-component>
                     </div>
                 </transition>
             </div>
+            <!-- Installation section -->
             <div class="form-group my-3 py-3">
                 <h2>
+                    <!-- Toggle button to show/hide the installation section -->
                     <button type="button" class="btn btn-secondary" @click="showInstallation = !showInstallation">
                         <ion-icon v-if="!showInstallation" class="m-auto" id="navigation-caretDownOutline-icon" :icon="caretDownOutline"></ion-icon>
                         <ion-icon v-if="showInstallation" class="m-auto" id="navigation-caretUpOutline-icon" :icon="caretUpOutline"></ion-icon>
                     </button>
                     <span class="ms-3">Installations</span>
                 </h2>
-                
+
+                <!-- button to add a new installation item -->
                 <div class="d-flex justify-content-between">
                     <button type="button" class="btn btn-primary" @click="addInstallation">Add Installation</button>
                 </div>
+                <!-- Transition to show/hide the installation items -->
                 <transition name="fade">
                     <div v-if="showInstallation">
+                        <!-- Component to display and edit a installation item -->
                         <installation-component v-for="(installation, index) in inspection.installations" :key="index" :installation="installation"></installation-component>
                     </div>
                 </transition>
             </div>
+            <!-- Modifications section -->
             <div class="form-group my-3 py-3">
                 <h2>
+                    <!-- Toggle button to show/hide the modifications section -->
                     <button type="button" class="btn btn-secondary" @click="showModification = !showModification">
                         <ion-icon v-if="!showModification" class="m-auto" id="navigation-caretDownOutline-icon" :icon="caretDownOutline"></ion-icon>
                         <ion-icon v-if="showModification" class="m-auto" id="navigation-caretUpOutline-icon" :icon="caretUpOutline"></ion-icon>
                     </button>
                     <span class="ms-3">Modifications</span>
                 </h2>
+
+                <!-- button to add a new modifications item -->
                 <div class="d-flex justify-content-between">
                     <button type="button" class="btn btn-primary" @click="addModification">Add Modification</button>
                 </div>
-
+                <!-- Transition to show/hide the modifications items -->
                 <transition name="fade">
                     <div v-if="showModification">
+                        <!-- Component to display and edit a modifications item -->
                         <modification-component v-for="(modification, index) in inspection.modifications" :key="index" :modification="modification"></modification-component>
                     </div>
                 </transition>
             </div>
             <div class="form-group d-flex gap-3">
+                <!-- "Cancel" button that takes the user back to the inspection list -->
                 <button :disabled="saving" type="button" class="btn btn-danger" @click="cancelInspection()">Cancel</button>
+                <!-- "Save inspection" button that saves the current inspection -->
                 <button :disabled="saving" class="btn btn-success" type="submit">Save inspection</button>
+                <!-- "Complete inspection" button that marks the inspection as completed, only visible if the inspection is not already completed -->
                 <button :disabled="saving" type="button" v-if="!inspection.completion" class="btn btn-success" @click="completeInspection">Complete inspection</button>
             </div>
+
         </form>
 
         <div v-else class="text-danger">
+            <!-- Display message if no inspection was found -->
             <p>No inspection was found. Would you like to navigate back to the inspection overview? You can do so via the "Back to inspections" button.</p>
         </div>
 
         <div v-if="showToast" class="toast-container">
+            <!-- Toast message container -->
             <div v-bind:class="{'show': showToast}" :class="'toast toast-' + toastType">
+                <!-- Display toast message -->
                 {{ toastMessage }}
             </div>
         </div>
@@ -122,6 +150,7 @@ import { caretDownOutline, caretUpOutline } from 'ionicons/icons';
 
     export default {
         name: 'Inspection',
+        // importing the child components to be used in this component
         components: {
             DamageComponent,
             MaintenanceComponent,
@@ -150,6 +179,7 @@ import { caretDownOutline, caretUpOutline } from 'ionicons/icons';
                 saving: false,
             };
         },
+        // when the component is created, retrieve the inspection data from the API
         async created() {
             this.addressId = Number(localStorage.getItem('addressId'));
             let inspectionId = Number(localStorage.getItem('inspectionId'));
@@ -162,7 +192,7 @@ import { caretDownOutline, caretUpOutline } from 'ionicons/icons';
                         'X-Master-Key': '$2b$10$6OQ5plkCt1vMLN8m7VMniOP5RSMQB3WOfPoQlYh/JNbs2xeF7psUu'
                     }
                 });
-
+                // check if the address and inspection exist, and set the inspection data if they do
                 if (response.data.record.addresses !== undefined && response.data.record.addresses !== null) {
                     if (this.addressId !== undefined && this.addressId !== null && response.data.record.addresses.filter(address => address.id === this.addressId) !== undefined && response.data.record.addresses.filter(address => address.id === this.addressId) !== null) {
                         let address = response.data.record.addresses.filter(address => address.id === this.addressId);
@@ -183,20 +213,26 @@ import { caretDownOutline, caretUpOutline } from 'ionicons/icons';
         },
         methods: {
             addDamage() {
+                // Add new damage array
                 this.inspection.damage.push({});
             },
             addMaintenance() {
+                // Add new maintenace array
                 this.inspection.maintenance.push({});
             },
             addInstallation() {
+                // Add new installation array
                 this.inspection.installations.push({});
             },
             addModification() {
+                // Add new modifications array
                 this.inspection.modifications.push({});
             },
             async saveInspection() {
                 try {
+                    //set the saving state to true
                     this.saving = true;
+                    //get the data from the api
                     const response = await axios.get(`https://api.jsonbin.io/v3/b/63c1a09815ab31599e35cf00/latest`, {
                         headers: {
                             'Content-Type': 'application/json',
@@ -204,18 +240,20 @@ import { caretDownOutline, caretUpOutline } from 'ionicons/icons';
                         }
                     });
 
+                    //find the index of the address and inspection in the response data
                     const addressIndex = response.data.record.addresses.findIndex(address => address.id === this.addressId);
                     const inspectionIndex = response.data.record.addresses[addressIndex].inspections.findIndex(inspection => inspection.id === this.inspectionId);
 
-                    // Update data
-                    response.data.record.addresses[addressIndex].inspections[inspectionIndex].completion = this.inspection.completion; // Completion
-                    response.data.record.addresses[addressIndex].inspections[inspectionIndex].damage = this.inspection.damage; // Damage(s)
-                    response.data.record.addresses[addressIndex].inspections[inspectionIndex].maintenance = this.inspection.maintenance; // Maintenance(s)
-                    response.data.record.addresses[addressIndex].inspections[inspectionIndex].installations = this.inspection.installations; // Installation(s)
-                    response.data.record.addresses[addressIndex].inspections[inspectionIndex].modifications = this.inspection.modifications; // Modification(s)
-                    response.data.record.addresses[addressIndex].inspections[inspectionIndex].cleanlinessScore = this.inspection.cleanlinessScore; // CleanlinesScore
-                    response.data.record.addresses[addressIndex].inspections[inspectionIndex].somethingBroken = this.inspection.somethingBroken; // SomethingBroken;
+                    //update the data in the response object
+                    response.data.record.addresses[addressIndex].inspections[inspectionIndex].completion = this.inspection.completion;
+                    response.data.record.addresses[addressIndex].inspections[inspectionIndex].damage = this.inspection.damage;
+                    response.data.record.addresses[addressIndex].inspections[inspectionIndex].maintenance = this.inspection.maintenance;
+                    response.data.record.addresses[addressIndex].inspections[inspectionIndex].installations = this.inspection.installations;
+                    response.data.record.addresses[addressIndex].inspections[inspectionIndex].modifications = this.inspection.modifications;
+                    response.data.record.addresses[addressIndex].inspections[inspectionIndex].cleanlinessScore = this.inspection.cleanlinessScore;
+                    response.data.record.addresses[addressIndex].inspections[inspectionIndex].somethingBroken = this.inspection.somethingBroken;
 
+                    //put the updated data back to the api
                     const update = await axios.put(`https://api.jsonbin.io/v3/b/63c1a09815ab31599e35cf00`, {
                         addresses: response.data.record.addresses,
                     }, {
@@ -225,11 +263,13 @@ import { caretDownOutline, caretUpOutline } from 'ionicons/icons';
                         }
                     });
 
+                    // Check if the status is 200 if so show succes toast
                     if (update.status === 200) {
                         this.toastType = 'success';
                         this.toastMessage = 'Inspection saved successfully';
                         this.showToast = true;
 
+                        // Remove toast after 3 seconds
                         setTimeout(() => {
                             this.toastType = '';
                             this.toastMessage = '';
@@ -237,11 +277,13 @@ import { caretDownOutline, caretUpOutline } from 'ionicons/icons';
                         }, 3000);
                     }
 
+                    // Check if the status is not 200 if so show error toast
                     if (update.status !== 200) {
                         this.toastType = 'error';
                         this.toastMessage = 'Inspection not saved, error occurred';
                         this.showToast = true;
 
+                        // Remove toast after 3 seconds
                         setTimeout(() => {
                             this.toastType = '';
                             this.toastMessage = '';
@@ -264,11 +306,12 @@ import { caretDownOutline, caretUpOutline } from 'ionicons/icons';
                         this.toastMessage = '';
                         this.showToast = false;
                     }, 3000);
+                } finally {
+                    this.saving = false;
                 }
-
-                this.saving = false;
             },
             cancelInspection() {
+                // If called send user to the inspections view
                 try {
                     this.$router.push({ name: 'inspections' });
                 } catch (error) {
@@ -276,6 +319,7 @@ import { caretDownOutline, caretUpOutline } from 'ionicons/icons';
                 }
             },
             completeInspection() {
+                // If called send user to the inspections view, complete the inspection and save the inspection
                 this.inspection.completion = true;
                 this.saveInspection();
                 
@@ -285,6 +329,6 @@ import { caretDownOutline, caretUpOutline } from 'ionicons/icons';
                     console.log(error);
                 }
             }
+        }
     }
-}
 </script>

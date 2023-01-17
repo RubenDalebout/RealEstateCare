@@ -3,7 +3,7 @@
         <h2 class="my-3">Getting Started</h2>
         <ul class="list-group">
             <li class="list-group-item">Download the RealEstateCare app from the App Store or Google Play.</li>
-            <li class="list-group-item">Log in with your provided username and password.</li>
+            <li class="list-group-item">Log in with your provided email and password.</li>
             <li class="list-group-item">Once logged in, you will be directed to the main dashboard.</li>
             <li class="list-group-item">From here, you can access your scheduled inspections, completed inspections, the knowledge base and settings.</li>
         </ul>

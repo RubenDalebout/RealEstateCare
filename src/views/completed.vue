@@ -21,9 +21,12 @@
                 addresses: []
         };
     },
+    // Create function, which will be called when component is created
     async created() {
+        // Store completion status in local storage
         localStorage.setItem('completion', true);
         try {
+            // Make a GET request to the specified API endpoint
             const response = await axios.get(`https://api.jsonbin.io/v3/b/63c1a09815ab31599e35cf00/latest`, {
                 headers: {
                 'Content-Type': 'application/json',
@@ -31,8 +34,10 @@
                 }
             });
             
+            // Assign addresses to the component's data
             this.addresses = response.data.record.addresses;
 
+            // Iterate through addresses and remove those that do not have inspections by the current user and with the current completion status
             for (let i = 0; i < response.data.record.addresses.length; i++) {
                 let address = response.data.record.addresses[i];
                 if (address.inspections === null || address.inspections === undefined) continue;
@@ -58,8 +63,11 @@
     methods: {
         async viewInspections(id, completion) {
             try {
+                // Save the address id to local storage so it can be accessed in the inspections view
                 localStorage.setItem('addressId', id);
+                // Save the completion status to local storage so it can be accessed in the inspections view
                 localStorage.setItem('completion', completion)
+                // Navigate to the inspections view
                 this.$router.push({ name: 'inspections'});
             } catch (error) {
                 console.log(error);
