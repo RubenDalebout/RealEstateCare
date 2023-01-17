@@ -1,108 +1,108 @@
 <template>
-  <!-- render AppHeader component -->
-  <app-header />
-  <!-- render current page based on router -->
-  <router-view></router-view>
-  <!-- render AppFooter component -->
-  <app-footer />
-  <!-- render NoWifiModal component -->
-  <NoWifiModal />
+    <!-- render AppHeader component -->
+    <app-header />
+    <!-- render current page based on router -->
+    <router-view></router-view>
+    <!-- render AppFooter component -->
+    <app-footer />
+    <!-- render NoWifiModal component -->
+    <NoWifiModal />
 
-  <!-- Show toast message for offline inspections -->
-  <div v-if="showOfflineToast" class="toast-container">
-      <div v-bind:class="{'show': showOfflineToast}" :class="'toast toast-' + toastOfflineType">
-          {{ toastOfflineMessage }}
-      </div>
-  </div>
+    <!-- Show toast message for offline inspections -->
+    <div v-if="showOfflineToast" class="toast-container">
+        <div v-bind:class="{'show': showOfflineToast}" :class="'toast toast-' + toastOfflineType">
+            {{ toastOfflineMessage }}
+        </div>
+    </div>
 </template>
 
 <script>
-// import AppHeader, AppFooter and NoWifiModal components
-import AppHeader from '@/components/AppHeader.vue'
-import AppFooter from '@/components/AppFooter.vue'
-import NoWifiModal from '@/components/WifiCheck.vue'
+    // import AppHeader, AppFooter and NoWifiModal components
+    import AppHeader from '@/components/AppHeader.vue'
+    import AppFooter from '@/components/AppFooter.vue'
+    import NoWifiModal from '@/components/WifiCheck.vue'
 
-// Import axios library for making HTTP requests
-import axios from 'axios'
+    // Import axios library for making HTTP requests
+    import axios from 'axios'
 
-export default {
-components: {
-  AppHeader,
-  AppFooter,
-  NoWifiModal
-},
-// Save offline inspections when the component is created
-created() {
-  this.saveOfflineInspections();
-},  
-// Save offline inspections when the user comes back online
-mounted() {
-  window.addEventListener('online', this.saveOfflineInspections);
-},
-data() {
-  return {
-    // Flag to show/hide the offline toast message
-    showOfflineToast: false,
-    // Message to show in the toast
-    toastOfflineMessage: '',
-    // Type of the toast message (e.g. success, error)
-    toastOfflineType: '',
-  }
-},  
-methods: {
-  // Function to save offline inspections to the server
-  async saveOfflineInspections() {
-    // Check if there are any offline inspections to save
-    if (localStorage.getItem('offlineInspections') === null || localStorage.getItem('offlineInspections') === undefined || JSON.parse(localStorage.getItem('offlineInspections')).length  < 1) return;
-    try {
-        // Get the latest record
-        const response = await axios.get(`https://api.jsonbin.io/v3/b/63c1a09815ab31599e35cf00/latest`, {
-            headers: {
-                'Content-Type': 'application/json',
-                'X-Master-Key': '$2b$10$6OQ5plkCt1vMLN8m7VMniOP5RSMQB3WOfPoQlYh/JNbs2xeF7psUu'
+    export default {
+        components: {
+            AppHeader,
+            AppFooter,
+            NoWifiModal
+        },
+        // Save offline inspections when the component is created
+        created() {
+            this.saveOfflineInspections();
+        },  
+        // Save offline inspections when the user comes back online
+        mounted() {
+            window.addEventListener('online', this.saveOfflineInspections);
+        },
+        data() {
+            return {
+                // Flag to show/hide the offline toast message
+                showOfflineToast: false,
+                // Message to show in the toast
+                toastOfflineMessage: '',
+                // Type of the toast message (e.g. success, error)
+                toastOfflineType: '',
             }
-        });
+        },  
+        methods: {
+            // Function to save offline inspections to the server
+            async saveOfflineInspections() {
+                // Check if there are any offline inspections to save
+                if (localStorage.getItem('offlineInspections') === null || localStorage.getItem('offlineInspections') === undefined || JSON.parse(localStorage.getItem('offlineInspections')).length  < 1) return;
+                try {
+                    // Get the latest record
+                    const response = await axios.get(`https://api.jsonbin.io/v3/b/63c1a09815ab31599e35cf00/latest`, {
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-Master-Key': '$2b$10$6OQ5plkCt1vMLN8m7VMniOP5RSMQB3WOfPoQlYh/JNbs2xeF7psUu'
+                        }
+                    });
 
-        // Update the record with the offline inspections data
-        JSON.parse(localStorage.getItem('offlineInspections')).forEach(inspection => {
-            // Check if the address and inspection indexes exist in the record
-            if (inspection.addressId === null || inspection.addressId === undefined || inspection.inspectionId === null || inspection.inspectionId === undefined) return;
-            const addressIndex = inspection.addressId;
-            const inspectionIndex = inspection.inspectionId;
-            if (response.data.record.addresses[addressIndex] === null || response.data.record.addresses[addressIndex] === undefined ||
-                response.data.record.addresses[addressIndex].inspections === null || response.data.record.addresses[addressIndex].inspections === undefined ||
-                response.data.record.addresses[addressIndex].inspections[inspectionIndex] === null || response.data.record.addresses[addressIndex].inspections[inspectionIndex] === undefined ) return;
-            // Update data
-            response.data.record.addresses[addressIndex].inspections[inspectionIndex].completion = inspection.completion; // Completion
-            response.data.record.addresses[addressIndex].inspections[inspectionIndex].damage = inspection.damage; // Damage(s)
-            response.data.record.addresses[addressIndex].inspections[inspectionIndex].maintenance = inspection.maintenance; // Maintenance(s)
-            response.data.record.addresses[addressIndex].inspections[inspectionIndex].installations = inspection.installations; // Installation(s)
-            response.data.record.addresses[addressIndex].inspections[inspectionIndex].modifications = inspection.modifications; // Modification(s)
-            response.data.record.addresses[addressIndex].inspections[inspectionIndex].cleanlinessScore = inspection.cleanlinessScore; // CleanlinesScore
-            response.data.record.addresses[addressIndex].inspections[inspectionIndex].somethingBroken = inspection.somethingBroken; // SomethingBroken;
-            delete inspection.addressId;
-            delete inspection.inspectionId;
-          });
-          // Update the record
-          const update = await axios.put(`https://api.jsonbin.io/v3/b/63c1a09815ab31599e35cf00`, response.data, {
-              headers: {
-                  'Content-Type': 'application/json',
-                  'X-Master-Key': '$2b$10$6OQ5plkCt1vMLN8m7VMniOP5RSMQB3WOfPoQlYh/JNbs2xeF7psUu'
-              }
-          });
-          // Show success toast message
-          this.showOfflineToast = true;
-          this.toastOfflineMessage = 'Offline inspections saved successfully';
-          this.toastOfflineType = 'success';
-          // Clear offline inspections from local storage
-          localStorage.removeItem('offlineInspections');
-      } catch (error) {
-          // Show error toast message
-          this.showOfflineToast = true;
-          this.toastOfflineMessage = 'Error saving offline inspections';
-          this.toastOfflineType = 'error';
-      }
-    },
-  }
-}
+                    // Update the record with the offline inspections data
+                    JSON.parse(localStorage.getItem('offlineInspections')).forEach(inspection => {
+                        // Check if the address and inspection indexes exist in the record
+                        if (inspection.addressId === null || inspection.addressId === undefined || inspection.inspectionId === null || inspection.inspectionId === undefined) return;
+                        const addressIndex = inspection.addressId;
+                        const inspectionIndex = inspection.inspectionId;
+                        if (response.data.record.addresses[addressIndex] === null || response.data.record.addresses[addressIndex] === undefined ||
+                            response.data.record.addresses[addressIndex].inspections === null || response.data.record.addresses[addressIndex].inspections === undefined ||
+                            response.data.record.addresses[addressIndex].inspections[inspectionIndex] === null || response.data.record.addresses[addressIndex].inspections[inspectionIndex] === undefined ) return;
+                        // Update data
+                        response.data.record.addresses[addressIndex].inspections[inspectionIndex].completion = inspection.completion; // Completion
+                        response.data.record.addresses[addressIndex].inspections[inspectionIndex].damage = inspection.damage; // Damage(s)
+                        response.data.record.addresses[addressIndex].inspections[inspectionIndex].maintenance = inspection.maintenance; // Maintenance(s)
+                        response.data.record.addresses[addressIndex].inspections[inspectionIndex].installations = inspection.installations; // Installation(s)
+                        response.data.record.addresses[addressIndex].inspections[inspectionIndex].modifications = inspection.modifications; // Modification(s)
+                        response.data.record.addresses[addressIndex].inspections[inspectionIndex].cleanlinessScore = inspection.cleanlinessScore; // CleanlinesScore
+                        response.data.record.addresses[addressIndex].inspections[inspectionIndex].somethingBroken = inspection.somethingBroken; // SomethingBroken;
+                        delete inspection.addressId;
+                        delete inspection.inspectionId;
+                    });
+                    // Update the record
+                    const update = await axios.put(`https://api.jsonbin.io/v3/b/63c1a09815ab31599e35cf00`, response.data, {
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-Master-Key': '$2b$10$6OQ5plkCt1vMLN8m7VMniOP5RSMQB3WOfPoQlYh/JNbs2xeF7psUu'
+                        }
+                    });
+                    // Show success toast message
+                    this.showOfflineToast = true;
+                    this.toastOfflineMessage = 'Offline inspections saved successfully';
+                    this.toastOfflineType = 'success';
+                    // Clear offline inspections from local storage
+                    localStorage.removeItem('offlineInspections');
+                } catch (error) {
+                    // Show error toast message
+                    this.showOfflineToast = true;
+                    this.toastOfflineMessage = 'Error saving offline inspections';
+                    this.toastOfflineType = 'error';
+                }
+            },
+        }
+    }
 </script>

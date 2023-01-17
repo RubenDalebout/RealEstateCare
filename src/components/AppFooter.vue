@@ -31,22 +31,22 @@
 </template>
 
 <script>
-export default {
-    data() {
-        let loggedIn = false;
-            // check if there is a user in local storage
-            if (localStorage.getItem('user')) {
-                // if there is a user in local storage, parse the user object and set loggedIn to true
+    export default {
+        data() {
+            let loggedIn = false;
+                // check if there is a user in local storage
                 if (localStorage.getItem('user')) {
-                    (JSON.parse(localStorage.getItem('user'))) {
-                        loggedIn = true;
+                    // if there is a user in local storage, parse the user object and set loggedIn to true
+                    if (localStorage.getItem('user')) {
+                        (JSON.parse(localStorage.getItem('user'))) {
+                            loggedIn = true;
+                        }
                     }
                 }
+            // return the data object with the loggedIn variable
+            return {
+                loggedIn: loggedIn,
             }
-        // return the data object with the loggedIn variable
-        return {
-            loggedIn: loggedIn,
-        }
-    },
-}
+        },
+    }
 </script>
