@@ -6,7 +6,7 @@ import { caretDownOutline, caretUpOutline } from 'ionicons/icons';
     <main class="container">
         <!-- button to go back to inspection list -->
         <button type="button" class="btn btn-danger" @click="cancelInspection()">Back to inspections</button> 
-        <form @submit.prevent="saveInspection">
+        <form v-if="this.inspection !== undefined && this.inspection.id !== ''" @submit.prevent="saveInspection">
             <!-- form to edit inspection, only visible if inspection id is present -->
             <h1>Inspection {{ inspection.id }}</h1>
             <div class="form-group">
@@ -126,7 +126,7 @@ import { caretDownOutline, caretUpOutline } from 'ionicons/icons';
 
         </form>
 
-        <div class="text-danger">
+        <div v-else class="text-danger">
             <!-- Display message if no inspection was found -->
             <p>No inspection was found. Would you like to navigate back to the inspection overview? You can do so via the "Back to inspections" button.</p>
         </div>
@@ -183,35 +183,35 @@ import { caretDownOutline, caretUpOutline } from 'ionicons/icons';
         },
         // when the component is created, retrieve the inspection data from the API
         async created() {
-            // this.addressId = store.getters.address;
-            // let inspectionId = store.getters.inspection;
-            // this.inspectionId = inspectionId;
+            this.addressId = store.getters.address;
+            let inspectionId = store.getters.inspection;
+            this.inspectionId = inspectionId;
 
-            // try {
-            //     const response = await axios.get(`https://api.jsonbin.io/v3/b/63c1a09815ab31599e35cf00/latest`, {
-            //         headers: {
-            //             'Content-Type': 'application/json',
-            //             'X-Master-Key': '$2b$10$6OQ5plkCt1vMLN8m7VMniOP5RSMQB3WOfPoQlYh/JNbs2xeF7psUu'
-            //         }
-            //     });
-            //     // check if the address and inspection exist, and set the inspection data if they do
-            //     if (response.data.record.addresses !== undefined && response.data.record.addresses !== null) {
-            //         if (this.addressId !== undefined && this.addressId !== null && response.data.record.addresses.filter(address => address.id === this.addressId) !== undefined && response.data.record.addresses.filter(address => address.id === this.addressId) !== null) {
-            //             let address = response.data.record.addresses.filter(address => address.id === this.addressId);
-            //             if (address.length > 0) {
-            //                 address = address[0];
-            //                 if (address.inspections.filter(inspection => inspection.id === inspectionId) !== undefined && address.inspections.filter(inspection => inspection.id === inspectionId) !== null) {
-            //                     let inspection = address.inspections.filter(inspection => inspection.id === inspectionId);
-            //                     if (inspection.length > 0) {
-            //                         this.inspection = inspection[0];
-            //                     }
-            //                 }
-            //             }
-            //         }
-            //     }
-            // } catch (error) {
-            //     console.log(error);
-            // }
+            try {
+                const response = await axios.get(`https://api.jsonbin.io/v3/b/63c1a09815ab31599e35cf00/latest`, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-Master-Key': '$2b$10$6OQ5plkCt1vMLN8m7VMniOP5RSMQB3WOfPoQlYh/JNbs2xeF7psUu'
+                    }
+                });
+                // check if the address and inspection exist, and set the inspection data if they do
+                if (response.data.record.addresses !== undefined && response.data.record.addresses !== null) {
+                    if (this.addressId !== undefined && this.addressId !== null && response.data.record.addresses.filter(address => address.id === this.addressId) !== undefined && response.data.record.addresses.filter(address => address.id === this.addressId) !== null) {
+                        let address = response.data.record.addresses.filter(address => address.id === this.addressId);
+                        if (address.length > 0) {
+                            address = address[0];
+                            if (address.inspections.filter(inspection => inspection.id === inspectionId) !== undefined && address.inspections.filter(inspection => inspection.id === inspectionId) !== null) {
+                                let inspection = address.inspections.filter(inspection => inspection.id === inspectionId);
+                                if (inspection.length > 0) {
+                                    this.inspection = inspection[0];
+                                }
+                            }
+                        }
+                    }
+                }
+            } catch (error) {
+                console.log(error);
+            }
         },
         methods: {
             addDamage() {
