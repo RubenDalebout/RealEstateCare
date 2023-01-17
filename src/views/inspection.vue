@@ -184,7 +184,7 @@ import { caretDownOutline, caretUpOutline } from 'ionicons/icons';
         // when the component is created, retrieve the inspection data from the API
         async created() {
             this.addressId = store.getters.address;
-            let inspectionId = store.getters.inspection;
+            let inspectionId = false;
             this.inspectionId = inspectionId;
 
             try {
@@ -199,8 +199,6 @@ import { caretDownOutline, caretUpOutline } from 'ionicons/icons';
                     if (this.addressId !== undefined && this.addressId !== null && response.data.record.addresses.filter(address => address.id === this.addressId) !== undefined && response.data.record.addresses.filter(address => address.id === this.addressId) !== null) {
                         let address = response.data.record.addresses.filter(address => address.id === this.addressId);
                         if (address.length > 0) {
-                            address = address[0];
-                            console.log(address);
                             if (address.inspections.filter(inspection => inspection.id === inspectionId) !== undefined && address.inspections.filter(inspection => inspection.id === inspectionId) !== null) {
                                 let inspection = address.inspections.filter(inspection => inspection.id === inspectionId);
                                 if (inspection.length > 0) {
