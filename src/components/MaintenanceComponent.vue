@@ -13,7 +13,7 @@
         <!-- form-group for acute action checkbox -->
         <div class="form-group">
             <label for="acuteAction">Acute Action</label>
-            <input type="checkbox" v-model="maintenance.acuteAction" class="form-control" id="acuteAction">
+            <input type="checkbox" v-model="maintenance.acuteAction" class="form-check-input" id="acuteAction">
         </div>
         <!-- form-group for cost estimate input -->
         <div class="form-group">
@@ -21,6 +21,7 @@
             <input type="text" v-model="maintenance.costEstimate" class="form-control" id="costEstimate">
         </div>
         <!-- file input for photos -->
+        <label for="photos">Photos</label>
         <input type="file" ref="photos" @change="uploadPhotos" class="form-control" id="photos" multiple>
     </div>
 </template>

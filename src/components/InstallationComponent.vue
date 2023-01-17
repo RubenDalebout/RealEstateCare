@@ -23,7 +23,7 @@
         <!-- Form group for approved checkbox -->
         <div class="form-group">
             <label for="approved">Approved</label>
-            <input type="checkbox" v-model="installation.approved" class="form-control" id="approved">
+            <input type="checkbox" v-model="installation.approved" class="form-check-input" id="approved">
         </div>
         <!-- Form group for comments input -->
         <div class="form-group">
@@ -31,6 +31,7 @@
             <input type="text" v-model="installation.comments" class="form-control" id="comments">
         </div>
         <!-- File input for photos -->
+        <label for="photos">Photos</label>
         <input type="file" ref="photos" @change="uploadPhotos" class="form-control" id="photos" multiple>
     </div>
 </template>

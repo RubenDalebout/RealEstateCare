@@ -31,6 +31,7 @@
             <input type="text" v-model="modification.comments" class="form-control" id="comments">
         </div>
         <!--  Pass the selected photos to the "uploadPhotos" method  -->
+        <label for="photos">Photos</label>
         <input type="file" ref="photos" @change="uploadphotos" class="form-control" id="photos" multiple>
     </div>
 </template>
