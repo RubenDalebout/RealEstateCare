@@ -187,8 +187,6 @@ import { caretDownOutline, caretUpOutline } from 'ionicons/icons';
             let inspectionId = store.getters.inspection;
             this.inspectionId = inspectionId;
 
-            console.log('test')
-
             try {
                 const response = await axios.get(`https://api.jsonbin.io/v3/b/63c1a09815ab31599e35cf00/latest`, {
                     headers: {
@@ -202,6 +200,7 @@ import { caretDownOutline, caretUpOutline } from 'ionicons/icons';
                         let address = response.data.record.addresses.filter(address => address.id === this.addressId);
                         if (address.length > 0) {
                             address = address[0];
+                            console.log(address);
                             if (address.inspections.filter(inspection => inspection.id === inspectionId) !== undefined && address.inspections.filter(inspection => inspection.id === inspectionId) !== null) {
                                 let inspection = address.inspections.filter(inspection => inspection.id === inspectionId);
                                 if (inspection.length > 0) {
