@@ -13,6 +13,25 @@
   --bs-card-bg: rgba(255,255,255,0.1);
 }
 
+.form-select::-webkit-select, .form-select::-ms-expand {
+  color: red!important;
+}
+
+.form-control::file-selector-button {
+  background-color: rgba(0, 0, 0, 0.2);
+  color: var(--color-text);
+}
+
+.form-control::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+.form-control, .form-control:focus, .form-check-input, .form-select {
+  background-color: rgba(0, 0, 0, 0.1);
+  color: var(--color-text);
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
 a:hover, .text-light a:hover {
   color: whitesmoke;
   transition: all .5s ease;
