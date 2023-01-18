@@ -89,8 +89,7 @@
                 .then(file => {
                     let files = new DataTransfer();
                     files.items.add(file);
-                    this.$refs.photos.files = files.files;
-                    this.uploadPhotos();
+                    this.modification.photos = files.files;
                 })
                 .catch(error => {
                     console.error(error);
