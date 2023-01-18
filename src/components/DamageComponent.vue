@@ -81,11 +81,13 @@
         methods: {
             uploadPhotos(event) {
                 this.files = Array.from(event.target.files);
+                this.damage.photos = [];
                 for (let i = 0; i < this.files.length; i++) {
                     let file = this.files[i];
                     let reader = new FileReader();
                     reader.onloadend = e => {
-                    this.photos.push(e.target.result);
+                        this.photos.push(e.target.result);
+                        this.damage.photos.push(e.target.result);
                     };
                     reader.readAsDataURL(file);
                 }
@@ -102,6 +104,8 @@
                     dataTransfer.items.add(this.files[i])
                 }
                 this.$refs.photos.files = dataTransfer.files;
+
+                this.damage.photos = dataTransfer.files;  
 
                 // Help Safari out
                 if (this.$refs.photos.webkitEntries.length) {
