@@ -9,6 +9,10 @@
   --color-text: white;
 }
 
+.card {
+  --bs-card-bg: rgba(255,255,255,0.1);
+}
+
 a:hover, .text-light a:hover {
   color: whitesmoke;
   transition: all .5s ease;

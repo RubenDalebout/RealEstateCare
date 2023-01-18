@@ -36,9 +36,9 @@
                 </div>
                 <!-- Transition to show/hide the damage items -->
                 <transition name="fade">
-                    <div v-if="showDamage">
+                    <div v-if="showDamage" class="d-flex gap-3 flex-column mt-3">
                         <!-- Component to display and edit a damage item -->
-                        <damage-component v-for="(damage, index) in inspection.damage" :key="index" :damage="damage"></damage-component>
+                        <damage-component v-for="(damage, index) in inspection.damage" :key="index" :damage="damage" @destroy="removeDamage(index)"></damage-component>
                     </div>
                 </transition>
             </div>
@@ -59,9 +59,9 @@
                 </div>
                 <!-- Transition to show/hide the maintenance items -->
                 <transition name="fade">
-                    <div v-if="showMaintenance">
+                    <div v-if="showMaintenance" class="d-flex gap-3 flex-column mt-3">
                         <!-- Component to display and edit a maintenance item -->
-                        <maintenance-component v-for="(maintenance, index) in inspection.maintenance" :key="index" :maintenance="maintenance"></maintenance-component>
+                        <maintenance-component v-for="(maintenance, index) in inspection.maintenance" :key="index" :maintenance="maintenance" @destroy="removeMaintenace(index)"></maintenance-component>
                     </div>
                 </transition>
             </div>
@@ -82,9 +82,9 @@
                 </div>
                 <!-- Transition to show/hide the installation items -->
                 <transition name="fade">
-                    <div v-if="showInstallation">
+                    <div v-if="showInstallation" class="d-flex gap-3 flex-column mt-3">
                         <!-- Component to display and edit a installation item -->
-                        <installation-component v-for="(installation, index) in inspection.installations" :key="index" :installation="installation"></installation-component>
+                        <installation-component v-for="(installation, index) in inspection.installations" :key="index" :installation="installation" @destroy="removeInstallation(index)"></installation-component>
                     </div>
                 </transition>
             </div>
@@ -105,9 +105,9 @@
                 </div>
                 <!-- Transition to show/hide the modifications items -->
                 <transition name="fade">
-                    <div v-if="showModification">
+                    <div v-if="showModification" class="d-flex gap-3 flex-column mt-3">
                         <!-- Component to display and edit a modifications item -->
-                        <modification-component v-for="(modification, index) in inspection.modifications" :key="index" :modification="modification"></modification-component>
+                        <modification-component v-for="(modification, index) in inspection.modifications" :key="index" :modification="modification" @destroy="removeModification(index)"></modification-component>
                     </div>
                 </transition>
             </div>
@@ -226,17 +226,29 @@
                 // Add new damage array
                 this.inspection.damage.push({});
             },
+            removeDamage(index) {
+                this.inspection.damage.splice(index, 1);
+            },
             addMaintenance() {
                 // Add new maintenace array
                 this.inspection.maintenance.push({});
+            },
+            removeMaintenace(index) {
+                this.inspection.maintenance.splice(index, 1);
             },
             addInstallation() {
                 // Add new installation array
                 this.inspection.installations.push({});
             },
+            removeInstallation(index) {
+                this.inspection.installations.splice(index, 1);
+            },
             addModification() {
                 // Add new modifications array
                 this.inspection.modifications.push({});
+            },
+            removeModification(index) {
+                this.inspection.modifications.splice(index, 1);
             },
             async saveInspection() {
                 try {

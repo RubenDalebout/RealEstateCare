@@ -20,7 +20,6 @@
 
 <script>
     import axios from 'axios';
-import { add } from 'ionicons/icons';
     import store from '../store/store.js'
 
     export default {
