@@ -1,4 +1,5 @@
 <template>
+    <link :href="cssFile" rel="stylesheet">
     <!-- render AppHeader component -->
     <app-header />
     <!-- render current page based on router -->
@@ -54,56 +55,62 @@
             // Function to save offline inspections to the server
             async saveOfflineInspections() {
                 // Check if there are any offline inspections to save
-                if (store.getters.offlineInspections) return;
-                try {
-                    // Get the latest record
-                    const response = await axios.get(`https://api.jsonbin.io/v3/b/63c1a09815ab31599e35cf00/latest`, {
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'X-Master-Key': '$2b$10$6OQ5plkCt1vMLN8m7VMniOP5RSMQB3WOfPoQlYh/JNbs2xeF7psUu'
-                        }
-                    });
+                if (store.getters.offlineInspections && store.getters.offlineInspections.length > 0) {
+                    try {
+                        // Get the latest record
+                        const response = await axios.get(`https://api.jsonbin.io/v3/b/63c1a09815ab31599e35cf00/latest`, {
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'X-Master-Key': '$2b$10$6OQ5plkCt1vMLN8m7VMniOP5RSMQB3WOfPoQlYh/JNbs2xeF7psUu'
+                            }
+                        });
 
-                    // Update the record with the offline inspections data
-                    store.getters.offlineInspections.forEach(inspection => {
-                        // Check if the address and inspection indexes exist in the record
-                        if (inspection.addressId === null || inspection.addressId === undefined || inspection.inspectionId === null || inspection.inspectionId === undefined) return;
-                        const addressIndex = inspection.addressId;
-                        const inspectionIndex = inspection.inspectionId;
-                        if (response.data.record.addresses[addressIndex] === null || response.data.record.addresses[addressIndex] === undefined ||
-                            response.data.record.addresses[addressIndex].inspections === null || response.data.record.addresses[addressIndex].inspections === undefined ||
-                            response.data.record.addresses[addressIndex].inspections[inspectionIndex] === null || response.data.record.addresses[addressIndex].inspections[inspectionIndex] === undefined ) return;
-                        // Update data
-                        response.data.record.addresses[addressIndex].inspections[inspectionIndex].completion = inspection.completion; // Completion
-                        response.data.record.addresses[addressIndex].inspections[inspectionIndex].damage = inspection.damage; // Damage(s)
-                        response.data.record.addresses[addressIndex].inspections[inspectionIndex].maintenance = inspection.maintenance; // Maintenance(s)
-                        response.data.record.addresses[addressIndex].inspections[inspectionIndex].installations = inspection.installations; // Installation(s)
-                        response.data.record.addresses[addressIndex].inspections[inspectionIndex].modifications = inspection.modifications; // Modification(s)
-                        response.data.record.addresses[addressIndex].inspections[inspectionIndex].cleanlinessScore = inspection.cleanlinessScore; // CleanlinesScore
-                        response.data.record.addresses[addressIndex].inspections[inspectionIndex].somethingBroken = inspection.somethingBroken; // SomethingBroken;
-                        delete inspection.addressId;
-                        delete inspection.inspectionId;
-                    });
-                    // Update the record
-                    const update = await axios.put(`https://api.jsonbin.io/v3/b/63c1a09815ab31599e35cf00`, response.data, {
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'X-Master-Key': '$2b$10$6OQ5plkCt1vMLN8m7VMniOP5RSMQB3WOfPoQlYh/JNbs2xeF7psUu'
-                        }
-                    });
-                    // Show success toast message
-                    this.showOfflineToast = true;
-                    this.toastOfflineMessage = 'Offline inspections saved successfully';
-                    this.toastOfflineType = 'success';
-                    // Clear offline inspections from local storage
-                    store.commit("setOfflineInspections", []);
-                } catch (error) {
-                    // Show error toast message
-                    this.showOfflineToast = true;
-                    this.toastOfflineMessage = 'Error saving offline inspections';
-                    this.toastOfflineType = 'error';
+                        // Update the record with the offline inspections data
+                        store.getters.offlineInspections.forEach(inspection => {
+                            // Check if the address and inspection indexes exist in the record
+                            if (inspection.addressId === null || inspection.addressId === undefined || inspection.inspectionId === null || inspection.inspectionId === undefined) return;
+                            const addressIndex = inspection.addressId;
+                            const inspectionIndex = inspection.inspectionId;
+                            if (response.data.record.addresses[addressIndex] === null || response.data.record.addresses[addressIndex] === undefined ||
+                                response.data.record.addresses[addressIndex].inspections === null || response.data.record.addresses[addressIndex].inspections === undefined ||
+                                response.data.record.addresses[addressIndex].inspections[inspectionIndex] === null || response.data.record.addresses[addressIndex].inspections[inspectionIndex] === undefined ) return;
+                            // Update data
+                            response.data.record.addresses[addressIndex].inspections[inspectionIndex].completion = inspection.completion; // Completion
+                            response.data.record.addresses[addressIndex].inspections[inspectionIndex].damage = inspection.damage; // Damage(s)
+                            response.data.record.addresses[addressIndex].inspections[inspectionIndex].maintenance = inspection.maintenance; // Maintenance(s)
+                            response.data.record.addresses[addressIndex].inspections[inspectionIndex].installations = inspection.installations; // Installation(s)
+                            response.data.record.addresses[addressIndex].inspections[inspectionIndex].modifications = inspection.modifications; // Modification(s)
+                            response.data.record.addresses[addressIndex].inspections[inspectionIndex].cleanlinessScore = inspection.cleanlinessScore; // CleanlinesScore
+                            response.data.record.addresses[addressIndex].inspections[inspectionIndex].somethingBroken = inspection.somethingBroken; // SomethingBroken;
+                            delete inspection.addressId;
+                            delete inspection.inspectionId;
+                        });
+                        // Update the record
+                        const update = await axios.put(`https://api.jsonbin.io/v3/b/63c1a09815ab31599e35cf00`, response.data, {
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'X-Master-Key': '$2b$10$6OQ5plkCt1vMLN8m7VMniOP5RSMQB3WOfPoQlYh/JNbs2xeF7psUu'
+                            }
+                        });
+                        // Show success toast message
+                        this.showOfflineToast = true;
+                        this.toastOfflineMessage = 'Offline inspections saved successfully';
+                        this.toastOfflineType = 'success';
+                        // Clear offline inspections from local storage
+                        store.commit("setOfflineInspections", []);
+                    } catch (error) {
+                        // Show error toast message
+                        this.showOfflineToast = true;
+                        this.toastOfflineMessage = 'Error saving offline inspections';
+                        this.toastOfflineType = 'error';
+                    }
                 }
             },
+        },
+        computed: {
+            cssFile() {
+                return store.getters.darkTheme ? './src/assets/dark.css' : './src/assets/main.css'
+            }
         }
     }
 </script>

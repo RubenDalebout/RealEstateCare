@@ -35,7 +35,8 @@ export default new Vuex.Store({
       completion: state => (state.completion != undefined && state.completion != null) ? state.completion : false,
       address: state => (state.address != undefined && state.address != null) ? state.address : false,
       inspection: state => (state.inspection != undefined && state.inspection != null) ? state.inspection : false,
-      offlineInspections: state=> (state.offlineInspections != undefined && state.offlineInspections != null) ? state.offlineInspections : false
+      offlineInspections: state=> (state.offlineInspections != undefined && state.offlineInspections != null) ? state.offlineInspections : false,
+      darkTheme: state => (state.user.settings != undefined && state.user.settings.darkTheme != undefined && state.user.settings.darkTheme === true) ? true : false,
   },
   mutations: {
       setUser(state, newUser) {

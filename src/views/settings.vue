@@ -157,30 +157,6 @@ export default {
                         delete user.password;
 
                         store.commit("setUser", user);
-
-                        if (user.settings != undefined && user.settings != null) {
-                            if (user.settings.darkTheme != undefined && user.settings.darkTheme != null) {
-                                if (user.settings.darkTheme) {
-                                    let darkThemeElements = document.querySelectorAll('[darkTheme="dark"]');
-                                    for (let i = 0; i < darkThemeElements.length; i++) {
-                                        darkThemeElements[i].removeAttribute("disabled");
-                                    }
-                                    let defaultThemeElements = document.querySelectorAll('[darkTheme="default"]');
-                                    for (let i = 0; i < defaultThemeElements.length; i++) {
-                                        defaultThemeElements[i].setAttribute("disabled", "true");
-                                    }
-                                    } else {
-                                    let darkThemeElements = document.querySelectorAll('[darkTheme="dark"]');
-                                    for (let i = 0; i < darkThemeElements.length; i++) {
-                                        darkThemeElements[i].setAttribute("disabled", "true");
-                                    }
-                                    let defaultThemeElements = document.querySelectorAll('[darkTheme="default"]');
-                                    for (let i = 0; i < defaultThemeElements.length; i++) {
-                                        defaultThemeElements[i].removeAttribute("disabled");
-                                    }
-                                }
-                            }
-                        }
                     } else {
                         throw new Error(updateResponse.data);
                     }

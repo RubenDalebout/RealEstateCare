@@ -5,6 +5,8 @@
   --bs-primary-rgb: 0, 170, 162;
   --bs-dark-rgb:  29, 41, 47;
   --bs-link-hover-color: unset;
+  --color-background: #ffffff;
+  --color-text: #000;
 }
 
 a:hover, .text-light a:hover {

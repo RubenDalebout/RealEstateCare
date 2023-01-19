@@ -19,29 +19,6 @@ import store from './store/store.js'
 import App from './App.vue'
 import router from './router'
 
-// Check if the user has dark theme enabled
-if (store.state.user && typeof store.state.user === 'object') {
-    if (Object.keys(store.state.user).length > 0) {
-        const usr = store.state.user;
-
-        // Check if the user has settings and if the dark theme is enabled
-        if (usr.settings != undefined && usr.settings != null) {
-            if (usr.settings.darkTheme != undefined && usr.settings.darkTheme != null) {
-                if (usr.settings.darkTheme) {
-                    // Enable dark theme for elements with the attribute "darkTheme"
-                    document.querySelectorAll('[darkTheme]').forEach(e => {
-                        if (e.getAttribute('disabled') === 'true') {
-                            e.removeAttribute('disabled');
-                        } else {
-                            e.setAttribute('disabled', 'true');
-                        }
-                    })
-                }
-            }
-        }
-    }
-}
-
 // Create the Vue app
 const app = createApp(App);
 
