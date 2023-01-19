@@ -59,9 +59,14 @@
             required: true
             }
         },
+        computed: {
+            getPhotos() {
+                return this.maintenance.photos;
+            }
+        },
         data() {
             return {
-                photos: [],
+                photos: this.maintenance.photos,
             }
         },
         methods: {

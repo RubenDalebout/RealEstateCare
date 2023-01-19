@@ -69,9 +69,14 @@
                 required: true
             }
         },
+        computed: {
+            getPhotos() {
+                return this.installation.photos;
+            }
+        },
         data() {
             return {
-                photos: [],
+                photos: this.installation.photos,
             }
         },
         methods: {

@@ -95,10 +95,7 @@
                             "type": "electrical",
                             "date": "2022-06-01",
                             "description": "Rewiring",
-                            "photos": [
-                                "https://example.com/modification1.jpg",
-                                "https://example.com/modification2.jpg"
-                            ]
+                            "photos": []
                         }
                     ],
                     "cleanlinessScore": 10,
@@ -124,10 +121,7 @@
                             "date": "2022-07-01",
                             "acuteAction": true,
                             "description": "Tree fall",
-                            "photos": [
-                                "https://example.com/damage1.jpg",
-                                "https://example.com/damage2.jpg"
-                            ]
+                            "photos": []
                         }
                     ],
                     "maintenance": [],
@@ -232,10 +226,7 @@
                         "date": "2022-12-01",
                         "acuteAction": true,
                         "description": "Oil leak",
-                        "photos": [
-                            "https://example.com/damage1.jpg",
-                            "https://example.com/damage2.jpg"
-                        ]
+                        "photos": []
                       }
                     ],
                     "maintenance": [],
@@ -338,10 +329,7 @@
                             "date": "2022-12-03",
                             "acuteAction": true,
                             "description": "Burn marks",
-                            "photos": [
-                                "https://example.com/damage1.jpg",
-                                "https://example.com/damage2.jpg"
-                            ]
+                            "photos": []
                         }
                     ],
                     "maintenance": [],
@@ -446,10 +434,7 @@
                         "date": "2022-12-04",
                         "acuteAction": true,
                         "description": "Broken lock",
-                        "photos": [
-                          "https://example.com/damage1.jpg",
-                          "https://example.com/damage2.jpg"
-                        ]
+                        "photos": []
                       }
                     ],
                     "maintenance": [],
@@ -552,10 +537,7 @@
                         "date": "2022-12-05",
                         "acuteAction": true,
                         "description": "Broken window",
-                        "photos": [
-                          "https://example.com/damage1.jpg",
-                          "https://example.com/damage2.jpg"
-                        ]
+                        "photos": []
                       }
                     ],
                     "maintenance": [],
@@ -658,10 +640,7 @@
                         "date": "2022-12-06",
                         "acuteAction": true,
                         "description": "Water damage",
-                        "photos": [
-                          "https://example.com/damage1.jpg",
-                          "https://example.com/damage2.jpg"
-                        ]
+                        "photos": []
                       }
                     ],
                     "maintenance": [],
@@ -764,10 +743,7 @@
                         "date": "2022-12-07",
                         "acuteAction": true,
                         "description": "Broken window",
-                        "photos": [
-                          "https://example.com/damage1.jpg",
-                          "https://example.com/damage2.jpg"
-                        ]
+                        "photos": []
                       }
                     ],
                     "maintenance": [],
@@ -870,10 +846,7 @@
                         "date": "2022-12-08",
                         "acuteAction": true,
                         "description": "Water damage",
-                        "photos": [
-                          "https://example.com/damage1.jpg",
-                          "https://example.com/damage2.jpg"
-                        ]
+                        "photos": []
                       }
                     ],
                     "maintenance": [],
@@ -976,10 +949,7 @@
                         "date": "2022-12-09",
                         "acuteAction": true,
                         "description": "Broken window",
-                        "photos": [
-                          "https://example.com/damage1.jpg",
-                          "https://example.com/damage2.jpg"
-                        ]
+                        "photos": []
                       }
                     ],
                     "maintenance": [],
@@ -1082,10 +1052,7 @@
                         "date": "2022-12-10",
                         "acuteAction": true,
                         "description": "Water damage",
-                        "photos": [
-                          "https://example.com/damage1.jpg",
-                          "https://example.com/damage2.jpg"
-                        ]
+                        "photos": []
                       }
                     ],
                     "maintenance": [],
@@ -1188,10 +1155,7 @@
                         "date": "2022-12-11",
                         "acuteAction": true,
                         "description": "Broken window",
-                        "photos": [
-                          "https://example.com/damage1.jpg",
-                          "https://example.com/damage2.jpg"
-                        ]
+                        "photos": []
                       }
                     ],
                     "maintenance": [],
@@ -1294,10 +1258,7 @@
                         "date": "2022-12-12",
                         "acuteAction": true,
                         "description": "Water damage",
-                        "photos": [
-                          "https://example.com/damage1.jpg",
-                          "https://example.com/damage2.jpg"
-                        ]
+                        "photos": []
                       }
                     ],
                     "maintenance": [],
@@ -1400,10 +1361,7 @@
                         "date": "2022-12-13",
                         "acuteAction": true,
                         "description": "Broken window",
-                        "photos": [
-                          "https://example.com/damage1.jpg",
-                          "https://example.com/damage2.jpg"
-                        ]
+                        "photos": []
                       }
                     ],
                     "maintenance": [],
@@ -1506,10 +1464,7 @@
                         "date": "2022-12-14",
                         "acuteAction": true,
                         "description": "Water damage",
-                        "photos": [
-                          "https://example.com/damage1.jpg",
-                          "https://example.com/damage2.jpg"
-                        ]
+                        "photos": []
                       }
                     ],
                     "maintenance": [],
@@ -1612,10 +1567,7 @@
                         "date": "2022-12-15",
                         "acuteAction": true,
                         "description": "Broken window",
-                        "photos": [
-                          "https://example.com/damage1.jpg",
-                          "https://example.com/damage2.jpg"
-                        ]
+                        "photos": []
                       }
                     ],
                     "maintenance": [],
@@ -1718,10 +1670,7 @@
                         "date": "2022-12-16",
                         "acuteAction": true,
                         "description": "Water damage",
-                        "photos": [
-                          "https://example.com/damage1.jpg",
-                          "https://example.com/damage2.jpg"
-                        ]
+                        "photos": []
                       }
                     ],
                     "maintenance": [],
@@ -1824,10 +1773,7 @@
                         "date": "2022-12-17",
                         "acuteAction": true,
                         "description": "Broken window",
-                        "photos": [
-                          "https://example.com/damage1.jpg",
-                          "https://example.com/damage2.jpg"
-                        ]
+                        "photos": []
                       }
                     ],
                     "maintenance": [],
@@ -1930,10 +1876,7 @@
                         "date": "2022-12-18",
                         "acuteAction": true,
                         "description": "Water damage",
-                        "photos": [
-                          "https://example.com/damage1.jpg",
-                          "https://example.com/damage2.jpg"
-                        ]
+                        "photos": []
                       }
                     ],
                     "maintenance": [],
@@ -2036,10 +1979,7 @@
                         "date": "2022-12-19",
                         "acuteAction": true,
                         "description": "Broken window",
-                        "photos": [
-                          "https://example.com/damage1.jpg",
-                          "https://example.com/damage2.jpg"
-                        ]
+                        "photos": []
                       }
                     ],
                     "maintenance": [],

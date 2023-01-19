@@ -73,9 +73,14 @@
             required: true
             }
         },
+        computed: {
+            getPhotos() {
+                return this.damage.photos;
+            }
+        },
         data() {
             return {
-                photos: [],
+                photos: this.damage.photos,
             }
         },
         methods: {

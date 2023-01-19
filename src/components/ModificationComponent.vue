@@ -68,9 +68,14 @@
                 required: true
             }
         },
+        computed: {
+            getPhotos() {
+                return this.modification.photos;
+            }
+        },
         data() {
             return {
-                photos: [],
+                photos: this.modification.photos,
             }
         },
         methods: {
