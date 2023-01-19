@@ -23,7 +23,8 @@
     import AppFooter from '@/components/AppFooter.vue'
     import NoWifiModal from '@/components/WifiCheck.vue'
     import store from './store/store.js'
-
+    import darkTheme from '@/assets/dark.css'
+    import lightTheme from '@/assets/main.css'
     // Import axios library for making HTTP requests
     import axios from 'axios'
 
@@ -122,7 +123,7 @@
         },
         computed: {
             cssFile() {
-                return store.getters.darkTheme ? '../src/assets/dark.css' : '../src/assets/main.css'
+                return store.getters.darkTheme ? darkTheme : lightTheme
             }
         }
     }
