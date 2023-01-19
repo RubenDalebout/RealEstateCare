@@ -112,17 +112,17 @@
                         this.toastOfflineType = 'error';
 
                         setTimeout(() => {
-                            this.toastType = '';
-                            this.toastMessage = '';
-                            this.showToast = false;
-                        }, 3000);
+                        this.toastType = '';
+                        this.toastMessage = '';
+                        this.showToast = false;
+                    }, 3000);
                     }
                 }
             },
         },
         computed: {
             cssFile() {
-                return store.getters.darkTheme ? window.location + '/src/assets/dark.css' : window.location + '/src/assets/main.css'
+                return store.getters.darkTheme ? '../src/assets/dark.css' : '../src/assets/main.css'
             }
         }
     }
