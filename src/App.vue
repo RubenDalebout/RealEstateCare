@@ -86,7 +86,7 @@
                             delete inspection.inspectionId;
                         });
                         // Update the record
-                        const update = await axios.put(`https://api.jsonbin.io/v3/b/63c1a09815ab31599e35cf00`, response.data, {
+                        const update = await axios.put(`https://api.jsonbin.io/v3/b/63c1a09815ab31599e35cf00`, response.data.record, {
                             headers: {
                                 'Content-Type': 'application/json',
                                 'X-Master-Key': '$2b$10$6OQ5plkCt1vMLN8m7VMniOP5RSMQB3WOfPoQlYh/JNbs2xeF7psUu'
