@@ -43,11 +43,23 @@ Om de veiligheid van de applicatie te garanderen, is er een inlogscherm toegevoe
 
 ## Toegankelijkheid
 
-De toegankelijkheid van de applicatie is verbeterd door gebruik te maken van ARIA-labels en -attributen en door de gebruiksvriendelijkheid te testen met keyboardnavigatie. De applicatie voldoet aan de WCAG 2.1-richtlijnen niveau AA.
+De toegankelijkheid van de applicatie is verbeterd door gebruik te maken van ARIA-labels en -attributen en door de gebruiksvriendelijkheid te testen met keyboardnavigatie. De applicatie voldoet aan de WCAG 2.1-richtlijnen niveau AA. Ik heb getest of de applicatie voor iemand met 10% zicht te gebruiken is. Dit is helaas de mogelijkheid, omdat mijn moeder dat heeft. Ik heb haar de app laten gebruiken en hierbij wat aanpassingen gedaan, zoals tekstgrotes. 
 
 ## Gebruiksvriendelijkheid
 
 De gebruiksvriendelijkheid van de applicatie is verbeterd door gebruik te maken van de 10 heuristieken van Jacob Nielsen. Bijvoorbeeld door gebruik van heldere taal en een overzichtelijk lay-out.
+- Heurstiek 1 - De gebruiker ziet een laad icoon als hij de inspectie of instelling doet opslaan.
+- Heurstiek 2 - De applicatie is in het Engels gezien de aangeleverde screenshots, bedrijfsnaam et cetera in het Engels zijn.
+- Heurstiek 2 - De iconen zijn simpel en logisch gehouden door te kijken wat andere bedrijven gebruiken bij zulke onderwerpen.
+- Heurstiek 3 - De gebruiker kan kiezen om de inspecie die hij aan het aanpassen is om af te breken en kan op elke pagina met een terug knop naar de bovenliggenda pagina
+- Heurstiek 4 - De snelle menu balk om te navigeren is net, zoals bij de meeste apps onderaan voorzien van grote knoppen.
+- Heurstiek 4 - Instellingen zijn rechts boven te vinden, na onderzoek bleek deze vaak bovenin los te vinden is
+- Heurstiek 5 - Als de gebruiker zijn wachtwoord wilt aanpassen moet die 2x worden ingevoerd voor de confirmatie
+- Heurstiek 6 - Als een gebruiker eenmaal een keer iets heeft ingevuld ergens, zoals op de inlog pagina onthoud hij de ingevoerde waarde en laat hij dit later als suggestie zijn
+- Heurstiek 7 - Ik heb een help pagina gemaakt voor de onervaren bezoeker en de ervaren gebruiker kan instellingen voor de applicatie wijzigen bij instellingen onderin. Zo kan hij/zij de dark mode aanzetten daar.
+- Heurstiek 8 - Ik heb alles zo kort en bondig gehouden, alleen de broodnodige informatie is er visueel en tekstueel aanwezig. Ook kan je informatie inklappen, zodat onnodige informatie voor dat moment verkleind kan worden bij de inspecties.
+- Heurstiek 9 - Ik heb zoveel fouten qua pagina bezoek opgevangen door de gebruiker naar het dashboard te sturen. Als de gebruiker bijvoorbeeld geen wifi meer het tijdens het opslaan krijgt de gebruiker een leuke tekst te zien.
+- Heurstiek 10 - De gebruiker kan via de help pagina informatie vinden en 
 
 ## Style Guides
 
