@@ -21,6 +21,7 @@
     import AppHeader from '@/components/AppHeader.vue'
     import AppFooter from '@/components/AppFooter.vue'
     import NoWifiModal from '@/components/WifiCheck.vue'
+    import store from './store/store.js'
 
     // Import axios library for making HTTP requests
     import axios from 'axios'
@@ -53,7 +54,7 @@
             // Function to save offline inspections to the server
             async saveOfflineInspections() {
                 // Check if there are any offline inspections to save
-                if (localStorage.getItem('offlineInspections') === null || localStorage.getItem('offlineInspections') === undefined || JSON.parse(localStorage.getItem('offlineInspections')).length  < 1) return;
+                if (store.getters.offlineInspections) return;
                 try {
                     // Get the latest record
                     const response = await axios.get(`https://api.jsonbin.io/v3/b/63c1a09815ab31599e35cf00/latest`, {
@@ -64,7 +65,7 @@
                     });
 
                     // Update the record with the offline inspections data
-                    JSON.parse(localStorage.getItem('offlineInspections')).forEach(inspection => {
+                    store.getters.offlineInspections.forEach(inspection => {
                         // Check if the address and inspection indexes exist in the record
                         if (inspection.addressId === null || inspection.addressId === undefined || inspection.inspectionId === null || inspection.inspectionId === undefined) return;
                         const addressIndex = inspection.addressId;
@@ -95,7 +96,7 @@
                     this.toastOfflineMessage = 'Offline inspections saved successfully';
                     this.toastOfflineType = 'success';
                     // Clear offline inspections from local storage
-                    localStorage.removeItem('offlineInspections');
+                    store.commit("setOfflineInspections", []);
                 } catch (error) {
                     // Show error toast message
                     this.showOfflineToast = true;
