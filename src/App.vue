@@ -69,8 +69,8 @@
                         store.getters.offlineInspections.forEach(inspection => {
                             // Check if the address and inspection indexes exist in the record
                             if (inspection.addressId === null || inspection.addressId === undefined || inspection.inspectionId === null || inspection.inspectionId === undefined) return;
-                            const addressIndex = inspection.addressId;
-                            const inspectionIndex = inspection.inspectionId;
+                            const addressIndex = response.data.record.addresses.findIndex(address => address.id === inspection.addressId);
+                            const inspectionIndex = response.data.record.addresses[addressIndex].inspections.findIndex(insp => insp.id === inspection.inspectionId);
                             if (response.data.record.addresses[addressIndex] === null || response.data.record.addresses[addressIndex] === undefined ||
                                 response.data.record.addresses[addressIndex].inspections === null || response.data.record.addresses[addressIndex].inspections === undefined ||
                                 response.data.record.addresses[addressIndex].inspections[inspectionIndex] === null || response.data.record.addresses[addressIndex].inspections[inspectionIndex] === undefined ) return;
@@ -85,6 +85,7 @@
                             delete inspection.addressId;
                             delete inspection.inspectionId;
                         });
+
                         // Update the record
                         const update = await axios.put(`https://api.jsonbin.io/v3/b/63c1a09815ab31599e35cf00`, response.data.record, {
                             headers: {
@@ -98,18 +99,30 @@
                         this.toastOfflineType = 'success';
                         // Clear offline inspections from local storage
                         store.commit("setOfflineInspections", []);
+
+                        setTimeout(() => {
+                            this.toastType = '';
+                            this.toastMessage = '';
+                            this.showToast = false;
+                        }, 3000);
                     } catch (error) {
                         // Show error toast message
                         this.showOfflineToast = true;
                         this.toastOfflineMessage = 'Error saving offline inspections';
                         this.toastOfflineType = 'error';
+
+                        setTimeout(() => {
+                            this.toastType = '';
+                            this.toastMessage = '';
+                            this.showToast = false;
+                        }, 3000);
                     }
                 }
             },
         },
         computed: {
             cssFile() {
-                return store.getters.darkTheme ? './src/assets/dark.css' : './src/assets/main.css'
+                return store.getters.darkTheme ? '../src/assets/dark.css' : '../src/assets/main.css'
             }
         }
     }
