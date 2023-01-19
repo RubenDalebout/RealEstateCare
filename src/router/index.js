@@ -3,10 +3,10 @@ import { createRouter, createWebHistory } from 'vue-router'
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL), //creating a web history with the base URL
     routes: [
-        // {
-        //     path: '/:catchAll(.*)',
-        //     redirect: '/'
-        // },  
+        {
+            path: '/:catchAll(.*)',
+            redirect: '/'
+        },  
         {
             path: '/', //when user navigates to the root path
             name: 'home', //name of the route
