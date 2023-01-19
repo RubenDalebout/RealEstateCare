@@ -13,6 +13,11 @@
   --bs-card-bg: rgba(255,255,255,0.1);
 }
 
+.noWifi {
+  background: var(--color-background);
+  color: var(--color-text);
+}
+
 .form-select::-webkit-select, .form-select::-ms-expand {
   color: red!important;
 }

@@ -28,7 +28,7 @@ https://realestatecare-rubendalebout.netlify.app
 
 ## Projectbeschrijving
 
-Dit project is een Vue.js-gebaseerde app voor het beheren van inspecties in de vastgoedsector. De app bevat vier schermen: openstaande inspecties, uitgevoerde inspecties, instellingen en een knowledge base. Gebruikers kunnen tussen deze schermen navigeren via routing.
+Dit project is een Vue.js-gebaseerde app voor het beheren van inspecties in de vastgoedsector. De app bevat vier schermen: openstaande inspecties, uitgevoerde inspecties, instellingen en een knowledge base. Gebruikers kunnen tussen deze schermen navigeren via routing. De data van de applicatie wordt opgehaald via Axios d.m.v. jsonbin.io
 
 ## Technologieën
 
@@ -39,7 +39,7 @@ Dit project is een Vue.js-gebaseerde app voor het beheren van inspecties in de v
 
 ## Veiligheid
 
-Om de veiligheid van de applicatie te garanderen, is er een inlogscherm toegevoegd volgens de technische beschrijving in de case. Wachtwoorden worden opgeslagen met behulp van bcrypt-hashing en verificatie wordt uitgevoerd met behulp van JWT-tokens.
+Om de veiligheid van de applicatie te garanderen, is er een inlogscherm toegevoegd volgens de technische beschrijving in de case. Ook word er constant gecheckt of de gebruiker is ingelogd en of de gebruiker gekoppeld is aan de inspectie.
 
 ## Toegankelijkheid
 
