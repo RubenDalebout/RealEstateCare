@@ -122,7 +122,7 @@
         },
         computed: {
             cssFile() {
-                return store.getters.darkTheme ? '@/src/assets/dark.css' : '@/src/assets/main.css'
+                return store.getters.darkTheme ? '/src/assets/dark.css' : '/src/assets/main.css'
             }
         }
     }
