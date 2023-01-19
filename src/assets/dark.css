@@ -26,7 +26,7 @@
   filter: invert(1);
 }
 
-.form-control, .form-control:focus, .form-check-input, .form-select {
+.form-control, .form-control:focus, .form-control::placeholder, .form-control::-moz-placeholder, .form-check-input, .form-select {
   background-color: rgba(0, 0, 0, 0.1);
   color: var(--color-text);
   border: 1px solid rgba(255,255,255,0.2);
