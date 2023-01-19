@@ -59,7 +59,7 @@ De gebruiksvriendelijkheid van de applicatie is verbeterd door gebruik te maken 
 - Heurstiek 7 - Ik heb een help pagina gemaakt voor de onervaren bezoeker en de ervaren gebruiker kan instellingen voor de applicatie wijzigen bij instellingen onderin. Zo kan hij/zij de dark mode aanzetten daar.
 - Heurstiek 8 - Ik heb alles zo kort en bondig gehouden, alleen de broodnodige informatie is er visueel en tekstueel aanwezig. Ook kan je informatie inklappen, zodat onnodige informatie voor dat moment verkleind kan worden bij de inspecties.
 - Heurstiek 9 - Ik heb zoveel fouten qua pagina bezoek opgevangen door de gebruiker naar het dashboard te sturen. Als de gebruiker bijvoorbeeld geen wifi meer het tijdens het opslaan krijgt de gebruiker een leuke tekst te zien.
-- Heurstiek 10 - De gebruiker kan via de help pagina informatie vinden en 
+- Heurstiek 10 - De gebruiker kan via de help pagina informatie vinden en onderaan staat een email link die meteen je mail programma opent om de "developer" te mailen
 
 ## Style Guides
 
