@@ -20,8 +20,8 @@
 
 <script>
     // import AppHeader, AppFooter and NoWifiModal components
-    import AppHeader from '@/components/AppHeader.vue'
-    import AppFooter from '@/components/AppFooter.vue'
+    import AppHeader from '@/components/template/AppHeader.vue'
+    import AppFooter from '@/components/template/AppFooter.vue'
     import NoWifiModal from '@/components/WifiCheck.vue'
     import store from './store/store.js'
     // Import axios library for making HTTP requests
@@ -122,7 +122,7 @@
         },
         computed: {
             cssFile() {
-                return store.getters.darkTheme ? './src/assets/dark.css' : './src/assets/main.css'
+                return store.getters.darkTheme ? './src/assets/css/dark.css' : './src/assets/css/main.css'
             }
         }
     }
