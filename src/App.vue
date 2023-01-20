@@ -24,10 +24,11 @@
     import AppFooter from '@/components/template/AppFooter.vue'
     import NoWifiModal from '@/components/alerts/WifiCheck.vue'
     import store from './store/store.js'
-    import router from "@/router";
-
     // Import axios library for making HTTP requests
     import axios from 'axios'
+
+    import mainStyle from '@/assets/css/main.css?url'
+    import darkStyle from '@/assets/css/dark.css?url'
 
     export default {
         components: {
@@ -124,7 +125,7 @@
         },
         computed: {
             cssFile() {
-                return (store.getters.darkTheme) ? './assets/css/dark.css' : './assets/css/main.css'
+                return store.getters.darkTheme ? darkStyle : mainStyle;
             }
         }
     }
