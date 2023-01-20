@@ -141,10 +141,10 @@
     import axios from 'axios';
     import store from '../store/store.js'
 
-    import DamageComponent from '../components/DamageComponent.vue';
-    import MaintenanceComponent from '../components/MaintenanceComponent.vue';
-    import InstallationComponent from '../components/InstallationComponent.vue';
-    import ModificationComponent from '../components/ModificationComponent.vue';
+    import DamageComponent from '../components/form/DamageComponent.vue';
+    import MaintenanceComponent from '../components/form/MaintenanceComponent.vue';
+    import InstallationComponent from '../components/form/InstallationComponent.vue';
+    import ModificationComponent from '../components/form/ModificationComponent.vue';
 
     export default {
         name: 'Inspection',
