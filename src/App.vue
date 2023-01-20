@@ -22,7 +22,7 @@
     // import AppHeader, AppFooter and NoWifiModal components
     import AppHeader from '@/components/template/AppHeader.vue'
     import AppFooter from '@/components/template/AppFooter.vue'
-    import NoWifiModal from '@/components/WifiCheck.vue'
+    import NoWifiModal from '@/components/alerts/WifiCheck.vue'
     import store from './store/store.js'
     // Import axios library for making HTTP requests
     import axios from 'axios'
