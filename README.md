@@ -1,5 +1,8 @@
 # RealEstateCare
 
+# LET OP!
+Wanneer u uitlogt wordt alle JSON data gereset. Dit heb ik gedaan, omdat ik wil dat iedereen alles kan aanpassen tijdens het testen. Zodat de volgende persoon die het nakijkt ook weer nieuwe data heeft en alles kan proberen.
+
 ## Nederlands
 ### Installatie
 1. Kloon de repository van Github met `git clone <repository-url>`
