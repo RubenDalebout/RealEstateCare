@@ -1,4 +1,4 @@
-<script>
+<script setup>
     // import the build, search, and alertCircle icons from the ionicons library 
     import { build, search, alertCircle } from 'ionicons/icons';
 </script>
