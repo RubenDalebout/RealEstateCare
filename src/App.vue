@@ -27,6 +27,8 @@
     // Import axios library for making HTTP requests
     import axios from 'axios'
 
+    console.log(window.location.origin)
+
     export default {
         components: {
             AppHeader,
@@ -122,7 +124,7 @@
         },
         computed: {
             cssFile() {
-                return store.getters.darkTheme ? './src/assets/css/dark.css' : './src/assets/css/main.css'
+                return window.location.origin + store.getters.darkTheme ? '/src/assets/css/dark.css' : './src/assets/css/main.css'
             }
         }
     }
