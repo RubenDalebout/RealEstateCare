@@ -1,9 +1,9 @@
 <template>
-    <div class="vh-100 position-fixed top-0 d-flex align-items-center nowifi">
+    <div class="vh-100 position-fixed top-0 d-flex align-items-center nowifi" aria-hidden="false" aria-label="No Wifi Modal">
         <div v-if="showNoWifiModal" class="text-center">
-            <div ref="noWifiModal" class="noWifi p-3" :visible="true" title="Oops!">
-                <p class="my-4">You don't have wifi. All your actions will be run when there is wifi again</p>
-                <button class="btn btn-danger" @click="closeModal">Close</button>
+            <div ref="noWifiModal" class="noWifi p-3" :visible="true" title="Oops!" aria-label="No Wifi Message">
+                <p class="my-4" aria-label="No Wifi Message">You don't have wifi. All your actions will be run when there is wifi again</p>
+                <button class="btn btn-danger" @click="closeModal" aria-label="Close Modal">Close</button>
             </div>
         </div>
     </div>

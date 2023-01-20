@@ -8,23 +8,27 @@
                 <!-- Profile form -->
                 <form v-on:submit.prevent="updateAccountDetails" id="accountdetails" name="accountdetails" method="post">
                     <div class="mb-3">
-                        <label for="firstname" class="form-label">Firstname</label>
-                        <input type="firstname" class="form-control" id="firstname" name="firstname" placeholder="John" v-model="firstname">
+                        <label for="firstname" class="form-label" aria-label="Firstname">Firstname</label>
+                        <input type="firstname" class="form-control" id="firstname" name="firstname" placeholder="John" v-model="firstname" aria-describedby="firstname-description">
+                        <small id="firstname-description" class="form-text text-muted">Enter your first name</small>
                     </div>
                     <div class="mb-3">
-                        <label for="lastname" class="form-label">Lastname</label>
-                        <input type="lastname" class="form-control" id="lastname" name="lastname" placeholder="Do" v-model="lastname">
+                        <label for="lastname" class="form-label" aria-label="Lastname">Lastname</label>
+                        <input type="lastname" class="form-control" id="lastname" name="lastname" placeholder="Do" v-model="lastname" aria-describedby="lastname-description">
+                        <small id="lastname-description" class="form-text text-muted">Enter your last name</small>
                     </div>
                     <div class="mb-3">
-                        <label for="newpassword" class="form-label">New password</label>
-                        <input type="newpassword" class="form-control" id="newpassword" name="newpassword" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;" v-model="newpassword">
+                        <label for="newpassword" class="form-label" aria-label="New password">New password</label>
+                        <input type="newpassword" class="form-control" id="newpassword" name="newpassword" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;" v-model="newpassword" aria-describedby="newpassword-description">
+                        <small id="newpassword-description" class="form-text text-muted">Enter your new password</small>
                     </div>
                     <div class="mb-3">
-                        <label for="newpassword" class="form-label">Confirm new password</label>
-                        <input type="newpassword" class="form-control" id="newpassword" name="newpassword" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;" v-model="confirmnewpassword">
+                        <label for="newpassword" class="form-label" aria-label="Confirm new password">Confirm new password</label>
+                        <input type="newpassword" class="form-control" id="newpassword" name="newpassword" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;" v-model="confirmnewpassword" aria-describedby="confirmnewpassword-description">
+                        <small id="confirmnewpassword-description" class="form-text text-muted">Confirm your new password</small>
                     </div>
                     <div>
-                        <input :disabled="saving" type="submit" value="Change account" class="btn btn-primary">
+                        <input :disabled="saving" type="submit" value="Change account" class="btn btn-primary" aria-label="Change account">
                     </div>
                 </form>
 
@@ -38,23 +42,23 @@
             <div class="col-sm">
                 <h1>Application settings</h1>
                 <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" role="switch" id="darkModeSwitch" v-model="settings.darkTheme">
+                    <input class="form-check-input" type="checkbox" role="switch" id="darkModeSwitch" v-model="settings.darkTheme" aria-label="Dark mode switch">
                     <label class="form-check-label" for="darkModeSwitch">Dark modus</label>
                 </div>
                 <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" role="switch" id="notificationsSwitch" v-model="settings.notifications">
+                    <input class="form-check-input" type="checkbox" role="switch" id="notificationsSwitch" v-model="settings.notifications" aria-label="Notifications switch">
                     <label class="form-check-label" for="notificationsSwitch">Notifications</label>
                 </div>
                 <div class="form-check form-switch mb-3">
-                    <input class="form-check-input" type="checkbox" role="switch" id="soundSwitch" v-model="settings.sounds">
+                    <input class="form-check-input" type="checkbox" role="switch" id="soundSwitch" v-model="settings.sounds" aria-label="Sound switch">
                     <label class="form-check-label" for="soundSwitch">Sounds</label>
                 </div>
                 <!-- Update application settings for user -->
-                <button :disabled="saving" class="btn btn-primary" @click="updateSettings()">Save changes</button>
+                <button :disabled="saving" class="btn btn-primary" @click="updateSettings()" aria-label="Save changes">Save changes</button>
             </div>
             <div class="col-2-sm"></div>
         </div>
-        <button class="btn btn-danger mt-3" @click="logout()">Logout</button>
+        <button class="btn btn-danger mt-3" @click="logout()" aria-label="Logout">Logout</button>
 
         <div v-if="showToast" class="toast-container">
             <div v-bind:class="{'show': showToast}" :class="'toast toast-' + toastType">

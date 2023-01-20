@@ -1,7 +1,7 @@
 <template>
     <main class="container">
         <!-- Render a search input that allows user to filter addresses -->
-        <input type="text" v-model="searchTerm" @input="filterAddresses" placeholder="Search for address or city" class="form-control mb-3">
+        <input type="text" v-model="searchTerm" @input="filterAddresses" placeholder="Search for address or city" class="form-control mb-3" aria-label="Search for addresses or city" aria-describedby="search-input">
         <div class="list-group gap-3">
             <!-- Display each filtered address in a list-group-item element -->
             <div class="list-group-item list-group-item-action d-flex flex-column justify-content-between align-items-center" v-for="address in filteredAddresses" :key="address.id">
@@ -9,7 +9,7 @@
                     <p>Address: {{ address.street }}, {{ address.city }}</p>
                 </div>
                 <!-- Add a button that takes the user to a different route and saves the selected address id to local storage -->
-                <router-link :to="{ name: 'inspections' }" @click="saveParamsToLocalStorage(address.id)" class="btn btn-primary">View Inspections</router-link>
+                <router-link :to="{ name: 'inspections' }" @click="saveParamsToLocalStorage(address.id)" class="btn btn-primary" aria-label="View inspections">View Inspections</router-link>
             </div>
         </div>
     </main>

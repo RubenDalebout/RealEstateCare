@@ -2,41 +2,42 @@
     <div>
         <div class="card">
             <div class="card-header">
-                <button type="button" @click="destroy" class="btn btn-danger float-right">Delete</button>
+                <button type="button" @click="destroy" class="btn btn-danger float-right" aria-label="Delete button">Delete</button>
             </div>
             <div class="card-body">
                 <!-- form-group for location input -->
                 <div class="form-group">
-                    <label for="location">Location</label>
-                    <input type="text" v-model="maintenance.location" class="form-control" id="location">
+                    <label for="location" aria-label="Location">Location</label>
+                    <input type="text" v-model="maintenance.location" class="form-control" id="location" aria-describedby="location">
                 </div>
                 <!-- form-group for type input -->
                 <div class="form-group">
-                    <label for="type">Type</label>
-                    <input type="text" v-model="maintenance.type" class="form-control" id="type">
+                    <label for="type" aria-label="Type">Type</label>
+                    <input type="text" v-model="maintenance.type" class="form-control" id="type" aria-describedby="type">
                 </div>
                 <!-- form-group for acute action checkbox -->
                 <div class="form-group">
-                    <label for="acuteAction" class="me-2">Acute Action</label>
-                    <input type="checkbox" v-model="maintenance.acuteAction" class="form-check-input" id="acuteAction">
+                    <label for="acuteAction" class="me-2" aria-label="Acute Action">Acute Action</label>
+                    <input type="checkbox" v-model="maintenance.acuteAction" class="form-check-input" id="acuteAction" aria-describedby="acuteAction">
                 </div>
                 <!-- form-group for cost estimate input -->
                 <div class="form-group">
-                    <label for="costEstimate">Cost Estimate</label>
-                    <input type="text" v-model="maintenance.costEstimate" class="form-control" id="costEstimate">
+                    <label for="costEstimate" aria-label="Cost Estimate">Cost Estimate</label>
+                    <input type="text" v-model="maintenance.costEstimate" class="form-control" id="costEstimate" aria-describedby="costEstimate">
                 </div>
                 <!-- file input for photos -->
                 <div class="form-group">
-                    <label for="photos">Photos</label>
-                    <input type="file" ref="photos" @change="uploadPhotos" class="form-control" id="photos" accept="image/*" multiple>
+                    <label for="photos" aria-label="Photos">Photos</label>
+                    <input type="file" ref="photos" @change="uploadPhotos" class="form-control" id="photos" accept="image/*" multiple aria-describedby="photos-help">
+                    <small id="photos-help" class="form-text text-muted">Please select the photos of the damage</small>
                 </div>
                 <div class="card mt-3">
                     <div class="card-body">
                         <div class="row">
                             <div v-for="(photo, index) in photos" :key="index" class="col-md-4">
                                 <div class="img-container position-relative">
-                                    <img :src="photo" class="img-fluid w-50 mb-3 d-block m-auto img-preview">
-                                    <button type="button" @click="removePhoto(index)" class="btn btn-danger btn-sm position-absolute top-0 end-0 delete-button">
+                                    <img :src="photo" class="img-fluid w-50 mb-3 d-block m-auto img-preview" alt="damage photo">
+                                    <button type="button" @click="removePhoto(index)" class="btn btn-danger btn-sm position-absolute top-0 end-0 delete-button" aria-label="Remove photo">
                                         remove
                                     </button>
                                 </div>

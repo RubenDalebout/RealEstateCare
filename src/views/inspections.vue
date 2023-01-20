@@ -1,6 +1,6 @@
 <template>
     <main class="container">
-        <router-link :to="{ name: archive }" class="btn btn-danger">Go back</router-link>
+        <router-link :to="{ name: archive }" class="btn btn-danger" aria-label="Go back">Go back</router-link>
         <h1>Inspections {{address}}</h1>
         <div class="list-group gap-3">
             <div class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" v-for="inspection in inspections" :key="inspection.id">
@@ -9,10 +9,10 @@
                     <p>Inspection ID: {{ inspection.id }}</p>
                     <p>Date: {{ inspection.date }}</p>
                     <!-- display the completion status -->
-                    <div class="badge" :class="{'text-bg-success': inspection.completion, 'text-bg-danger': !inspection.completion }">{{ inspection.completion ? 'Completed' : 'In progress' }}</div>
+                    <div class="badge" :class="{'text-bg-success': inspection.completion, 'text-bg-danger': !inspection.completion }" aria-label="Inspection status">{{ inspection.completion ? 'Completed' : 'In progress' }}</div>
                 </div>
                 <!-- link to the inspection page, passing the inspection id and address id through local storage -->
-                <router-link :to="{ name: 'inspection' }" @click="saveParams(inspection.id, addressId)" class="btn btn-primary">Go to Inspection</router-link>
+                <router-link :to="{ name: 'inspection' }" @click="saveParams(inspection.id, addressId)" class="btn btn-primary" aria-label="Go to Inspection">Go to Inspection</router-link>
             </div>
         </div>
     </main>

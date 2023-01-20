@@ -1,14 +1,14 @@
 <template>
     <main class="container">
         <!-- Router link to the dashboard -->
-        <router-link :to="{ name: 'home' }" class="btn btn-danger">Go back</router-link>
+        <router-link :to="{ name: 'home' }" class="btn btn-danger" aria-label="Go back to the dashboard">Go back</router-link>
         <h1>Address List</h1>
         <!-- Container for a list of addresses -->
         <div class="list-group">
-            <a href="#" v-for="address in addresses" :key="address.id" class="list-group-item list-group-item-action d-flex flex-column justify-content-between align-items-center">
+            <a href="#" v-for="address in addresses" :key="address.id" class="list-group-item list-group-item-action d-flex flex-column justify-content-between align-items-center" aria-label="List of addresses">
                 {{ address.street }}, {{ address.city }}
                 <!-- View inspection button -->
-                <button class="btn btn-primary" @click="viewInspections(address.id, false)">View Inspections</button>
+                <button class="btn btn-primary" @click="viewInspections(address.id, false)" aria-label="View inspections for this address">View Inspections</button>
             </a>
         </div>
     </main>

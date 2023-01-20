@@ -6,15 +6,15 @@
                 <!-- form to handle the login -->
                 <form @submit.prevent="loginRoute" id="login" name="login" method="post">
                     <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" placeholder="johndoe@realestatecare.com">
+                        <label for="email" class="form-label" aria-label="Email">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="johndoe@realestatecare.com" aria-describedby="email-help">
                     </div>
                     <div class="mb-3">
-                        <label for="password" class="form-label">Password</label>
+                        <label for="password" class="form-label" aria-label="Password">Password</label>
                         <input type="password" class="form-control" id="password" name="password" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;">
                     </div>
                     <div>
-                        <input type="submit" value="Login" class="btn btn-primary">
+                        <input type="submit" value="Login" class="btn btn-primary" aria-label="Login button">
                     </div>
                 </form>
             </div>
@@ -23,7 +23,7 @@
 
         <!-- toast message container -->
         <div v-if="showToast" class="toast-container">
-            <div v-bind:class="{'show': showToast}" :class="'toast toast-' + toastType">
+            <div v-bind:class="{'show': showToast}" aria-live="assertive" :class="'toast toast-' + toastType">
                 {{ toastMessage }}
             </div>
         </div>

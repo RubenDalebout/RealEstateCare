@@ -1,11 +1,11 @@
 <template>
-    <main class="container">
-        <router-link :to="{ name: 'home' }" class="btn btn-danger">Go back</router-link>
-        <h1>Address List</h1>
+    <main class="container" aria-label="Address List">
+        <router-link :to="{ name: 'home' }" class="btn btn-danger" aria-label="Go Back">Go back</router-link>
+        <h1 aria-label="Address List">Address List</h1>
         <div class="list-group">
-            <a href="#" v-for="address in addresses" :key="address.id" class="list-group-item list-group-item-action d-flex flex-column justify-content-between align-items-center">
+            <a href="#" v-for="address in addresses" :key="address.id" class="list-group-item list-group-item-action d-flex flex-column justify-content-between align-items-center" :aria-current="address.id === selectedAddressId ? 'page' : undefined" tabindex="0" @focus="selectedAddressId = address.id" @click="viewInspections(address.id, true)" aria-label="Address">
                 {{ address.street }}, {{ address.city }}
-                <button class="btn btn-primary" @click="viewInspections(address.id, true)">View Inspections</button>
+                <button class="btn btn-primary" @click="viewInspections(address.id, true)" aria-label="View Inspections">View Inspections</button>
             </a>
         </div>
     </main>
