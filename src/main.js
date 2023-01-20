@@ -44,3 +44,37 @@ router.beforeEach((to, from, next) => {
         }
     }
 })
+
+document.addEventListener("keydown", event => {
+    // Select all form elements
+    const formElements = document.querySelectorAll("input, select, textarea, button, a[href]");
+    let currentIndex = 0;
+
+    // Find index of focused
+    for (let i = 0; i < formElements.length; i++) {
+        if (document.activeElement === formElements[i]) {
+            currentIndex = i;
+            break;
+        }
+    }
+
+    // Watch which key is pressed
+    switch(event.key) {
+        case "ArrowUp":
+            // Prevent the default behavior of the arrow key (scrolling the page)
+            event.preventDefault();
+            if (currentIndex > 0) {
+                // Move focus to the previous form element
+                formElements[currentIndex - 1].focus();
+            }
+            break;
+        case "ArrowDown":
+            // Prevent the default behavior of the arrow key (scrolling the page)
+            event.preventDefault();
+            if (currentIndex < formElements.length - 1) {
+                // Move focus to the next form element
+                formElements[currentIndex + 1].focus();
+            }
+            break;
+    }
+})
