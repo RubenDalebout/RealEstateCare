@@ -26,7 +26,6 @@
     import store from './store/store.js'
     import router from "@/router";
 
-    console.log(router)
     // Import axios library for making HTTP requests
     import axios from 'axios'
 
@@ -125,7 +124,7 @@
         },
         computed: {
             cssFile() {
-                return (store.getters.darkTheme) ? '/assets/css/dark.css' : '/assets/css/main.css'
+                return (store.getters.darkTheme) ? './assets/css/dark.css' : './assets/css/main.css'
             }
         }
     }
