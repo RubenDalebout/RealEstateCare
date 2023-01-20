@@ -58,7 +58,7 @@
             </div>
             <div class="col-2-sm"></div>
         </div>
-        <button class="btn btn-danger mt-3" @click="logout()" aria-label="Logout">Logout</button>
+        <button class="btn btn-danger mt-3" :disabled="saving" @click="logout()" aria-label="Logout">Logout</button>
 
         <div v-if="showToast" class="toast-container">
             <div v-bind:class="{'show': showToast}" :class="'toast toast-' + toastType">
@@ -71,6 +71,8 @@
 <script>
 import axios from 'axios';
 import store from '../store/store.js'
+import inspections from '@/data/inspections.json?url'
+import users from '@/data/users.json?url'
 
 export default {
     data() {
@@ -88,9 +90,38 @@ export default {
         };
     },
     methods: {
-        logout() {
-            store.commit("setUser", {})
-            this.$router.go({ name: 'home' });
+        async logout() {
+            this.saving = true;
+            const jsonInspections = await axios.get(inspections)
+            const jsonUsers = await (await axios.get(users))
+
+            if (jsonInspections.status = 200 && jsonUsers.status === 200) {
+                const updateInspections = await axios.put(`https://api.jsonbin.io/v3/b/63c1a09815ab31599e35cf00`, jsonInspections.data, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-Master-Key': '$2b$10$6OQ5plkCt1vMLN8m7VMniOP5RSMQB3WOfPoQlYh/JNbs2xeF7psUu'
+                    }
+                });
+                const updateUsers = await axios.put(`https://api.jsonbin.io/v3/b/63c0345215ab31599e349bb2`, jsonUsers.data, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-Master-Key': '$2b$10$6OQ5plkCt1vMLN8m7VMniOP5RSMQB3WOfPoQlYh/JNbs2xeF7psUu'
+                    }
+                });
+                if(updateInspections.status === 200 && updateUsers.status === 200) {
+                    this.saving = false;
+                    store.commit("setUser", {})
+                    this.$router.go({ name: 'home' });
+                } else {
+                    this.saving = false;
+                    store.commit("setUser", {})
+                    this.$router.go({ name: 'home' });
+                }
+            } else {
+                this.saving = false;
+                store.commit("setUser", {})
+                this.$router.go({ name: 'home' });
+            }
         },  
         async updateSettings() {
             try {
