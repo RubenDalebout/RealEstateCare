@@ -1,4 +1,5 @@
 <template>
+    <link rel="stylesheet" v-bind:href="cssBase">
     <link rel="stylesheet" v-bind:href="cssFile">
     <!-- render AppHeader component -->
     <app-header />
@@ -27,6 +28,7 @@
     // Import axios library for making HTTP requests
     import axios from 'axios'
 
+    import baseStyle from '@/assets/css/base.css?url'
     import mainStyle from '@/assets/css/main.css?url'
     import darkStyle from '@/assets/css/dark.css?url'
 
@@ -124,6 +126,9 @@
             },
         },
         computed: {
+            cssBase() {
+                return baseStyle;
+            },
             cssFile() {
                 return store.getters.darkTheme ? darkStyle : mainStyle;
             }
