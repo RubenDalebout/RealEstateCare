@@ -96,26 +96,94 @@ rubendalebout@gmail.com
 
 ## English
 ### Installation
-1. Clone the Github repository with `git clone <repository-url>`
-2. Install the required packages with `npm install`
-3. Start the development server with `npm run serve`
-
-### Summary
-The RealEstateCare project is a one-page application created for a fictional company that has inspectors. The inspectors can use the application to perform inspections at an address, take photos and upload them. The client's house style was followed.
+1. Clone the repository from Github with `git clone <repository-url>``.
+2. Install the required packages with `npm install`.
+3. Start the development server with `npm run dev`
 
 ### Login
 There are several accounts available for login, each with a unique email address and password. Below is an overview of the available accounts:
 
-| Email                 | Password    |
+| Email | Password.
 |-----------------------|--------------|
-| johndoe@realestatecare.com | admin123  |
-| janedoe@realestatecare.com | admin456  |
-| jimsmith@realestatecare.com | admin789 |
-| jennasmith@realestatecare.com | admin101 |
+| johndoe@realestatecare.com | admin123
+| janedoe@realestatecare.com | admin456
+| jimsmith@realestatecare.com | admin789
+| jennasmith@realestatecare.com | admin101
 | jacksond@realestatecare.com | admin112 |
-| emmamiller@realestatecare.com | admin121 |
-| michaelj@realestatecare.com | admin131 |
-| ashleyt@realestatecare.com | admin141  |
-| mattm@realestatecare.com | admin151  |
+| emmamiller@realestatecare.com | admin121
+| michaelj@realestatecare.com | admin131
+| ashleyt@realestatecare.com | admin141
+| mattm@realestatecare.com | admin151
 
-Please note: These accounts are fictional and for demonstration purposes only.
+Please note that these accounts are fictitious and intended for demonstration purposes.
+
+## Live
+https://realestatecare-rubendalebout.netlify.app
+
+## Project Description.
+
+This project is a Vue.js-based app for managing inspections in the real estate industry. The app contains four screens: open inspections, performed inspections, settings and a knowledge base. Users can navigate between these screens via routing. Data from the application is retrieved via Axios using jsonbin.io
+
+### Technologies
+
+- Vue.js: This framework was chosen for its popularity, flexibility and it is a lightweight framework.
+- Vuex: This state management framework has been used to store and manage the data of the application.
+- JSON file: The application's data is stored in a JSON file and retrieved from a Web API.
+- Vue router: This router framework has been used to navigate between the screens of the application.
+
+### Security.
+
+To ensure the security of the application, a login screen was added according to the technical description in the case. It also constantly checks if the user is logged in and if the user is linked to the inspection.
+
+### Accessibility
+
+The accessibility of the application was improved by using ARIA labels and attributes and by testing the usability with keyboard navigation. The application complies with WCAG 2.1 guidelines. 
+- I made sure that all images have alternative text that tells what the image contains. 
+- I made sure that the text size is always 18px. This is the minimum size for people with visual impairments and or screen reader use.
+- I made the navigational buttons appear clear and on the dashboard and footer I made the blocks square so they stand out a bit more.
+- I had the inputs clearly outlined and they have a focus when you are in them. I also made sure you can navigate between inputs using the arrow keys on your keyboard.
+- Tables I don't have so those didn't need to be made clear either
+- Forms are clearly present, consisting of titles, labels, inputs and buttons. Also when you focus or click on them you see a blue outline.
+- The contrast between text and background is inverted. Thus, when the background is white, the text is black and when the background is black, it is white.
+
+By doing this, I am complying with all the requirements of the WCAG 2.1 guidelines. I also had it tested by a user with visual impairment.
+
+### Usability
+
+The usability of the application has been improved by using Jacob Nielsen's 10 heuristics. For example, by using clear language and an uncluttered layout.
+- Heuristics 1 - The user sees a loading icon when he makes the inspection or setting save.
+- Heuristics 2 - The application is in English as the provided screenshots, company name et cetera are in English.
+- Heuristics 2 - The icons are kept simple and logical by looking at what other companies use for such topics.
+- Heuristics 3 - The user can choose to abort the inspecie he is modifying and can return to the parent page on any page with a back button.
+- Heuristics 4 - The quick menu bar to navigate is just like most apps at the bottom with large buttons.
+- Heuristics 4 - Settings can be found at the top right, after investigation it was found that it is often found loose at the top
+- Heuristics 5 - If a user wants to change their password it must be entered 2x for confirmation
+- Heuristics 6 - Once a user has entered something somewhere, like on the login page it remembers the entered value and lets it be a suggestion later on
+- Heuristics 7 - I created a help page for the inexperienced visitor and the experienced user can change settings for the application at settings at the bottom. So he/she can turn on dark mode there.
+- Heuristics 8 - I kept everything so short and sweet, only the much needed information is there visually and textually. Also, you can collapse information so that unnecessary information for that moment can be reduced in inspections.
+- Heuristics 9 - I have caught so many errors in terms of page visits by sending the user to the dashboard. For example, if the user runs out of wifi while saving the user gets a nice text.
+- Heuristics 10 - The user can find information through the help page and at the bottom is an email link that immediately opens your mail program to email the "developer"
+
+### Style Guides
+
+In my project I adhered to the style guides of VueJS. Using the following points, I will explain how.
+- I used a consistent code layout. If I needed to load icons into a vue file, for example, I did this in a script setup, then came the template tag and then lastly the script where everything in terms of imports, variables, methods, exports et cetera needed to be defined. Throughout my project I used indent space 4.
+- My components are neatly arranged in a folder structure, for template for main items, such as the header and footer. Form components are in the form folder and alerts, like the wificheck are in alerts folder under the parent components folder.
+- All components are consistently written and named according to PascalCase.
+- User settings are stored in Vuex for managing these data. Vuex's guidelines have also been followed to accomplish this. For example, I retrieve the data using Getters.
+- Slot elements and scoped slots have been used in the components where it is necessary to show custom content depending on the context, this way only icons are loaded on the page where it is actually needed.
+- I used mixins on several items, such as binding a style sheet to the application via a bound href attribute.
+- I correctly integrated and used an externa library namely, Vuex and Router among others.
+- A CSS framework was used for layout consistency, this was applied consistently throughout the application.
+- Accessibility has been taken into account when developing the application, such as size of text, contrast, etc. There are no known accessibility issues and it has been tested to WCAG 2.1 guidelines level AA.
+
+### Conclusion
+
+This project has worked hard to build a secure, accessible and user-friendly application that meets the requirements of the case. However, there are some parts that still need improvement, such as a search function in the knowledge-base. This can be done shortly using more delivered documents and or other files that the customer wants. 
+
+## Final word
+
+I hope you got a good view of my work. I have incorporated all the information and feedback from previously submitted assignments. If you always have any questions you can contact me at:
+```
+rubendalebout@gmail.com
+```
